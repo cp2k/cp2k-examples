@@ -1,0 +1,331 @@
+&FORCE_EVAL
+  METHOD QMMM
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT 
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      COMMENSURATE
+      CUTOFF 300
+      NGRIDS 5
+    &END MGRID
+    &QS
+      METHOD GPW
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+    &END QS
+    &SCF
+      MAX_SCF 300
+       SCF_GUESS ATOMIC
+     # SCF_GUESS RESTART 
+      EPS_SCF 1.0E-6
+      &OT
+        PRECONDITIONER  FULL_SINGLE_INVERSE
+        MINIMIZER DIIS
+      &END
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+        &VDW_POTENTIAL
+          DISPERSION_FUNCTIONAL PAIR_POTENTIAL
+          &PAIR_POTENTIAL
+           TYPE DFTD3
+           CALCULATE_C9_TERM .TRUE.
+           REFERENCE_C9_TERM
+           PARAMETER_FILE_NAME dftd3.dat
+           REFERENCE_FUNCTIONAL PBE
+           R_CUTOFF [angstrom] 16.0
+          &END PAIR_POTENTIAL
+        &END VDW_POTENTIAL
+    &END XC
+    &PRINT
+     &V_HARTREE_CUBE
+     &END
+    &END
+  &END DFT
+
+  &MM
+    &FORCEFIELD
+      &CHARGE
+        ATOM Au
+        CHARGE 0
+      &END CHARGE
+      &CHARGE
+        ATOM H
+        CHARGE 0
+      &END CHARGE
+      &CHARGE
+        ATOM N_sp2
+        CHARGE 0
+      &END CHARGE
+      &CHARGE
+        ATOM N_sp3
+        CHARGE 0
+      &END CHARGE
+      &CHARGE
+        ATOM O
+        CHARGE 0
+      &END CHARGE
+      &CHARGE
+        ATOM C
+        CHARGE 0
+      &END CHARGE
+
+      &SPLINE
+       EPS_SPLINE 1.E-5
+       #EMAX_SPLINE 2.0
+      &END
+
+       &NONBONDED
+        &EAM
+          atoms Au Au
+          PARM_FILE_NAME Au.pot
+        &END EAM
+
+       &GENPOT
+          atoms Au N_sp2
+          FUNCTION A*exp(-r/rho)-C/r^6/(1+exp(-20*(r/6.068 -1)))
+          VARIABLES r
+          PARAMETERS A rho C 
+          VALUES 24.22274 .55936  63.138198
+          RCUT  15
+       &END GENPOT
+
+       &GENPOT
+          atoms Au N_sp3
+          FUNCTION A*exp(-r/rho)-C/r^6/(1+exp(-20*(r/6.068 -1)))
+          VARIABLES r
+          PARAMETERS A rho C 
+          VALUES 14.708686 .55936 20.030049
+          RCUT  15
+       &END GENPOT
+
+       &GENPOT
+          atoms Au C
+          FUNCTION A*exp(-r/rho)-C/r^6/(1+exp(-20*(r/6.35 -1)))
+          VARIABLES r
+          PARAMETERS A rho C 
+          VALUES 24.22274 .55936  54.429481
+          RCUT  15
+       &END GENPOT
+
+       &GENPOT
+          atoms Au O
+          FUNCTION A*exp(-r/rho)-C/r^6/(1+exp(-20*(r/6.011 -1)))
+          VARIABLES r
+          PARAMETERS A rho C 
+          VALUES 23.14458 .55936 38.826363
+          RCUT  15
+       &END GENPOT
+
+       &GENPOT
+          atoms Au H
+          FUNCTION A*exp(-r/rho)-C/r^6/(1+exp(-20*(r/5.19 -1)))
+          VARIABLES r
+          PARAMETERS A rho C 
+          VALUES .48071 .55936 0.0
+          RCUT  15
+       &END GENPOT
+
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms C O
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms C N_sp2
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms C N_sp3
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms O O
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms O N_sp2
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms O N_sp3
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms O H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms N_sp2 N_sp2
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms N_sp3 N_sp3
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms N_sp2 N_sp3
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms N_sp2 H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms N_sp3 H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+       &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+
+      &END
+
+    &END FORCEFIELD
+
+    &POISSON
+      &EWALD
+        EWALD_TYPE ewald
+        ALPHA .44
+        GMAX 21
+      &END EWALD
+    &END POISSON
+  &END MM
+
+  &QMMM
+    CENTER NEVER
+    &CELL
+      ABC [angstrom]   34.6055 29.9693 35.0
+      PERIODIC XYZ
+    &END CELL
+
+    &QM_KIND C
+     MM_INDEX 577..581
+    &END QM_KIND
+
+    &QM_KIND N_sp2
+     MM_INDEX 582..585
+    &END QM_KIND
+
+    &QM_KIND N_sp3
+     MM_INDEX 586
+    &END QM_KIND
+
+    &QM_KIND O
+     MM_INDEX 587
+    &END QM_KIND
+
+    &QM_KIND H
+     MM_INDEX 588..592
+    &END QM_KIND
+
+    &IMAGE_CHARGE
+     MM_ATOM_LIST 1..576
+     WIDTH 3.5
+    &END IMAGE_CHARGE
+
+    &PRINT
+     &IMAGE_CHARGE_INFO
+     &END
+    &END
+
+  &END QMMM
+
+  &SUBSYS
+    &CELL
+      ABC [angstrom]   34.6055 29.9693 35.0
+      PERIODIC XYZ
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME Au_gua_image_dampFunc-opt.xyz
+      COORDINATE xyz
+    &END
+    &KIND H
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+
+    &KIND O
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+
+    &KIND N_sp2
+      ELEMENT N
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q5
+    &END KIND
+
+    &KIND N_sp3
+      ELEMENT N
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q5
+    &END KIND
+
+    &KIND C
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+
+
+  &END SUBSYS
+&END FORCE_EVAL
+
+&GLOBAL
+  PROJECT Au_gua_image_dampFunc 
+  RUN_TYPE energy
+&END GLOBAL
+

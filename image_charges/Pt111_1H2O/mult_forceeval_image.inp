@@ -1,0 +1,49 @@
+&GLOBAL
+  PROJECT Pt_1H2O_image
+  PRINT_LEVEL MEDIUM
+ # RUN_TYPE ENERGY_FORCE
+  RUN_TYPE GEO_OPT
+  FLUSH_SHOULD_FLUSH
+&END GLOBAL
+
+&MULTIPLE_FORCE_EVALS
+  FORCE_EVAL_ORDER  1 2 3 
+  MULTIPLE_SUBSYS T
+&END
+
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+   # GROUP_PARTITION 496 16
+   NGROUPS 1
+   MIXING_TYPE GENMIX
+   &GENERIC
+     # X: Energy force_eval 2
+     # Y: Energy force_eval 3
+     MIXING_FUNCTION X+Y
+     VARIABLES X Y 
+   &END
+   &PRINT
+    &DIPOLE OFF
+    &END
+   &END
+  &END
+  &SUBSYS
+    &CELL
+    ABC 33.2623 28.8060  35.0  
+    ALPHA_BETA_GAMMA 90.0 90.0 90.0 
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME Pt_1H2O.xyz 
+      COORDINATE xyz
+    &END
+  &END SUBSYS
+  &PRINT
+   &FORCES
+   &END
+  &END
+&END FORCE_EVAL
+
+@include Pt_1H2O_qmmm_genpot_image.inc
+@include Pt_1H2O_mm_siepmann.inc
+

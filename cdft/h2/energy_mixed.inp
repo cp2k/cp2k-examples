@@ -1,0 +1,82 @@
+@SET RESTART_1            TRUE
+@SET WFN_FILE_1           EXTERNAL_WFNRESTART_1
+
+@SET RESTART_2            TRUE
+@SET WFN_FILE_2           EXTERNAL_WFNRESTART_2
+
+@SET DFT_FILE             dft-common-params.inc
+
+@SET PROJECT_NAME         EXTERNAL_PROJNAME
+@SET XYZFILE              EXTERNAL_XYZNAME
+
+@SET PW_CUTOFF            300
+@SET PW_REL_CUTOFF        50
+
+@SET SYS_CHARGE           1
+@SET SAVE_CUBE            FALSE
+@SET CENTER_SYS           ON
+
+@SET BECKE_ACTIVE         TRUE
+
+@SET BECKE_STR_1          EXTERNAL_BECKE_STR1
+@SET BECKE_STR_2          EXTERNAL_BECKE_STR2
+@SET BECKE_TARGET_1       EXTERNAL_BECKE_TARGET1
+@SET BECKE_TARGET_2       EXTERNAL_BECKE_TARGET2
+
+@SET BECKE_FRAG_CONSTRAINT FALSE
+@SET BECKE_FRAG_A         dummy.cube
+@SET BECKE_FRAG_A_SPIN    dummy.cube
+@SET BECKE_FRAG_B         dummy.cube
+@SET BECKE_FRAG_B_SPIN    dummy.cube
+@SET BECKE_ATOM           1
+@SET BECKE_DUMMY_ATOM     2
+
+&GLOBAL
+  PROJECT ${PROJECT_NAME}
+  RUN_TYPE ENERGY
+  PRINT_LEVEL MEDIUM
+&END GLOBAL
+&MULTIPLE_FORCE_EVALS
+  FORCE_EVAL_ORDER 2 3
+  MULTIPLE_SUBSYS F
+&END
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE MIXED_CDFT
+    NGROUPS  1
+    &MIXED_CDFT
+      ! Calculate mixed CDFT properties every COUPLING step
+      COUPLING     1
+      LAMBDA 1.0
+      ! Configuration interaction calculation
+      CI          TRUE
+      ! Turn on printing
+      &PRINT
+        &PROGRAM_RUN_INFO ON
+        &END
+      &END PRINT
+    &END MIXED_CDFT
+  &END MIXED
+  @include subsys.inc
+&END FORCE_EVAL
+# Zn+ Zn
+&FORCE_EVAL
+  @SET WFN_FILE       ${WFN_FILE_1}
+  @SET RESTART        ${RESTART_1}
+  @SET NAME           ${PROJECT_NAME}-state1
+  @SET BECKE_TARGET   ${BECKE_TARGET_1}
+  @SET BECKE_STR      ${BECKE_STR_1}
+  METHOD QS
+  @include ${DFT_FILE}
+&END FORCE_EVAL
+# Zn Zn+
+&FORCE_EVAL
+  @SET WFN_FILE       ${WFN_FILE_2}
+  @SET RESTART        ${RESTART_2}
+  @SET NAME           ${PROJECT_NAME}-state2
+  @SET BECKE_TARGET   ${BECKE_TARGET_2}
+  @SET BECKE_STR      ${BECKE_STR_2}
+  METHOD QS
+  @include ${DFT_FILE}
+&END FORCE_EVAL

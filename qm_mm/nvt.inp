@@ -1,0 +1,106 @@
+&GLOBAL
+  PROJECT NVT
+  RUN_TYPE MD
+  PRINT_LEVEL LOW
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      PARMTYPE AMBER
+      PARM_FILE_NAME complex.prmtop
+      &SPLINE
+        EMAX_SPLINE 1.0E8
+        RCUT_NB [angstrom] 10
+      &END SPLINE
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE SPME
+        ALPHA .40
+        GMAX 80
+      &END EWALD
+    &END POISSON
+
+  &END MM
+  &SUBSYS
+    &CELL
+    !Set box dimensions here
+      ABC [angstrom] 84.4824350  85.2052800  84.5083700
+      ALPHA_BETA_GAMMA 90 90 90
+    &END CELL
+    &TOPOLOGY
+      CONN_FILE_FORMAT AMBER
+      CONN_FILE_NAME complex.prmtop
+    &END TOPOLOGY
+    &KIND NA+
+     ELEMENT Na
+    &END KIND
+    &COLVAR
+       &DISTANCE
+          ATOMS  1 13
+       &END DISTANCE
+    &END COLVAR
+  &END SUBSYS
+&END FORCE_EVAL
+
+
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    TIMESTEP [fs] 0.5
+    STEPS    10000
+    TEMPERATURE 298
+    &THERMOSTAT
+      REGION GLOBAL
+      TYPE CSVR
+      &CSVR
+        TIMECON [fs] 10
+      &END CSVR
+      &PRINT
+        &TEMPERATURE
+          &EACH
+            MD 100
+          &END EACH
+        &END TEMPERATURE
+      &END PRINT
+    &END THERMOSTAT
+  &END MD
+  &CONSTRAINT
+    &COLLECTIVE
+    COLVAR 1
+    TARGET [angstrom] 3.55
+    MOLNAME MOL4
+      &RESTRAINT
+        K [kcalmol] 10
+      &END RESTRAINT
+    &END COLLECTIVE
+  &END CONSTRAINT
+
+
+  &PRINT
+    &RESTART_HISTORY                            ! This section controls dumping of unique restart files during the run keeping all of them.Most useful if recovery is needed at a later point.
+      &EACH                                     ! A new restart file will be printed every 10000 md steps
+        MD 5000
+      &END
+    &END
+    &RESTART                                    ! This section controls the printing of restart files
+      &EACH                                     ! A restart file will be printed every 10000 md steps
+        MD 5000
+      &END
+    &END
+    &TRAJECTORY                                 ! Thes section Controls the output of the trajectory
+      FORMAT XYZ                                ! Format of the output trajectory is XYZ
+      &EACH                                     ! New trajectory frame will be printed each 100 md steps
+        MD 2000
+      &END
+    &END
+  &END PRINT
+&END MOTION
+
+&EXT_RESTART
+  RESTART_FILE_NAME EM-1.restart
+  RESTART_DEFAULT .FALSE.
+  RESTART_POS TRUE
+&END

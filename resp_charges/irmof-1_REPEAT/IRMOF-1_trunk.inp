@@ -1,0 +1,174 @@
+&GLOBAL
+  PROJECT IRMOF-1-resp
+  PRINT_LEVEL  MEDIUM
+  RUN_TYPE ENERGY
+  FLUSH_SHOULD_FLUSH T
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD QS
+  &DFT
+    BASIS_SET_FILE_NAME  BASIS_MOLOPT
+    POTENTIAL_FILE_NAME  GTH_POTENTIALS
+
+    CHARGE 0
+
+    &MGRID
+      NGRIDS 5
+      CUTOFF 500
+    &END MGRID
+
+    &QS
+      METHOD GPW
+      EXTRAPOLATION  PS
+      EXTRAPOLATION_ORDER  4
+      MAP_CONSISTENT
+    &END QS
+
+    &SCF
+      SCF_GUESS  ATOMIC
+      EPS_SCF 5.0E-7
+      MAX_SCF 800 
+      CHOLESKY INVERSE
+
+      &OT
+        PRECONDITIONER FULL_KINETIC          
+        MINIMIZER CG
+      &END
+
+      &OUTER_SCF
+        EPS_SCF 5.0E-7
+        MAX_SCF 50
+      &END
+
+      &PRINT
+        &RESTART
+          &EACH
+              QS_SCF 20
+          &END
+          ADD_LAST NUMERIC
+        &END
+      &END
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL
+        &PBE
+           PARAMETRIZATION revPBE
+        &END
+      &END XC_FUNCTIONAL
+      &XC_GRID
+        XC_SMOOTH_RHO NN50
+        XC_DERIV NN50_SMOOTH
+      &END
+      &VDW_POTENTIAL
+       POTENTIAL_TYPE PAIR_POTENTIAL
+       &PAIR_POTENTIAL
+          TYPE DFTD3
+          CALCULATE_C9_TERM .TRUE.
+          PARAMETER_FILE_NAME dftd3.dat
+          VERBOSE_OUTPUT .TRUE.
+          REFERENCE_FUNCTIONAL revPBE
+          R_CUTOFF [angstrom] 16.
+       &END
+      &END
+    &END XC
+    &PRINT
+      &MOMENTS
+        PERIODIC
+      &END
+      &V_HARTREE_CUBE
+      &END
+    &END PRINT
+  &END DFT
+  &SUBSYS
+    &CELL
+        A 25.6690 0         0
+        B 0       25.6690   0
+        C 0       0         25.6690
+        PERIODIC XYZ
+    &END CELL
+
+    &TOPOLOGY
+      COORD_FILE_NAME irmof_1.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+      &CENTER_COORDINATES
+      &END
+    &END TOPOLOGY
+
+    &KIND Zn
+      BASIS_SET  DZVP-MOLOPT-SR-GTH
+      POTENTIAL  GTH-PBE-q12
+    &END KIND
+    &KIND O
+      BASIS_SET  DZVP-MOLOPT-GTH
+      POTENTIAL  GTH-PBE-q6
+    &END KIND
+    &KIND C
+      BASIS_SET  DZVP-MOLOPT-GTH
+      POTENTIAL  GTH-PBE-q4
+    &END KIND
+    &KIND H
+      BASIS_SET  DZVP-MOLOPT-GTH
+      POTENTIAL  GTH-PBE-q1
+    &END KIND
+
+  &END SUBSYS
+
+  &PROPERTIES
+   &RESP
+    USE_REPEAT_METHOD 
+    &SPHERE_SAMPLING
+     AUTO_VDW_RADII_TABLE UFF 
+     AUTO_RMIN_SCALE 1.0
+     AUTO_RMAX_SCALE 100
+    &END
+    !---constraints
+    #Zn
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 1..32 
+    &END
+    #O1
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 129..136
+    &END
+    #O2
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 137..232 
+    &END
+    #H
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 33..128
+    &END
+    #C1
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 233..280
+    &END
+    #C2
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 281..328
+    &END
+    #C3
+    &CONSTRAINT
+     EQUAL_CHARGES
+     ATOM_LIST 329..424 
+    &END
+    &PRINT
+     &COORD_FIT_POINTS
+     &END
+     &RESP_CHARGES_TO_FILE
+     &END
+     &V_RESP_CUBE
+     &END
+    &END
+   &END
+  &END PROPERTIES
+
+&END FORCE_EVAL
+

@@ -1,0 +1,94 @@
+&GLOBAL  
+  PROJECT water32  
+  RUN_TYPE MD  
+  PRINT_LEVEL MEDIUM  
+&END GLOBAL  
+&MOTION  
+  &MD  
+    STEPS 3  
+  &END MD  
+&END MOTION  
+&FORCE_EVAL  
+  &DFT  
+    !cc-TZ: RI-MP2 optimized basis sets  
+    BASIS_SET_FILE_NAME BASIS_RI_cc-TZ  
+    POTENTIAL_FILE_NAME POTENTIAL  
+    SORT_BASIS EXP  
+  
+    &MGRID  
+      CUTOFF 600  
+      REL_CUTOFF 50  
+      NGRIDS 5  
+    &END MGRID  
+  
+    &SCF  
+      SCF_GUESS RESTART  
+      EPS_SCF 1.0E-6  
+      MAX_SCF 40  
+    &END SCF  
+  
+    &XC  
+      &XC_FUNCTIONAL NONE  
+      &END XC_FUNCTIONAL  
+      &HF  
+        FRACTION 1.0  
+        &INTERACTION_POTENTIAL  
+          !TC potential with cutoff < L/2 for periodic HFX  
+          POTENTIAL_TYPE TRUNCATED  
+          CUTOFF_RADIUS 4.5  
+        &END INTERACTION_POTENTIAL  
+        &MEMORY  
+          !maximum memory allocated to HFX ERI storage, per MPI rank  
+          !the optimal number depends on the specifics of the computer  
+          MAX_MEMORY 4000  
+        &END MEMORY  
+      &END HF
+      &WF_CORRELATION  
+        !explicit opposite-spin scaling  
+        SCALE_S 1.3  
+        &RI_SOS_MP2  
+          !MINIMAX quadrature by default  
+          QUADRATURE_POINTS 6  
+        &END RI_SOS_MP2
+        !Enabling low-scaling  
+        &LOW_SCALING  
+          MEMORY_CUT 3  
+        &END LOW_SCALING  
+				&RI  
+					&RI_METRIC  
+						!Short range RI metric for SOS-MP2  
+						POTENTIAL_TYPE TRUNCATED  
+						CUTOFF_RADIUS 1.5  
+					&END RI_METRIC  
+				&END RI  
+				&INTEGRALS  
+					ERI_METHOD GPW  
+					&WFC_GPW  
+						!Safe yet faster than default values  
+						CUTOFF 200  
+						REL_CUTOFF 40  
+					&END  WFC_GPW
+				&END INTEGRALS
+			&END WF_CORRELATION 
+		&END XC  
+	&END DFT  
+	&SUBSYS  
+		&CELL  
+			ABC 9.8528 9.8528 9.8528  
+		&END CELL  
+		&TOPOLOGY  
+			COORD_FILE_FORMAT XYZ  
+			COORD_FILE_NAME ./H2O-32.xyz  
+		&END TOPOLOGY  
+		&KIND H  
+			BASIS_SET cc-DZ  
+			BASIS_SET RI_AUX RI_DZ  
+			POTENTIAL GTH-HF  
+		&END KIND  
+		&KIND O  
+			BASIS_SET cc-DZ  
+			BASIS_SET RI_AUX RI_DZ  
+			POTENTIAL GTH-HF  
+		&END KIND  
+	&END SUBSYS  
+&END FORCE_EVAL

@@ -1,0 +1,121 @@
+&GLOBAL  
+  PROJECT TiO2  
+  RUN_TYPE CELL_OPT  
+  PRINT_LEVEL MEDIUM  
+&END GLOBAL  
+&MOTION  
+  &CELL_OPT  
+    MAX_ITER 2  
+  &END CELL_OPT  
+&END MOTION  
+&FORCE_EVAL  
+  STRESS_TENSOR ANALYTICAL  
+  &DFT  
+    BASIS_SET_FILE_NAME BASIS_ccGRB_UZH  
+    BASIS_SET_FILE_NAME BASIS_ADMM_UZH  
+    POTENTIAL_FILE_NAME POTENTIAL_UZH  
+    SORT_BASIS EXP  
+    !automatically generated RI basis set  
+    AUTO_BASIS RI_AUX SMALL  
+  
+    !enabling the ADMM2 approximation  
+    &AUXILIARY_DENSITY_MATRIX_METHOD  
+      METHOD BASIS_PROJECTION  
+      ADMM_PURIFICATION_METHOD NONE  
+      EXCH_CORRECTION_FUNC PBEX  
+    &END AUXILIARY_DENSITY_MATRIX_METHOD   
+  
+    &MGRID  
+      CUTOFF 600  
+      REL_CUTOFF 50  
+      NGRIDS 5  
+    &END MGRID  
+  
+    &SCF  
+      EPS_SCF 1.0E-6  
+      MAX_SCF 20  
+      &OT  
+        PRECONDITIONER FULL_ALL  
+        MINIMIZER DIIS  
+      &END OT  
+      &OUTER_SCF  
+        MAX_SCF 5  
+        EPS_SCF 1.0E-6  
+      &END OUTER_SCF  
+    &END SCF  
+  
+    &XC  
+      &XC_FUNCTIONAL  
+        &PBE  
+          SCALE_X 0.75  
+        &END PBE  
+      &END XC_FUNCTIONAL  
+      &HF  
+        FRACTION 0.25  
+        !always use a short range potential < L/2 in periodic HFX  
+        &INTERACTION_POTENTIAL  
+          POTENTIAL_TYPE TRUNCATED  
+          CUTOFF_RADIUS 4.5  
+        &END INTERACTION_POTENTIAL  
+        &MEMORY  
+          !maximum memory allocated to HFX ERI storage, per MPI rank  
+          !the optimal number depends on the specifics of the computer  
+          MAX_MEMORY 4000  
+        &END MEMORY  
+      &END HF
+      &WF_CORRELATION  
+        &RI_RPA  
+          MINIMAX_QUADRATURE  
+          QUADRATURE_POINTS 6  
+          !calculate EXX with ADMM, using the same HF section as in SCF  
+          !so that the integrals can be resued without recomputing  
+          ADMM  
+          &HF  
+            FRACTION 1.0  
+            &INTERACTION_POTENTIAL  
+              POTENTIAL_TYPE TRUNCATED  
+              CUTOFF_RADIUS 4.5  
+            &END INTERACTION_POTENTIAL  
+          &END HF  
+        &END RI_RPA  
+        !enabling low-scaling  
+        &LOW_SCALING  
+          MEMORY_CUT 3  
+        &END LOW_SCALING
+        &RI  
+          !overlap RI metric is appropriate for dense systems  
+          &RI_METRIC  
+            POTENTIAL_TYPE IDENTITY  
+          &END RI_METRIC 
+        &END RI  
+        &INTEGRALS  
+          ERI_METHOD GPW  
+          !Safe yet faster than default values  
+          &WFC_GPW  
+            CUTOFF 200  
+            REL_CUTOFF 40  
+          &END WFC_GPW  
+        &END INTEGRALS  
+      &END WF_CORRELATION
+    &END XC  
+  &END DFT  
+  &SUBSYS  
+    &CELL  
+      ABC 9.330 9.330 9.107  
+    &END CELL  
+    &TOPOLOGY  
+      COORD_FILE_FORMAT XYZ  
+      COORD_FILE_NAME ./TiO2.xyz  
+    &END TOPOLOGY  
+    &KIND Ti  
+      BASIS_SET ccGRB-D-q12  
+      BASIS_SET AUX_FIT admm-dz-q12  
+      POTENTIAL GTH-PBE0-q12  
+    &END KIND  
+    &KIND O  
+      BASIS_SET ccGRB-D-q6  
+      BASIS_SET AUX_FIT admm-dz-q6  
+      POTENTIAL GTH-PBE0-q6  
+    &END KIND  
+  &END SUBSYS  
+&END FORCE_EVAL

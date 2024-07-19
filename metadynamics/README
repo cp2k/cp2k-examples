@@ -1,0 +1,11 @@
+snapshot_MD-300K.xyz is the last snapshot of 'trajectory_MD-300K.xyz'
+
+TiO2_reftraj.inp is the input file of the REFTRAJ simulation
+
+TiO2_metadyn.inp is the input file of the METADYNAMICS simulation
+
+TiO2_metadyn-COLVAR.metadynLog is the COLVAR output file
+
+TiO2_metadyn-HILLS.metadynLog is the HILLS output file
+
+TiO2_metadyn-1.restart is the last restart file of the METADYNAMICS simualtion, used to reconstruct the FES (called 'HILLS' in: graph.psmp -i HILLS -stride 10 -ndim 2 -ndw 1 2 -cp2k -integrated_fes)

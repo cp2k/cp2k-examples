@@ -1,0 +1,170 @@
+&GLOBAL
+  PROJECT TiO2_reftraj
+  PRINT_LEVEL LOW
+  RUN_TYPE MD
+&END GLOBAL
+
+&FORCE_EVAL  
+  METHOD Quickstep
+  STRESS_TENSOR ANALYTICAL
+  
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT_UCL
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    UKS
+
+    &MGRID
+      CUTOFF 600
+      NGRIDS 5
+      REL_CUTOFF 60
+    &END MGRID
+
+    &QS
+      METHOD GPW
+    &END QS
+
+    &SCF
+      MAX_SCF 500
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-5
+
+      &OT
+	ALGORITHM IRAC
+	MINIMIZER CG
+	NDIIS 8
+	PRECONDITIONER FULL_SINGLE_INVERSE
+      &END OT
+    &END SCF
+
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+
+      &VDW_POTENTIAL
+        DISPERSION_FUNCTIONAL NON_LOCAL
+        &NON_LOCAL
+          TYPE RVV10
+          KERNEL_FILE_NAME ${data}/rVV10_kernel_table.dat
+          PARAMETERS 9.3 9.3E-003
+        &END NON_LOCAL
+      &END VDW_POTENTIAL
+    &END XC
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC 19.659 17.806 33.110 ! 13.110 + 20 angs of vacuum
+      ALPHA_BETA_GAMMA 90 90 90
+      PERIODIC XYZ
+    &END CELL
+
+    &TOPOLOGY
+      COORD_FILE_FORMAT XYZ
+      COORD_FILE_NAME trajectory_MD-300K.xyz
+    &END TOPOLOGY
+
+    &KIND Ti
+      BASIS_SET TZV2P-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q12
+    &END KIND
+    
+    &KIND O
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    
+    &KIND Ol
+      ELEMENT O
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    
+    &KIND Of
+      ELEMENT O
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    
+    &KIND Ow
+      ELEMENT O
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    
+    &KIND C
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+    
+    &KIND H
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+
+    &COLVAR
+      &COORDINATION
+        ATOMS_FROM 453 ! oxygen from formate
+	ATOMS_TO 286 ! index of Ti kind
+	R0 [angstrom] 2.9
+	ND 12 ! NN<ND positve, even, integers
+	NN 8
+      &END COORDINATION
+    &END COLVAR
+
+    &COLVAR
+      &COORDINATION
+        ATOMS_FROM 501 ! oxygen from water
+	ATOMS_TO 286 ! index of Ti kind
+	R0 [angstrom] 2.9
+	ND 12 ! NN<ND positve, even, integers
+	NN 8
+      &END COORDINATION
+    &END COLVAR
+  &END SUBSYS
+&END FORCE_EVAL
+
+&MOTION
+  &MD
+    ENSEMBLE REFTRAJ
+    STEPS 20596
+    &REFTRAJ
+      TRAJ_FILE_NAME TiO2_trajone.xyz
+      STRIDE 1
+      EVAL_ENERGY_FORCES .FALSE.
+    &END REFTRAJ
+  &END MD
+
+  &PRINT
+    &TRAJECTORY SILENT
+      &EACH
+        MD 1
+      &END EACH
+    &END TRAJECTORY
+  &END PRINT
+
+  &FREE_ENERGY
+    &METADYN
+      DO_HILLS .FALSE. ! unbiased MTD run
+
+      &METAVAR ! for each COLVAR, a METAVAR section has to be set
+        COLVAR 1
+        SCALE 1. ! change only when do_hills true
+      &END METAVAR
+
+      &METAVAR
+        COLVAR 2
+        SCALE 1. ! change only when do_hills true
+      &END METAVAR
+
+      &PRINT
+        &COLVAR
+           COMMON_ITERATION_LEVELS 3
+           &EACH
+             MD 1
+           &END EACH
+        &END COLVAR
+      &END PRINT
+    &END METADYN
+  &END FREE_ENERGY
+&END MOTION

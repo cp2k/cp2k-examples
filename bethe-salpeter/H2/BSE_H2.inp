@@ -1,0 +1,68 @@
+&GLOBAL
+  PROJECT  H2
+  RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS-aug               
+    ! Custom Basis set file (aug-cc-pVDZ and aug-cc-pVDZ-RIFIT 
+    POTENTIAL_FILE_NAME POTENTIAL               
+    ! from the Basis Set Exchange library - www.basissetexchange.org/)
+    &QS
+      METHOD GAPW                               ! All electron calculation
+      EPS_DEFAULT 1.0E-16
+      EPS_PGF_ORB 1.0E-16
+    &END QS
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT
+    &END
+    &SCF
+      SCF_GUESS RESTART
+      EPS_SCF 1e-7
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE0                       ! Choice of functional has a profound influence on the results
+      &END XC_FUNCTIONAL
+      &WF_CORRELATION
+        &RI_RPA                                 ! In the RI_RPA and the GW section, additional numerical parameters, e.g.
+          &GW
+            !SELF_CONSISTENCY      G0W0          ! can be changed to EV_GW0 or EV_GW
+            &BSE  
+              TDA                 TDA+ABBA      ! Diagonalizing ABBA and A
+              SPIN_CONFIG         SINGLET       ! or TRIPLET
+              NUM_PRINT_EXC       20            ! Number of printed excitations
+              ENERGY_CUTOFF_OCC   -1            ! Set to positive numbers (eV) to
+              ENERGY_CUTOFF_EMPTY -1            ! truncate matrices A_ia,jb and B_ia,jb
+            &END BSE
+          &END GW
+        &END RI_RPA
+      &END WF_CORRELATION
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 20 20 20
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      H 0.0000 0.0000 0.0000                    ! H2 molecule geometry from GW100 Paper
+      H 0.0000 0.0000 0.74144
+    &END COORD
+    &TOPOLOGY
+      &CENTER_COORDINATES
+      &END
+    &END TOPOLOGY
+    &KIND H
+      BASIS_SET ORB    aug-cc-pVDZ              ! For production runs, the basis set should be checked for convergence.
+      BASIS_SET RI_AUX aug-cc-pVDZ-RIFIT        ! In general, pVDZ should be a solid choice.
+      POTENTIAL ALL
+    &END KIND
+    &KIND O
+      BASIS_SET ORB    aug-cc-pVDZ
+      BASIS_SET RI_AUX aug-cc-pVDZ-RIFIT
+      POTENTIAL ALL
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

@@ -1,0 +1,129 @@
+&GLOBAL
+   PROJECT  sodal
+   RUN_TYPE ENERGY
+   PRINT_LEVEL LOW
+&END GLOBAL
+
+&FORCE_EVAL
+   METHOD QS
+   &DFT
+      BASIS_SET_FILE_NAME  BASIS_ADMM
+      ! the pcseg-n and admm-n basis set families can be downloaded at https://www.basissetexchange.org
+      BASIS_SET_FILE_NAME  BASIS_PCSEG 
+      BASIS_SET_FILE_NAME  BASIS_MOLOPT
+      POTENTIAL_FILE_NAME  POTENTIAL
+      AUTO_BASIS RI_XAS MEDIUM
+
+      &QS
+         METHOD GAPW                         ! GAPW is necessary for core states
+      &END QS
+
+      &AUXILIARY_DENSITY_MATRIX_METHOD       ! The ADMM methog greatly accelerated the ground state calculation
+         ADMM_PURIFICATION_METHOD NONE       ! This is the simplest ADMM scheme and has proven to work well 
+      &END AUXILIARY_DENSITY_MATRIX_METHOD
+
+      &SCF
+         MAX_SCF    30
+         EPS_SCF    1.0E-06
+
+         &OT
+           MINIMIZER DIIS
+           PRECONDITIONER FULL_ALL
+         &END OT
+         &OUTER_SCF
+            MAX_SCF    6
+            EPS_SCF    1.0E-06
+         &END
+      &END SCF
+
+      &MGRID
+         CUTOFF 400
+         REL_CUTOFF 40
+         NGRIDS 5
+      &END 
+
+      &XC
+         &XC_FUNCTIONAL PBE               ! This is the PBEh functional with 45% HFX
+            &PBE                          ! Large fraction of HFX are ususally needed for XAS LR-TDDFT
+               SCALE_X 0.55
+            &END
+         &END XC_FUNCTIONAL
+
+         &HF
+            FRACTION 0.45
+            &INTERACTION_POTENTIAL
+               POTENTIAL_TYPE TRUNCATED   ! The tuncated Coulomb potential has to be used in PBCs
+               CUTOFF_RADIUS 5.0          ! with a cutoff radius lower than half the cell size
+            &END INTERACTION_POTENTIAL
+            &SCREENING
+               EPS_SCHWARZ 1.0E-6         ! Screening HFX integrals boosts performance
+            &END SCREENING
+         &END HF
+      &END XC
+      
+      &XAS_TDP
+         &DONOR_STATES
+            DEFINE_EXCITED BY_KIND        ! We define the excited atoms by kind, which is named Alx here
+            KIND_LIST Alx                 ! There is only one Alx atom in the coordinates since all Al
+            STATE_TYPES 1s                ! atoms are equivalent under symmetry. The Alx atom is the only
+            N_SEARCH 1                    ! one decribed at all-electron level, which is why we use 
+         &END DONOR_STATES                ! N_SEARCH = 1. There is also no need to LOCALIZE
+
+         TAMM_DANCOFF                     ! TDA is turned on by default, but we make it explicit here
+         GRID Alx 150 300
+         ENERGY_RANGE 20.0                ! This means that we onluy solve for excitation energies that are
+                                          ! up to 20.0 eV above the first energy
+         &OT_SOLVER
+            MINIMIZER DIIS                ! The iterative OT solver is typically more efficient than
+            EPS_ITER 1.0E-4               ! full diagonalization for large systems
+         &END OT_SOLVER
+
+         &KERNEL
+            &XC_FUNCTIONAL PBE
+               &PBE
+                  SCALE_X 0.55
+               &END
+            &END XC_FUNCTIONAL
+
+            &EXACT_EXCHANGE
+               OPERATOR TRUNCATED
+               RANGE  5.0
+               SCALE 0.45
+            &END EXACT_EXCHANGE
+         &END KERNEL
+      &END XAS_TDP
+   &END DFT
+
+   &SUBSYS
+      &CELL
+         ABC 10.467947   10.651128   14.393541
+      &END CELL
+      &TOPOLOGY
+         COORD_FILE_NAME sodal.xyz
+         COORD_FILE_FORMAT xyz
+      &END TOPOLOGY
+    &KIND O
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      BASIS_SET AUX_FIT FIT3
+      POTENTIAL GTH-PBE
+    &END KIND
+    &KIND Na
+      ELEMENT Na
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      BASIS_SET AUX_FIT FIT3
+      POTENTIAL GTH-PBE
+    &END
+    &KIND Al
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      BASIS_SET AUX_FIT FIT3
+      POTENTIAL GTH-PBE
+    &END
+    &KIND Alx                          ! All atoms but the single Alx are described using pseudopotentials
+      ELEMENT Al                       ! This greatly reduces the number of basis function and the cost of
+      BASIS_SET pcseg-2                ! the calculation in general. AUX_FIT basis sets are for ADMM
+      BASIS_SET AUX_FIT admm-2
+      POTENTIAL ALL
+    &END
+   &END SUBSYS
+&END FORCE_EVAL
+

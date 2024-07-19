@@ -1,0 +1,102 @@
+&GLOBAL
+  PROJECT TiCl4
+  PRINT_LEVEL LOW
+  RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  &DFT
+    BASIS_SET_FILE_NAME  BASIS_DEF2-TZVPD
+    POTENTIAL_FILE_NAME  POTENTIAL
+    AUTO_BASIS RI_XAS    LARGE
+
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT
+    &END POISSON
+    &QS
+      METHOD GAPW
+    &END QS
+
+    &MGRID
+      CUTOFF 800
+      REL_CUTOFF 50
+      NGRIDS 5
+    &END 
+
+    &SCF
+      EPS_SCF 1.0E-8
+      MAX_SCF 200
+      &MIXING
+         METHOD BROYDEN_MIXING
+         ALPHA 0.2
+         BETA 1.5
+         NBROYDEN 8
+      &END MIXING      
+    &END SCF
+
+    &XC
+      &XC_FUNCTIONAL 
+         &LIBXC 
+            FUNCTIONAL HYB_GGA_XC_B3LYP 
+         &END LIBXC 
+      &END XC_FUNCTIONAL
+      &HF
+         FRACTION 0.2
+      &END HF
+    &END XC
+
+    &XAS_TDP
+      &DONOR_STATES
+         DEFINE_EXCITED BY_KIND
+         KIND_LIST Ti
+         STATE_TYPES 2p             ! 2p core state for L-edge
+      &END DONOR_STATES
+
+      TAMM_DANCOFF FALSE            ! TDA is on by default, get full TDDFT like this
+      DIPOLE_FORM LENGTH
+
+      GRID Ti 500 1000              ! This is a fairly dense grid
+
+      EXCITATIONS RCS_SINGLET       ! For SOC calculations in closed-shell system, these 3 keywords
+      EXCITATIONS RCS_TRIPLET       ! are required. Singlet and triplet excitation are coupled together
+      SOC                           ! with the SOC hamiltonian
+      
+      &KERNEL
+         RI_REGION 5.0              ! To get the best possible density projection
+      &XC_FUNCTIONAL 
+         &LIBXC 
+            FUNCTIONAL HYB_GGA_XC_B3LYP 
+         &END LIBXC 
+      &END XC_FUNCTIONAL
+         &EXACT_EXCHANGE
+            FRACTION 0.2
+         &END EXACT_EXCHANGE
+      &END KERNEL
+    &END XAS_TDP
+
+  &END DFT
+  &SUBSYS
+    &KIND Cl
+      BASIS_SET def2-TZVPD
+      POTENTIAL ALL
+      RADIAL_GRID 80
+      LEBEDEV_GRID 120
+    &END KIND
+    &KIND Ti
+      BASIS_SET def2-TZVPD
+      POTENTIAL ALL
+      RADIAL_GRID 80
+      LEBEDEV_GRID 120
+    &END KIND
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE 
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_FORMAT XYZ
+      COORD_FILE_NAME TiCl4.xyz
+      &CENTER_COORDINATES
+      &END CENTER_COORDINATES
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL

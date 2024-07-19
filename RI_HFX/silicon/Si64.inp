@@ -1,0 +1,66 @@
+&GLOBAL  
+  PROJECT Si64  
+  RUN_TYPE ENERGY  
+&END GLOBAL  
+&FORCE_EVAL  
+  &DFT  
+    BASIS_SET_FILE_NAME BASIS_ccGRB_UZH  
+    BASIS_SET_FILE_NAME BASIS_ADMM_UZH  
+    POTENTIAL_FILE_NAME POTENTIAL_UZH
+    !sort the basis function according to their exponent for more sparsity  
+    SORT_BASIS EXP
+    !generate the RI_HFX basis set on the fly
+    AUTO_BASIS RI_HFX SMALL  
+    
+    !turn on ADMM
+    &AUXILIARY_DENSITY_MATRIX_METHOD  
+      ADMM_TYPE ADMMS  
+    &END AUXILIARY_DENSITY_MATRIX_METHOD  
+  
+    &MGRID  
+      CUTOFF 600  
+      REL_CUTOFF 50  
+      NGRIDS 5  
+    &END MGRID  
+  
+    &SCF  
+      EPS_SCF 1.0E-6  
+      MAX_SCF 40  
+    &END SCF  
+  
+    &XC  
+      &XC_FUNCTIONAL  
+        &PBE  
+          SCALE_X 0.75  
+        &END PBE 
+			&END XC_FUNCTIONAL  
+			&HF  
+				FRACTION 0.25  
+				&INTERACTION_POTENTIAL
+				  !Important to use a limited range potential in periodic HFX  
+					POTENTIAL_TYPE TRUNCATED
+					!5.4 < half cell dimension
+					CUTOFF_RADIUS 5.4  
+				&END  
+				&RI
+				  !overlap metric for maximal efficiency  
+					RI_METRIC IDENTITY  
+				&END RI  
+			&END HF  
+		&END XC  
+	&END DFT  
+	&SUBSYS  
+		&CELL  
+			ABC 10.861395 10.861395 10.861395  
+		&END CELL  
+		&TOPOLOGY  
+			COORD_FILE_FORMAT XYZ  
+			COORD_FILE_NAME ./Si64.xyz  
+		&END TOPOLOGY  
+		&KIND Si  
+			BASIS_SET ccGRB-D-q4  
+			BASIS_SET AUX_FIT admm-dzp-q4  
+			POTENTIAL GTH-PBE0-q4  
+		&END KIND  
+	&END SUBSYS  
+&END FORCE_EVAL

@@ -1,0 +1,91 @@
+&GLOBAL  
+  PROJECT glycine  
+  PRINT_LEVEL MEDIUM  
+  RUN_TYPE GEO_OPT  
+&END GLOBAL  
+&FORCE_EVAL  
+  METHOD Quickstep  
+  &DFT  
+    BASIS_SET_FILE_NAME BASIS_cc-pVQZ  
+    POTENTIAL_FILE_NAME POTENTIAL  
+    !Sort basis function accoring to their exponent for more sparsity 
+    SORT_BASIS EXP  
+  
+    &MGRID  
+      CUTOFF 500  
+      REL_CUTOFF 50  
+      NGRIDS 5  
+    &END MGRID  
+  
+    &QS  
+      !all-electron calculations require GAPW  
+      METHOD GAPW  
+    &END QS  
+  
+    &POISSON  
+      !non-periodic calculation for this molecule  
+      PERIODIC NONE  
+      PSOLVER WAVELET  
+    &END  
+  
+    &SCF  
+      EPS_SCF 1.0E-6  
+      MAX_SCF 50  
+      &END SCF  
+    &XC  
+      &XC_FUNCTIONAL NONE  
+      &END XC_FUNCTIONAL  
+      &HF  
+        !Pure RI Hartree-Fock calculation using only defaults:  
+        ! -HFX potential is the 1/r Coulomb interaction  
+        ! -RI metric is also the 1/r Coulomb interaction  
+        ! -Default accuracy parameters (good in most cases)  
+        &RI  
+        &END RI  
+      &END HF  
+    &END XC  
+  &END DFT  
+  &SUBSYS  
+    &CELL  
+      ABC 10.0 10.0 10.0  
+      PERIODIC NONE  
+    &END CELL  
+    &COORD  
+      C -0.04879702 -0.00000000 1.40419128  
+      N -1.35021542 0.00000000 2.04225544  
+      C -0.04354337 0.00000000 -0.12235209  
+      O -1.02422569 -0.00000000 -0.83489570  
+      O 1.22983691 0.00000000 -0.61028238  
+      H 1.14837668 -0.00000000 -1.58391528  
+      H 0.53209836 -0.87421885 1.73662058  
+      H 0.53209836 0.87421885 1.73662058  
+      H -1.88873390 0.81280508 1.74087629  
+      H -1.88873390 -0.81280508 1.7408762
+    &END COORD
+    &TOPOLOGY  
+      !Always a good idea to put the molecule in the middle of the simulation cell in non-PBCs  
+      &CENTER_COORDINATES  
+      &END CENTER_COORDINATES  
+    &END TOPOLOGY  
+    &KIND C  
+      BASIS_SET cc-pVQZ  
+      BASIS_SET RI_HFX cc-pVQZ-JKFIT  
+      POTENTIAL ALL  
+    &END KIND  
+   &KIND O  
+      BASIS_SET cc-pVQZ  
+      BASIS_SET RI_HFX cc-pVQZ-JKFIT  
+      POTENTIAL ALL  
+    &END KIND  
+    &KIND N  
+      BASIS_SET cc-pVQZ  
+      BASIS_SET RI_HFX cc-pVQZ-JKFIT  
+      POTENTIAL ALL  
+    &END KIND  
+    &KIND H  
+      BASIS_SET cc-pVQZ  
+      BASIS_SET RI_HFX cc-pVQZ-JKFIT  
+      POTENTIAL ALL  
+    &END KIND  
+  &END SUBSYS  
+&END FORCE_EVAL

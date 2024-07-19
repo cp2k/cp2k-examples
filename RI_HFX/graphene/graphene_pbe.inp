@@ -1,0 +1,50 @@
+&FORCE_EVAL
+    METHOD Quickstep
+    &DFT
+        BASIS_SET_FILE_NAME BASIS_pob
+        POTENTIAL_FILE_NAME POTENTIAL
+        SORT_BASIS EXP
+        &QS
+           METHOD GAPW
+           EPS_PGF_ORB 1.0E-12
+        &END
+        &MGRID
+            CUTOFF 600
+            REL_CUTOFF 60
+            NGRIDS 5
+        &END MGRID
+        &SCF
+            EPS_SCF 1.0E-06
+            MAX_SCF 50
+        &END SCF
+        &XC
+            &XC_FUNCTIONAL PBE
+            &END XC_FUNCTIONAL
+        &END XC 
+       &KPOINTS
+          SCHEME  MONKHORST-PACK  19 19 1
+       &END KPOINTS
+    &END DFT
+    &SUBSYS
+        &CELL
+            ABC 2.46 2.46 15.000
+            ALPHA_BETA_GAMMA 90.0 90.0 120.0
+        &END CELL
+        &TOPOLOGY
+        &END
+        &COORD
+           SCALED
+           C 0.3333333 0.6666667 0.000
+           C 0.6666667 0.3333333 0.000
+        &END COORD
+        &KIND C
+            BASIS_SET pob-TZVP-rev2
+            POTENTIAL ALL
+        &END KIND
+    &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+    PROJECT graphene_pbe
+    PRINT_LEVEL MEDIUM
+    RUN_TYPE ENERGY
+&END GLOBAL

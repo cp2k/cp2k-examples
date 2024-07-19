@@ -1,0 +1,96 @@
+&GLOBAL  
+  PROJECT graphene_kp   
+  RUN_TYPE ENERGY  
+&END GLOBAL
+&FORCE_EVAL   
+  &DFT  
+    BASIS_SET_FILE_NAME BASIS_pob  
+    POTENTIAL_FILE_NAME POTENTIAL  
+    SORT_BASIS EXP  
+    AUTO_BASIS RI_HFX MEDIUM  
+    !restarting from a converged PBE calculation lead to less SCF steps  
+    WFN_RESTART_FILE_NAME graphene_pbe-RESTART.kp  
+  
+    !Turning on the ADMM approximation  
+    &AUXILIARY_DENSITY_MATRIX_METHOD  
+      ADMM_TYPE ADMMS  
+    &END AUXILIARY_DENSITY_MATRIX_METHOD  
+  
+    &QS
+      !sometimes necessary when running small systems with a lot of CPUs
+      PW_GRID_BLOCKED FALSE  
+      METHOD GAPW  
+      !needs to be the same value as that in RI%EPS_PGF_ORB  
+      EPS_PGF_ORB 1.0E-6  
+    &END  QS
+  
+    &MGRID  
+      CUTOFF 600  
+      REL_CUTOFF 60  
+      NGRIDS 5  
+    &END MGRID  
+  
+    &SCF  
+      EPS_SCF 1.0E-06  
+      MAX_SCF 50
+      !typically need lower threshold to start DIIS with k-points  
+      EPS_DIIS 0.05  
+      SCF_GUESS RESTART  
+    &END SCF  
+  
+    &XC  
+      &XC_FUNCTIONAL  
+        &PBE  
+          SCALE_X 0.75  
+        &END  
+      &END XC_FUNCTIONAL  
+      &HF  
+        FRACTION 0.25  
+        &RI  
+          KP_NGROUPS 16  
+          !using a smaller than default EPS_PGF_ORB allows for a  
+          !more accurate calculation with a larger local RI basis  
+          EPS_PGF_ORB 1.0E-6  
+        &END RI  
+        &INTERACTION_POTENTIAL  
+          !Always use a limited ranged potential in PBCs  
+          POTENTIAL_TYPE TRUNCATED  
+          CUTOFF_RADIUS 5.0  
+        &END INTERACTION_POTENTIAL
+      &END HF
+    &END XC  
+    &KPOINTS  
+      SCHEME MONKHORST-PACK 19 19 1  
+    &END KPOINTS
+    &PRINT  
+      &BAND_STRUCTURE  
+        ADDED_MOS 5  
+        &KPOINT_SET  
+          NPOINTS 50  
+          SPECIAL_POINT GAMMA 0.0000000000 0.0000000000 0.0000000000  
+          SPECIAL_POINT M 0.5000000000 0.0000000000 0.0000000000  
+          SPECIAL_POINT K 0.3333333333 0.3333333333 0.0000000000  
+          SPECIAL_POINT GAMMA 0.0000000000 0.0000000000 0.0000000000  
+        &END  KPOINT_SET
+        FILE_NAME graphene_kp.bs  
+      &END BAND_STRUCTURE 
+    &END PRINT
+  &END DFT  
+  &SUBSYS  
+    &CELL  
+      !enough space between 2 sheets of graphene not to interact  
+      ABC 2.46 2.46 20.000  
+      ALPHA_BETA_GAMMA 90.0 90.0 120.0  
+    &END CELL    
+    &COORD  
+      SCALED  
+      C 0.3333333 0.6666667 0.000  
+      C 0.6666667 0.3333333 0.000  
+    &END COORD  
+    &KIND C  
+      BASIS_SET pob-TZVP-rev2  
+      BASIS_SET AUX_FIT pob-DZVP-rev2  
+      POTENTIAL ALL  
+    &END KIND  
+  &END SUBSYS  
+&END FORCE_EVAL

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title><code>CP2K</code> Tutorial: Simple Geometry Optimisation Using <code>QUICKSTEP</code></title>
+<!-- 2014-01-27 Mon 22:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Lianheng Tong" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+<style type="text/css">
+/*<![CDATA[*/
+  .textsc {font-variant: small-caps;}
+/*]]*/
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+<!-- The org-mode default configuration, with some of my modifications -->
+<script type="text/x-mathjax-config">
+/*<![CDATA[*/
+  MathJax.Hub.Config({
+    // Only one of the two following lines, depending on user settings
+    // First allows browser-native MathML display, second forces HTML/CSS
+        config: ["MMLorHTML.js"], jax: ["input/TeX"],
+    //  jax: ["input/TeX", "output/HTML-CSS"],
+    extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                 "TeX/noUndefined.js"],
+    tex2jax: {
+      inlineMath: [ ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"],
+                     ["\\begin{displaymath}","\\end{displaymath}"] ],
+      skipTags: ["script","noscript","style","textarea","pre","code"],
+      ignoreClass: "tex2jax_ignore",
+      processEscapes: false,
+      processEnvironments: true,
+      preview: "TeX"
+    },
+    showProcessingMessages: true,
+    displayAlign: "center",
+    displayIndent: "2em",
+
+    "HTML-CSS": {
+      scale: 100,
+      availableFonts: ["STIX","TeX"],
+      preferredFont: "TeX",
+      webFont: "TeX",
+      imageFont: "TeX",
+      showMathMenu: true,
+    },
+    MMLorHTML: {
+      prefer: {
+        MSIE:    "MML",
+        Firefox: "MML",
+        Opera:   "HTML",
+        Safari:  "HTML",
+        other:   "HTML"
+      }
+    }
+  });
+/*]]>*/
+</script>
+
+<!-- switching on equation numbers support -->
+<script type="text/x-mathjax-config">
+/*<![CDATA[*/
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+/*]]>*/
+</script>
+
+<!-- Loading mathjax javascript using preamble and my math definitions -->
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title"><code>CP2K</code> Tutorial: Simple Geometry Optimisation Using <code>QUICKSTEP</code></h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Input Files</a></li>
+<li><a href="#sec-3">3. Results</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This tutorial is designed to illustrate how to relax the structure
+of a system (without changing the cell dimensions) using <code>CP2K</code>. We
+use the relaxation of a water (H\(_2\)O) molecule as an example.
+</p>
+
+<p>
+The example files are contained in <code>geo_opt.tgz</code> that comes with
+this tutorial. The calculation was carried out with <code>CP2K</code> version
+2.4.
+</p>
+
+<p>
+It should be noted that before running the geometry optimisation,
+the reader should have already know how to perform a simple
+Kohn-Sham Density Functional Theory energy and force calculation
+(this is covered in tutorial <i>Calculating Energy and Forces using
+Quickstep</i>), and they should also know how how to find a sufficient
+grid cutoff for the static energy calculations (this is covered in
+tutorial <i>Converging the CUTOFF and REL_CUTOFF</i>).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Input Files</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The input file for a geometry calculation is shown below:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cp2k"><span style="color: #268bd2;">&amp;GLOBAL</span>
+  <span style="color: #859900; font-weight: bold;">PROJECT</span> H2O
+  <span style="color: #859900; font-weight: bold;">RUN_TYPE</span> GEO_OPT
+  <span style="color: #859900; font-weight: bold;">PRINT_LEVEL</span> LOW
+<span style="color: #268bd2;">&amp;END GLOBAL</span>
+<span style="color: #268bd2;">&amp;FORCE_EVAL</span>
+  <span style="color: #859900; font-weight: bold;">METHOD</span> QS
+  <span style="color: #268bd2;">&amp;SUBSYS</span>
+    <span style="color: #268bd2;">&amp;CELL</span>
+      <span style="color: #859900; font-weight: bold;">ABC</span> 12.4138 12.4138 12.4138
+    <span style="color: #268bd2;">&amp;END CELL</span>
+    <span style="color: #268bd2;">&amp;COORD</span>
+      <span style="color: #859900; font-weight: bold;">O</span>      12.235322       1.376642      10.869880
+      <span style="color: #859900; font-weight: bold;">H</span>      12.415139       2.233125      11.257611
+      <span style="color: #859900; font-weight: bold;">H</span>      11.922476       1.573799       9.986994
+    <span style="color: #268bd2;">&amp;END COORD</span>
+    <span style="color: #268bd2;">&amp;KIND</span> H
+      <span style="color: #859900; font-weight: bold;">BASIS_SET</span> DZVP-GTH-PADE
+      <span style="color: #859900; font-weight: bold;">POTENTIAL</span> GTH-PADE-q1
+    <span style="color: #268bd2;">&amp;END KIND</span>
+    <span style="color: #268bd2;">&amp;KIND</span> O
+      <span style="color: #859900; font-weight: bold;">BASIS_SET</span> DZVP-GTH-PADE
+      <span style="color: #859900; font-weight: bold;">POTENTIAL</span> GTH-PADE-q6
+    <span style="color: #268bd2;">&amp;END KIND</span>
+  <span style="color: #268bd2;">&amp;END SUBSYS</span>
+  <span style="color: #268bd2;">&amp;DFT</span>
+    <span style="color: #859900; font-weight: bold;">BASIS_SET_FILE_NAME</span> ./BASIS_SET
+    <span style="color: #859900; font-weight: bold;">POTENTIAL_FILE_NAME</span> ./POTENTIAL
+    <span style="color: #268bd2;">&amp;QS</span>
+      <span style="color: #859900; font-weight: bold;">EPS_DEFAULT</span> 1.0E-7
+    <span style="color: #268bd2;">&amp;END QS</span>
+    <span style="color: #268bd2;">&amp;MGRID</span>
+      <span style="color: #859900; font-weight: bold;">CUTOFF</span> 200
+      <span style="color: #859900; font-weight: bold;">NGRIDS</span> 4
+      <span style="color: #859900; font-weight: bold;">REL_CUTOFF</span> 30
+    <span style="color: #268bd2;">&amp;END MGRID</span>
+    <span style="color: #268bd2;">&amp;SCF</span>
+      <span style="color: #859900; font-weight: bold;">SCF_GUESS</span> ATOMIC
+      <span style="color: #859900; font-weight: bold;">EPS_SCF</span> 1.0E-05
+      <span style="color: #859900; font-weight: bold;">MAX_SCF</span> 200
+      <span style="color: #268bd2;">&amp;DIAGONALIZATION</span> T
+        <span style="color: #859900; font-weight: bold;">ALGORITHM</span> STANDARD
+      <span style="color: #268bd2;">&amp;END DIAGONALIZATION</span>
+      <span style="color: #268bd2;">&amp;MIXING</span> T
+        <span style="color: #859900; font-weight: bold;">ALPHA</span> 0.5
+        <span style="color: #859900; font-weight: bold;">METHOD</span> PULAY_MIXING
+        <span style="color: #859900; font-weight: bold;">NPULAY</span> 5
+      <span style="color: #268bd2;">&amp;END MIXING</span>
+      <span style="color: #268bd2;">&amp;PRINT</span>
+        <span style="color: #268bd2;">&amp;RESTART</span> OFF
+        <span style="color: #268bd2;">&amp;END RESTART</span>
+      <span style="color: #268bd2;">&amp;END PRINT</span>
+    <span style="color: #268bd2;">&amp;END SCF</span>
+    <span style="color: #268bd2;">&amp;XC</span>
+      <span style="color: #268bd2;">&amp;XC_FUNCTIONAL</span> PADE
+      <span style="color: #268bd2;">&amp;END XC_FUNCTIONAL</span>
+    <span style="color: #268bd2;">&amp;END XC</span>
+  <span style="color: #268bd2;">&amp;END DFT</span>
+<span style="color: #268bd2;">&amp;END FORCE_EVAL</span>
+<span style="color: #268bd2;">&amp;MOTION</span>
+  <span style="color: #268bd2;">&amp;GEO_OPT</span>
+    <span style="color: #859900; font-weight: bold;">TYPE</span> MINIMIZATION
+    <span style="color: #859900; font-weight: bold;">MAX_DR</span>    1.0E-03
+    <span style="color: #859900; font-weight: bold;">MAX_FORCE</span> 1.0E-03
+    <span style="color: #859900; font-weight: bold;">RMS_DR</span>    1.0E-03
+    <span style="color: #859900; font-weight: bold;">RMS_FORCE</span> 1.0E-03
+    <span style="color: #859900; font-weight: bold;">MAX_ITER</span> 200
+    <span style="color: #859900; font-weight: bold;">OPTIMIZER</span> CG
+    <span style="color: #268bd2;">&amp;CG</span>
+      <span style="color: #859900; font-weight: bold;">MAX_STEEP_STEPS</span>  0
+      <span style="color: #859900; font-weight: bold;">RESTART_LIMIT</span> 9.0E-01
+    <span style="color: #268bd2;">&amp;END CG</span>
+  <span style="color: #268bd2;">&amp;END GEO_OPT</span>
+  <span style="color: #268bd2;">&amp;CONSTRAINT</span>
+    <span style="color: #268bd2;">&amp;FIXED_ATOMS</span>
+      <span style="color: #859900; font-weight: bold;">COMPONENTS_TO_FIX</span> XYZ
+      <span style="color: #859900; font-weight: bold;">LIST</span> 1
+    <span style="color: #268bd2;">&amp;END FIXED_ATOMS</span>
+  <span style="color: #268bd2;">&amp;END CONSTRAINT</span>
+<span style="color: #268bd2;">&amp;END MOTION</span>
+</pre>
+</div>
+
+<p>
+The reader should already be familiar with the <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/GLOBAL.html"><code>GLOBAL</code></a> and
+<a href="http://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL.html"><code>FORCE_EVAL</code></a> sections. For geometry optimisation calculations, we
+must set <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/GLOBAL.html#desc_RUN_TYPE"><code>RUN_TYPE</code></a> in <code>GLOBAL</code> section to <code>GEO_OPT</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cp2k"><span style="color: #859900; font-weight: bold;">RUN_TYPE</span> GEO_OPT
+</pre>
+</div>
+
+<p>
+In this example, we note that we have chosen diagonalisation of the
+Kohn-Sham Hamiltonian for the evaluation of wavefunctions, and used
+Pulay mixing for the self-consistency loops. 5 histories are used
+for Pulay mixing.
+</p>
+
+<p>
+The important section for geometry optimisation settings are
+contained in subsection <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html"><code>GEO_OPT</code></a> of <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION.html"><code>MOTION</code></a> section. Note that
+<code>GEO_OPT</code> subsection only applies to the calculation where the cell
+dimensions do not change. Calculations which allows the relaxation
+of the cell are covered in a separate tutorial.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cp2k"><span style="color: #268bd2;">&amp;GEO_OPT</span>
+  <span style="color: #859900; font-weight: bold;">TYPE</span> MINIMIZATION
+  <span style="color: #859900; font-weight: bold;">MAX_DR</span>    1.0E-03
+  <span style="color: #859900; font-weight: bold;">MAX_FORCE</span> 1.0E-03
+  <span style="color: #859900; font-weight: bold;">RMS_DR</span>    1.0E-03
+  <span style="color: #859900; font-weight: bold;">RMS_FORCE</span> 1.0E-03
+  <span style="color: #859900; font-weight: bold;">MAX_ITER</span> 200
+  <span style="color: #859900; font-weight: bold;">OPTIMIZER</span> CG
+  <span style="color: #268bd2;">&amp;CG</span>
+    <span style="color: #859900; font-weight: bold;">MAX_STEEP_STEPS</span>  0
+    <span style="color: #859900; font-weight: bold;">RESTART_LIMIT</span> 9.0E-01
+  <span style="color: #268bd2;">&amp;END CG</span>
+<span style="color: #268bd2;">&amp;END GEO_OPT</span>
+</pre>
+</div>
+
+<p>
+The <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_TYPE"><code>TYPE</code></a> keyword sets whether the geometry optimisation is for
+finding the local minima (<code>MINIMIZATION</code>) or for finding the saddle
+point transition state (<code>TRANSITION_STATE</code>). The keywords <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_MAX_DR"><code>MAX_DR</code></a>,
+<a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_MAX_FORCE"><code>MAX_FORCE</code></a>, <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_RMS_DR"><code>RMS_DR</code></a> and <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_RMS_FORCE"><code>RMS_FORCE</code></a> set the criteria of whether an
+optimised geometry is reached. <code>MAX_DR</code> and <code>RMS_DR</code> (in Bohr) are
+the tolerance on the maximum and root-mean-square of atomic
+displacements from the previous geometry optimisation iteration;
+<code>MAX_FORCE</code> and <code>RMS_FORCE</code> (in Bohr/Hartree) are the tolerance on
+the maximum and root-mean-square of atomic forces. The geometry is
+considered to be optimised <i>only when all four criteria are
+satisfied</i>. The keyword <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_MAX_ITER"><code>MAX_ITER</code></a> sets the maximum number of
+geometry optimisation iterations. <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT.html#desc_OPTIMIZER"><code>OPTIMIZER</code></a> sets the algorithm for
+finding the stationary points; in this example we have chosen the
+conjugate gradients (<code>CG</code>) method.
+</p>
+
+<p>
+The <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/GEO_OPT/CG.html"><code>CG</code></a> subsection sets options for the conjugate gradients
+algorithm. In this case, we have configured it so that no steepest
+descent steps are to be performed before the start of the conjugate
+gradients algorithm; and the CG algorithm should be reset (and one
+steepest descent step is performed) if the cosine of the angles
+between two consecutive searching directions is less than 0.9.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cp2k"><span style="color: #268bd2;">&amp;CONSTRAINT</span>
+  <span style="color: #268bd2;">&amp;FIXED_ATOMS</span>
+    <span style="color: #859900; font-weight: bold;">COMPONENTS_TO_FIX</span> XYZ
+    <span style="color: #859900; font-weight: bold;">LIST</span> 1
+  <span style="color: #268bd2;">&amp;END FIXED_ATOMS</span>
+<span style="color: #268bd2;">&amp;END CONSTRAINT</span>
+</pre>
+</div>
+
+<p>
+We can add constraints to atomic movements by using the <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/CONSTRAINT.html"><code>CONSTRAINT</code></a>
+subsection in <code>MOTION</code> section. In this example, we choose to fix
+particular atoms using the <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/CONSTRAINT/FIXED_ATOMS.html"><code>FIXED_ATOMS</code></a> subsection. The keyword
+<a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/CONSTRAINT/FIXED_ATOMS.html#desc_COMPONENTS_TO_FIX"><code>COMPONENTS_TO_FIX</code></a> sets which of the <code>X</code> <code>Y</code> <code>Z</code> directions are to
+be fixed, and in this case, the atoms will be completely pinned in
+all directions (<code>XYZ</code>). The list of atoms to be constrained are
+given by the <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/CONSTRAINT/FIXED_ATOMS.html#desc_LIST"><code>LIST</code></a> keyword:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-cp2k"><span style="color: #859900; font-weight: bold;">LIST</span> 1 2 3 ... N
+</pre>
+</div>
+
+<p>
+The numbers to the right of <code>LIST</code> are the list of atomic indices,
+and correspond to the order (from top to bottom) of the atoms given
+in the <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/SUBSYS/COORD.html"><code>COORD</code></a> subsection of <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/SUBSYS.html"><code>SUBSYS</code></a> (of <a href="http://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL.html"><code>FORCE_EVAL</code></a>). In our
+example, we have fixed the oxygen atom during geometry optimisation,
+so that the water molecule will not move around while its structure
+is being relaxed.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Results</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The example is run using the serial version of the <code>CP2K</code> binaries:
+</p>
+
+<pre class="example">
+cp2k.sopt -o H2O.out H2O.inp &amp;
+</pre>
+
+<p>
+After the job has finished, you should obtain the following files:
+</p>
+
+<ul class="org-ul">
+<li><code>H2O.out</code>
+</li>
+<li><code>H2O-pos-1.xyz</code>
+</li>
+<li><code>H2O-1.restart</code>
+</li>
+<li><code>H2O-1.restart.bak-1</code>
+</li>
+<li><code>H2O-1.restart.bak-2</code>
+</li>
+<li><code>H2O-1.restart.bak-3</code>
+</li>
+</ul>
+
+<p>
+Again, the file <code>H2O.out</code> contains the main output of the
+job. <code>H2O-pos-1.xyz</code> contains the trace of atomic coordinates at
+each geometry optimisation step in the <code>xyz</code> file format. The last
+set of atomic coordinates corresponds to the relaxed
+structure. <code>H2O-1.restart</code> is a <code>CP2K</code> input file, similar to
+<code>H2O.inp</code>, which contains the latest atomic coordinates of the water
+molecule. Should the job die for some reason, you can continue the
+job using the latest atomic coordinates by using command:
+</p>
+
+<pre class="example">
+cp2k.sopt -o H2O.out H2O-1.restart &amp;
+</pre>
+
+<p>
+You can of course also use <code>H2O-1.restart</code> as a template for writing
+an input for further calculations using the relaxed atomic
+structures.
+</p>
+
+<p>
+The files <code>H2O-1.restart.back-*</code> are backup restart files with
+atomic coordinates obtained from the previous 1, 2 and 3 geometric
+optimisation iterations. <code>H2O-1.restart.bak-1</code> should be the same as
+<code>H2O-1.restart</code>.
+</p>
+
+<p>
+In the main output file <code>H2O.out</code>, at the end of each geometry
+optimisation step, we will have the following information:
+</p>
+
+<pre class="example">
+--------  Informations at step =     1 ------------
+ Optimization Method        =                   SD
+ Total Energy               =       -17.1643447508
+ Real energy change         =        -0.0006776683
+ Decrease in energy         =                  YES
+ Used time                  =               90.837
+
+ Convergence check :
+ Max. step size             =         0.0336570168
+ Conv. limit for step size  =         0.0010000000
+ Convergence in step size   =                   NO
+ RMS step size              =         0.0168136889
+ Conv. limit for RMS step   =         0.0010000000
+ Convergence in RMS step    =                   NO
+ Max. gradient              =         0.0182785685
+ Conv. limit for gradients  =         0.0010000000
+ Conv. for gradients        =                   NO
+ RMS gradient               =         0.0091312361
+ Conv. limit for RMS grad.  =         0.0010000000
+ Conv. for gradients        =                   NO
+---------------------------------------------------
+</pre>
+
+<p>
+The above output segment states that at the end of geometry
+optimisation step 1, the total energy of the system is
+-17.1643447508 (Ha) and none of the criteria for optimised geometry
+has been reached. The iteration therefore will carry on, until all
+criteria becomes "<code>YES</code>".
+</p>
+
+<p>
+At the end of geometry optimisation, one should obtain something
+like:
+</p>
+
+<pre class="example">
+--------  Informations at step =    11 ------------
+ Optimization Method        =                   SD
+ Total Energy               =       -17.1646204766
+ Real energy change         =        -0.0000000529
+ Decrease in energy         =                  YES
+ Used time                  =               49.893
+
+ Convergence check :
+ Max. step size             =         0.0003393150
+ Conv. limit for step size  =         0.0010000000
+ Convergence in step size   =                  YES
+ RMS step size              =         0.0001493298
+ Conv. limit for RMS step   =         0.0010000000
+ Convergence in RMS step    =                  YES
+ Max. gradient              =         0.0001787448
+ Conv. limit for gradients  =         0.0010000000
+ Conv. in gradients         =                  YES
+ RMS gradient               =         0.0000786642
+ Conv. limit for RMS grad.  =         0.0010000000
+ Conv. in RMS gradients     =                  YES
+---------------------------------------------------
+</pre>
+
+<p>
+which clearly shows all criteria have been satisfied.
+</p>
+
+<p>
+The final Kohn-Sham energies can be obtained at the end of the
+output:
+</p>
+
+<pre class="example">
+*******************************************************************************
+***                    GEOMETRY OPTIMIZATION COMPLETED                      ***
+*******************************************************************************
+
+                   Reevaluating energy at the minimum
+
+Number of electrons:                                                          8
+Number of occupied orbitals:                                                  4
+Number of molecular orbitals:                                                 4
+
+Number of orbital functions:                                                 23
+Number of independent orbital functions:                                     23
+
+ Parameters for the always stable predictor-corrector (ASPC) method:
+
+ ASPC order: 3
+
+ B(1) =   3.000000
+ B(2) =  -3.428571
+ B(3) =   1.928571
+ B(4) =  -0.571429
+ B(5) =   0.071429
+
+Extrapolation method: ASPC
+
+
+SCF WAVEFUNCTION OPTIMIZATION
+
+ Step     Update method      Time    Convergence         Total energy    Change
+ ------------------------------------------------------------------------------
+    1 Pulay/Diag. 0.50E+00    0.5     0.00005615       -17.1646204762 -1.72E+01
+    2 Pulay/Diag. 0.50E+00    1.0     0.00000563       -17.1646347711 -1.43E-05
+
+ *** SCF run converged in     2 steps ***
+
+
+ Electronic density on regular grids:         -8.0000016293       -0.0000016293
+ Core density on regular grids:                7.9999992554       -0.0000007446
+ Total charge density on r-space grids:       -0.0000023739
+ Total charge density g-space grids:          -0.0000023739
+
+ Overlap energy of the core charge distribution:               0.00000004555422
+ Self energy of the core charge distribution:                -43.83289054591484
+ Core Hamiltonian energy:                                     12.82175605770555
+ Hartree energy:                                              17.97395116120845
+ Exchange-correlation energy:                                 -4.12745148966141
+
+ Total energy:                                               -17.16463477110803
+
+ENERGY| Total FORCE_EVAL ( QS ) energy (a.u.):              -17.164634771108034
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: Monday, 2014/01/27</p>
+<p class="author">Author: Lianheng Tong</p>
+<p class="date">Created: 2014-01-27 Mon 22:34</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5g)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

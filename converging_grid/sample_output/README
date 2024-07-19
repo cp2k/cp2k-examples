@@ -1,0 +1,14 @@
+# -*- mode: org -*-
+
+Multi-grid cutoff relaxation
+
+* Fixed REL_CUTOFF to 60 Ry and vary CUTOFF
+  - Found CUTOFF = 250 Ry to be sufficient.
+  - REL_CUTOFF of the results is adequate, as top level fine grids are
+    used for higher CUTOFF than 250 Ry, and energy appears to be
+    converged
+  - From the number of gaussians distributed to the grid levels, not
+    many gaussians are assigned to the finest grid
+
+* Fixed CUTOFF to 250 Ry and vary REL_CUTOFF
+  - Found REL_CUTOFF = 60 Ry to be sufficient

@@ -1,0 +1,135 @@
+@set PROJECT_NAME LR
+@set RUN ENERGY
+@set data /scratch/snx3000/glebreto/Software/cp2k/data
+
+&GLOBAL
+  PROJECT ${PROJECT_NAME}
+  RUN_TYPE ${RUN}
+  PRINT_LEVEL MEDIUM
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  STRESS_TENSOR ANALYTICAL
+  
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_PCSEG2
+    POTENTIAL_FILE_NAME ${data}/POTENTIAL_UZH
+    AUTO_BASIS RI_XAS LARGE
+    #UKS
+
+    &MGRID
+      CUTOFF 1000
+      NGRIDS 5
+      REL_CUTOFF 60
+    &END MGRID
+
+    &QS
+      METHOD GAPW
+      EPS_FIT 1.0E-6
+    &END QS
+
+    &SCF
+      MAX_SCF 1000
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-8
+
+      &OT
+	MINIMIZER CG
+	NDIIS 7
+	PRECONDITIONER FULL_ALL
+      &END OT
+    &END SCF
+ 
+    &XC
+      &XC_FUNCTIONAL PBE               
+            &PBE                         
+               SCALE_X 0.55
+            &END
+         &END XC_FUNCTIONAL
+         &HF
+            FRACTION 0.45
+            &INTERACTION_POTENTIAL
+               POTENTIAL_TYPE TRUNCATED   
+               CUTOFF_RADIUS 7.0          
+            &END INTERACTION_POTENTIAL
+         &END HF
+      &END XC
+
+    &XAS_TDP
+      CHECK_ONLY .FALSE.
+      EXCITATIONS RCS_SINGLET
+      TAMM_DANCOFF .FALSE.
+      DIPOLE_FORM LENGTH
+      XYZ_DIPOLE .TRUE.
+      GRID C 974 3000
+      GRID O 974 3000
+
+      &DONOR_STATES
+        DEFINE_EXCITED BY_KIND
+        KIND_LIST O
+        STATE_TYPES 1s
+        N_SEARCH -1
+        LOCALIZE .FALSE.
+      &END DONOR_STATES
+       &KERNEL
+            &XC_FUNCTIONAL PBE
+               &PBE
+                  SCALE_X 0.55
+               &END
+            &END XC_FUNCTIONAL
+
+            &EXACT_EXCHANGE
+               OPERATOR TRUNCATED
+               RANGE  7.0     
+               SCALE 0.45
+            &END EXACT_EXCHANGE
+       &END KERNEL 
+      &PRINT
+         &RESTART_WFN
+          EXCITED_STATE_INDEX 1
+          EXCITED_STATE_INDEX 2
+        &END RESTART_WFN
+         &CUBES
+            CUBES_LIST 1..2
+         &END CUBES
+      &END PRINT
+    &END XAS_TDP    
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER WAVELET
+    &END POISSON
+    &PRINT
+      &MULLIKEN OFF
+      &END MULLIKEN
+      &HIRSHFELD OFF
+      &END HIRSHFELD
+    &END PRINT
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC 10 10 10
+      ALPHA_BETA_GAMMA 90 90 90
+      PERIODIC NONE
+    &END CELL
+ 
+    &TOPOLOGY
+      COORD_FILE_NAME carbon-monoxide_opt.xyz
+      COORD_FILE_FORMAT XYZ
+    &END TOPOLOGY
+
+    &KIND C
+      BASIS_SET pcseg-2
+      POTENTIAL ALL
+    &END KIND
+    
+    &KIND O
+      BASIS_SET pcseg-2
+      POTENTIAL ALL
+    &END KIND
+    
+  &END SUBSYS
+&END FORCE_EVAL
+
+

@@ -1,0 +1,95 @@
+&GLOBAL
+  PROJECT  MoS2
+  RUN_TYPE ENERGY
+&END GLOBAL
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME  /pc2/groups/hpc-prf-eprop2d/eprop2d1_Jan/02_compile_CP2K/40_for_committing/cp2k/data/BASIS_PERIODIC_GW
+    POTENTIAL_FILE_NAME  /pc2/groups/hpc-prf-eprop2d/eprop2d1_Jan/02_compile_CP2K/40_for_committing/cp2k/data/GTH_SOC_POTENTIALS
+    SORT_BASIS EXP
+    &MGRID
+      CUTOFF  500
+      REL_CUTOFF  100
+    &END MGRID
+    &QS
+      METHOD GPW
+      EPS_DEFAULT 1.0E-12
+      EPS_PGF_ORB 1.0E-12
+    &END QS
+    &SCF
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-9
+      MAX_SCF 100
+      &MIXING
+          METHOD BROYDEN_MIXING
+          ALPHA 0.1
+          BETA 1.5
+          NBROYDEN 8
+      &END
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL LDA
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &PROPERTIES
+    &BANDSTRUCTURE
+      &DOS
+        KPOINTS 2 2 1
+      &END
+      &GW
+        ! for details on parameters, please consult 
+        ! manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/PROPERTIES/BANDSTRUCTURE/GW.html
+        NUM_TIME_FREQ_POINTS         10
+        MEMORY_PER_PROC               8
+        EPS_FILTER               1.0E-6
+      &END
+      &SOC
+      &END
+    &END
+  &END PROPERTIES
+  &SUBSYS
+    &CELL
+      ABC                 3.15 3.15 15.0
+      ALPHA_BETA_GAMMA    90 90 120
+        PERIODIC XY
+        ! the calculation is on a 9x9 supercell with 243 and 
+        ! the band structure will be computed by backfolding
+        MULTIPLE_UNIT_CELL 9 9 1
+    &END CELL
+    &TOPOLOGY
+      MULTIPLE_UNIT_CELL 9 9 1
+    &END TOPOLOGY
+
+    &KIND S
+      BASIS_SET ORB    TZVP-MOLOPT-GTH_upscaled
+      BASIS_SET RI_AUX RI
+      POTENTIAL        GTH-PADE-q6
+    &END KIND
+
+    &KIND Se
+      BASIS_SET ORB    TZVP-MOLOPT-GTH_upscaled
+      BASIS_SET RI_AUX RI
+      POTENTIAL        GTH-PADE-q6
+    &END KIND
+
+    &KIND Mo
+      BASIS_SET ORB    TZVP-MOLOPT-GTH_upscaled
+      BASIS_SET RI_AUX RI
+      POTENTIAL        GTH-PADE-q14
+    &END KIND
+
+    &KIND W
+      BASIS_SET ORB    TZVP-MOLOPT-GTH_upscaled
+      BASIS_SET RI_AUX RI
+      POTENTIAL        GTH-PADE-q14
+    &END KIND
+
+    &COORD
+        Mo     0.00000    1.81865    3.07500
+        S      0.00000    3.63731    1.48830
+        S      0.00000    3.63731    4.66170
+    &END COORD
+  &END SUBSYS
+&END FORCE_EVAL

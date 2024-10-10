@@ -1,0 +1,125 @@
+&GLOBAL
+	PROJECT_NAME Ethene
+	RUN_TYPE RT_PROPAGATION
+&END GLOBAL
+
+&MOTION
+	&MD
+		ENSEMBLE NVE
+		STEPS 2000
+		TIMESTEP [fs] 0.01
+		TEMPERATURE [K] 0.0
+	&END MD
+&END MOTION
+
+&FORCE_EVAL
+	METHOD QS
+	&DFT
+		! The potentials are kept as exact copies with the output for provenance
+		BASIS_SET_FILE_NAME aug-cc-pvtz
+		BASIS_SET_FILE_NAME aug-cc-pvtz-rifit
+		POTENTIAL_FILE_NAME ALL_POTENTIALS
+		&MGRID
+			CUTOFF 600
+			REL_CUTOFF 60
+		&END MGRID
+		&QS
+			EPS_DEFAULT 1.0E-10
+			METHOD GAPW
+		&END QS
+		&SCF
+			SCF_GUESS RESTART
+			EPS_SCF 1e-9
+			MAX_SCF 200
+			ADDED_MOS -1
+			&DIAGONALIZATION ON
+				ALGORITHM STANDARD
+			&END DIAGONALIZATION
+			&MIXING
+				METHOD BROYDEN_MIXING
+				ALPHA 0.4
+				NBROYDEN 4
+			&END MIXING
+		&END SCF
+		&XC
+			&XC_FUNCTIONAL PBE0
+			&END XC_FUNCTIONAL
+		&END XC
+		&POISSON
+			PERIODIC NONE
+			POISSON_SOLVER WAVELET
+		&END POISSON
+		&REAL_TIME_PROPAGATION
+			RTP_METHOD RTBSE
+			! Convergence threshold of self-consistent ETRS
+			EPS_ITER 1.0E-8
+			! max iters for self-consistent ETRS
+			MAX_ITER 50
+			! Choosing exponential evaluation parameters
+			MAT_EXP BCH
+			EXP_ACCURACY 1.0E-14
+			INITIAL_WFN RT_RESTART
+			APPLY_DELTA_PULSE
+			! For isotropic (gas phase) polarizability, need
+			! to set three perpendicular delta pulse directions
+			! and save the corresponding tensor elements
+			DELTA_PULSE_DIRECTION 1 0 0
+			DELTA_PULSE_SCALE 0.0001
+			&PRINT
+				&MOMENTS
+					FILENAME MOMENTS
+				&END MOMENTS
+				&MOMENTS_FT
+					FILENAME MOMENTS-FT
+				&END MOMENTS_FT
+				&FIELD
+					FILENAME FIELD
+				&END FIELD
+				&POLARIZABILITY
+					FILENAME POL
+					ELEMENT 1 1
+				&END POLARIZABILITY
+			&END PRINT
+		&END REAL_TIME_PROPAGATION
+	&END DFT
+	! Include G0W0 bandstructure correction
+	&PROPERTIES
+		&BANDSTRUCTURE
+			&GW
+				NUM_TIME_FREQ_POINTS 30
+			&END GW
+		&END BANDSTRUCTURE
+	&END PROPERTIES
+	&SUBSYS
+		&CELL
+			PERIODIC NONE
+			ABC 20.0 20.0 20.0
+		&END CELL
+		&TOPOLOGY
+			&CENTER_COORDINATES
+			&END CENTER_COORDINATES
+			COORD_FILE_FORMAT XYZ
+			COORD_FILE_NAME coord.xyz
+		&END TOPOLOGY
+		&KIND H
+			POTENTIAL ALL
+			BASIS_SET ORB aug-cc-pvtz
+			BASIS_SET RI_AUX aug-cc-pvtz-rifit
+		&END KIND
+		&KIND C
+			POTENTIAL ALL
+			BASIS_SET ORB aug-cc-pvtz
+			BASIS_SET RI_AUX aug-cc-pvtz-rifit
+		&END KIND
+		&KIND O
+			POTENTIAL ALL
+			BASIS_SET ORB aug-cc-pvtz
+			BASIS_SET RI_AUX aug-cc-pvtz-rifit
+		&END KIND
+		&KIND N
+			POTENTIAL ALL
+			BASIS_SET ORB aug-cc-pvtz
+			BASIS_SET RI_AUX aug-cc-pvtz-rifit
+		&END KIND
+	&END SUBSYS
+&END FORCE_EVAL

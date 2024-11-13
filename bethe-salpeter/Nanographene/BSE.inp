@@ -1,0 +1,104 @@
+&GLOBAL
+    PROJECT Nanographene_BSE_BSE_on_red+geoopt_11_ENERGY_CUTOFF_VIRT_10
+    PRINT_LEVEL MEDIUM
+    RUN_TYPE ENERGY
+    EXTENDED_FFT_LENGTHS
+	&FM
+		TYPE_OF_MATRIX_MULTIPLICATION SCALAPACK
+	&END FM
+&END GLOBAL
+&FORCE_EVAL
+  METHOD QS
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_cc_pVDZ
+    BASIS_SET_FILE_NAME BASIS_augMOLOPT
+    POTENTIAL_FILE_NAME POTENTIAL
+    UKS F
+    MULTIPLICITY 1
+    &QS
+      METHOD GAPW
+      MIN_PAIR_LIST_RADIUS -1
+      EPS_DEFAULT 1.0E-15
+    &END QS
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MULTIPOLE
+    &END
+    &MGRID
+      CUTOFF 500
+      REL_CUTOFF 60
+    &END MGRID
+    &SCF
+       SCF_GUESS RESTART
+       EPS_SCF 1e-7
+       MAX_SCF 10
+       &OT
+          MINIMIZER CG
+          PRECONDITIONER FULL_SINGLE_INVERSE
+       &END OT
+       &OUTER_SCF
+          EPS_SCF 1e-7
+          MAX_SCF 100
+       &END OUTER_SCF
+      &PRINT
+        &RESTART ON
+        &END
+      &END
+      &MIXING
+          METHOD BROYDEN_MIXING
+          ALPHA 0.1
+          BETA 1.5
+          NBROYDEN 8
+      &END
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+      &WF_CORRELATION
+        &RI_RPA
+          QUADRATURE_POINTS 100
+          &GW
+           SELF_CONSISTENCY EVGW0
+           &BSE
+            TDA TDA+ABBA
+            ENERGY_CUTOFF_OCC 80
+            ENERGY_CUTOFF_EMPTY 10
+            NUM_PRINT_EXC 100
+            BSE_DEBUG_PRINT
+            &BSE_SPECTRUM
+              FREQUENCY_STEP_SIZE 0.01
+              FREQUENCY_END_POINT 50
+              ETA_LIST 0.05 0.1 0.2 0.3 0.4 0.5 1 2
+            &END BSE_SPECTRUM
+            &NTO_ANALYSIS
+              CUBE_FILES F
+            &END NTO_ANALYSIS
+           &END BSE
+          &END GW
+        &END RI_RPA
+      &END WF_CORRELATION
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 21.3  59.89 13.75
+      PERIODIC NONE
+    &END CELL
+    &KIND H
+      BASIS_SET ORB aug-SZV-MOLOPT-ae
+      BASIS_SET RI_AUX aug-cc-pVDZ-RIFIT
+      POTENTIAL ALL
+    &END KIND
+    &KIND C
+      BASIS_SET ORB aug-SZV-MOLOPT-ae
+      BASIS_SET RI_AUX aug-cc-pVDZ-RIFIT
+      POTENTIAL ALL
+    &END KIND
+    &TOPOLOGY
+        COORD_FILE_NAME Nanographene_11_red+geoopt.xyz
+        COORD_FILE_FORMAT xyz
+        &CENTER_COORDINATES
+        &END
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL

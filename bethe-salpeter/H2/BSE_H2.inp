@@ -23,21 +23,27 @@
       EPS_SCF 1e-7
     &END SCF
     &XC
-      &XC_FUNCTIONAL PBE                       ! Choice of functional has a profound influence on the results
-      &END XC_FUNCTIONAL
+      &XC_FUNCTIONAL PBE                        ! Choice of functional has a profound influence on the results
+      &END XC_FUNCTIONAL                        ! We strongly recommend to use PBE (and evGW0) for BSE runs
       &WF_CORRELATION
         &RI_RPA                                 ! In the RI_RPA and the GW section, additional numerical parameters, e.g.
           &GW
-            !SELF_CONSISTENCY      G0W0          ! can be changed to EV_GW0 or EV_GW
+            SELF_CONSISTENCY      evGW0         ! We strongly recommend to use evGW0 (and PBE) for BSE runs
             &BSE  
               TDA                 TDA+ABBA      ! Diagonalizing ABBA and A
               SPIN_CONFIG         SINGLET       ! or TRIPLET
-              NUM_PRINT_EXC       20            ! Number of printed excitations
+              NUM_PRINT_EXC       15            ! Number of printed excitations
               ENERGY_CUTOFF_OCC   -1            ! Set to positive numbers (eV) to
               ENERGY_CUTOFF_EMPTY -1            ! truncate matrices A_ia,jb and B_ia,jb
+              NUM_PRINT_EXC_DESCR -1            ! Number of printed exciton descriptors, -1 to default to NUM_PRINT_EXC
               &BSE_SPECTRUM                     ! Activates computation and output of optical absorption spectrum
                 ETA_LIST 0.01 0.02              ! Multiple broadenings can be specified within one run
-              &END BSE_SPECTRUM                   
+              &END BSE_SPECTRUM
+              &NTO_ANALYSIS
+                STATE_LIST 1 2                  ! List of states for which NTOs are computed
+                CUBE_FILES T                    ! Write cube files for NTOs
+                STRIDE 6 6 6                    ! Coarse grid for smaller example cube files
+              &END NTO_ANALYSIS
             &END BSE
           &END GW
         &END RI_RPA

@@ -10,27 +10,27 @@
  DBCSR| Use MPI memory allocation                                              F (U)
  DBCSR| Use RMA algorithm                                                      F (U)
  DBCSR| Use Communication thread                                               T (U)
- DBCSR| Communication thread load                                             87 (D)
+ DBCSR| Communication thread load                                             75 (D)
  DBCSR| MPI: My process id                                                     0
  DBCSR| MPI: Number of processes                                               1
- DBCSR| OMP: Current number of threads                                         1
- DBCSR| OMP: Max number of threads                                             1
+ DBCSR| OMP: Current number of threads                                         4
+ DBCSR| OMP: Max number of threads                                             4
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2024-10-14 16:54:49.486
+  **** **** ******  **  PROGRAM STARTED AT               2024-11-19 13:48:54.842
  ***** ** ***  *** **   PROGRAM STARTED ON                              n2login2
  **    ****   ******    PROGRAM STARTED BY                              eprop2d2
- ***** **    ** ** **   PROGRAM PROCESS ID                                644725
+ ***** **    ** ** **   PROGRAM PROCESS ID                               3719650
   **** **  *******  **  PROGRAM STARTED IN /scratch/hpc-prf-metdyn/eprop2d2_Max/
                                            cp2k-examples/bethe-salpeter/H2
 
  CP2K| version string:                 CP2K version 2024.3 (Development Version)
- CP2K| source code revision number:                                  git:b3958c9
+ CP2K| source code revision number:                                  git:ee316cb
  CP2K| cp2kflags: omp libint fftw3 libxc libgrpp elpa parallel scalapack mpi_f08
  CP2K|             deepmd plumed2 spglib libvori libbqb libvdwxc hdf5
  CP2K| is freely available from                            https://www.cp2k.org/
- CP2K| Program compiled at                         Wed Oct  9 15:22:29 CEST 2024
+ CP2K| Program compiled at                          Mon Nov 18 17:34:24 CET 2024
  CP2K| Program compiled on                                              n2login2
  CP2K| Program compiled for                                              local24
  CP2K| Data directory path    /opt/software/pc2/EB-SW/software/CP2K/c0268df-foss
@@ -56,21 +56,21 @@
  GLOBAL| Global print level                                               MEDIUM
  GLOBAL| MPI I/O enabled                                                       T
  GLOBAL| Total number of message passing processes                             1
- GLOBAL| Number of threads for this process                                    1
+ GLOBAL| Number of threads for this process                                    4
  GLOBAL| This output is from process                                           0
- GLOBAL| Stack size for threads created by OpenMP (OMP_STACKSIZE)        default
+ GLOBAL| OpenMP stack size per thread (OMP_STACKSIZE)                    default
  GLOBAL| CPU model name                          AMD EPYC 7763 64-Core Processor
  GLOBAL| CPUID                                                              1002
 
  MEMORY| system memory details [Kb]
  MEMORY|                        rank 0           min           max       average
- MEMORY| MemTotal            528196916     528196916     528196916     528196916
- MEMORY| MemFree             218350352     218350352     218350352     218350352
- MEMORY| Buffers                373148        373148        373148        373148
- MEMORY| Cached              165338364     165338364     165338364     165338364
- MEMORY| Slab                102547784     102547784     102547784     102547784
- MEMORY| SReclaimable          3326888       3326888       3326888       3326888
- MEMORY| MemLikelyFree       387388752     387388752     387388752     387388752
+ MEMORY| MemTotal            527672632     527672632     527672632     527672632
+ MEMORY| MemFree             282714056     282714056     282714056     282714056
+ MEMORY| Buffers                667856        667856        667856        667856
+ MEMORY| Cached              152164228     152164228     152164228     152164228
+ MEMORY| Slab                 68856380      68856380      68856380      68856380
+ MEMORY| SReclaimable         36774688      36774688      36774688      36774688
+ MEMORY| MemLikelyFree       472320828     472320828     472320828     472320828
 
 
  *** Fundamental physical constants (SI units) ***
@@ -530,17 +530,17 @@
 
   Step     Update method      Time    Convergence         Total energy    Change
   ------------------------------------------------------------------------------
-     1 P_Mix/Diag. 0.40E+00    8.3     1.16890425        -0.9623833929 -9.62E-01
-     2 P_Mix/Diag. 0.40E+00    6.2     0.61731582        -1.0475779836 -8.52E-02
-     3 P_Mix/Diag. 0.40E+00    6.1     0.32159687        -1.0941903934 -4.66E-02
-     4 P_Mix/Diag. 0.40E+00    5.9     0.16788681        -1.1210194335 -2.68E-02
-     5 P_Mix/Diag. 0.40E+00    5.9     0.08853283        -1.1368549768 -1.58E-02
-     6 DIIS/Diag.  0.34E-02    5.9     0.04201924        -1.1462986169 -9.44E-03
-     7 DIIS/Diag.  0.96E-04    5.7     0.00037638        -1.1604247163 -1.41E-02
-     8 DIIS/Diag.  0.25E-03    5.9     0.00044622        -1.1604246928  2.35E-08
-     9 DIIS/Diag.  0.13E-03    5.9     0.00022530        -1.1604247125 -1.97E-08
-    10 DIIS/Diag.  0.50E-04    5.9     0.00006488        -1.1604247193 -6.77E-09
-    11 DIIS/Diag.  0.10E-08    6.0     0.00000002        -1.1604247203 -1.01E-09
+     1 P_Mix/Diag. 0.40E+00    3.6     1.16890425        -0.9623833929 -9.62E-01
+     2 P_Mix/Diag. 0.40E+00    2.4     0.61731582        -1.0475779836 -8.52E-02
+     3 P_Mix/Diag. 0.40E+00    2.4     0.32159687        -1.0941903934 -4.66E-02
+     4 P_Mix/Diag. 0.40E+00    2.5     0.16788681        -1.1210194335 -2.68E-02
+     5 P_Mix/Diag. 0.40E+00    2.4     0.08853283        -1.1368549768 -1.58E-02
+     6 DIIS/Diag.  0.34E-02    2.4     0.04201924        -1.1462986169 -9.44E-03
+     7 DIIS/Diag.  0.96E-04    2.4     0.00037638        -1.1604247163 -1.41E-02
+     8 DIIS/Diag.  0.25E-03    2.4     0.00044622        -1.1604246928  2.35E-08
+     9 DIIS/Diag.  0.13E-03    2.4     0.00022530        -1.1604247125 -1.97E-08
+    10 DIIS/Diag.  0.50E-04    2.4     0.00006488        -1.1604247193 -6.77E-09
+    11 DIIS/Diag.  0.10E-08    2.4     0.00000002        -1.1604247203 -1.01E-09
 
   *** SCF run converged in    11 steps ***
 
@@ -569,7 +569,7 @@
  #  Atom  Element  Kind  Atomic population                           Net charge
        1     H        1          1.000000                             -0.000000
        2     H        1          1.000000                              0.000000
- # Total charge                              2.000000                  0.000000
+ # Total charge                              2.000000                 -0.000000
 
  !-----------------------------------------------------------------------------!
 
@@ -683,16 +683,288 @@
      8 ( vir )            9.3851         -0.5610          3.1146         11.9386
      9 ( vir )            9.3851         -0.5610          3.1146         11.9386
     10 ( vir )           11.7829         -1.0492          3.3718         14.1055
-    11 ( vir )           14.4620         -2.5415          4.9531         16.8736
-    12 ( vir )           26.7403         -1.9581          6.7149         31.4971
-    13 ( vir )           35.4696         -2.1571          8.0863         41.3988
-    14 ( vir )           35.4696         -2.1570          8.0863         41.3989
-    15 ( vir )           47.6358         -5.9032          8.9726         50.7052
-    16 ( vir )           52.2466         -5.0645          8.7279         55.9101
-    17 ( vir )           52.2466         -5.0640          8.7279         55.9106
-    18 ( vir )           89.8942          2.1026         10.7126        102.7095
+    11 ( vir )           14.4620         -2.5415          4.9531         16.8735
+    12 ( vir )           26.7403         -1.9583          6.7149         31.4969
+    13 ( vir )           35.4696         -2.1567          8.0863         41.3992
+    14 ( vir )           35.4696         -2.1571          8.0863         41.3989
+    15 ( vir )           47.6358         -5.9035          8.9726         50.7048
+    16 ( vir )           52.2466         -5.0651          8.7279         55.9095
+    17 ( vir )           52.2466         -5.0639          8.7279         55.9107
+    18 ( vir )           89.8942          2.1024         10.7126        102.7093
    
   G0W0 HOMO-LUMO gap (eV)                                                17.3028
+  
+  ------------------------------------------------------------------------------
+  INTEG_INFO| Started with Integration point   1 of  40
+  INTEG_INFO| Started with Integration point   2 of  40
+  INTEG_INFO| Started with Integration point   3 of  40
+  INTEG_INFO| Started with Integration point   4 of  40
+  INTEG_INFO| Started with Integration point   5 of  40
+  INTEG_INFO| Started with Integration point   6 of  40
+  INTEG_INFO| Started with Integration point   7 of  40
+  INTEG_INFO| Started with Integration point   8 of  40
+  INTEG_INFO| Started with Integration point   9 of  40
+  INTEG_INFO| Started with Integration point  10 of  40
+  INTEG_INFO| Started with Integration point  11 of  40
+  INTEG_INFO| Started with Integration point  12 of  40
+  INTEG_INFO| Started with Integration point  13 of  40
+  INTEG_INFO| Started with Integration point  14 of  40
+  INTEG_INFO| Started with Integration point  15 of  40
+  INTEG_INFO| Started with Integration point  16 of  40
+  INTEG_INFO| Started with Integration point  17 of  40
+  INTEG_INFO| Started with Integration point  18 of  40
+  INTEG_INFO| Started with Integration point  19 of  40
+  INTEG_INFO| Started with Integration point  20 of  40
+  INTEG_INFO| Started with Integration point  21 of  40
+  INTEG_INFO| Started with Integration point  22 of  40
+  INTEG_INFO| Started with Integration point  23 of  40
+  INTEG_INFO| Started with Integration point  24 of  40
+  INTEG_INFO| Started with Integration point  25 of  40
+  INTEG_INFO| Started with Integration point  26 of  40
+  INTEG_INFO| Started with Integration point  27 of  40
+  INTEG_INFO| Started with Integration point  28 of  40
+  INTEG_INFO| Started with Integration point  29 of  40
+  INTEG_INFO| Started with Integration point  30 of  40
+  INTEG_INFO| Started with Integration point  31 of  40
+  INTEG_INFO| Started with Integration point  32 of  40
+  INTEG_INFO| Started with Integration point  33 of  40
+  INTEG_INFO| Started with Integration point  34 of  40
+  INTEG_INFO| Started with Integration point  35 of  40
+  INTEG_INFO| Started with Integration point  36 of  40
+  INTEG_INFO| Started with Integration point  37 of  40
+  INTEG_INFO| Started with Integration point  38 of  40
+  INTEG_INFO| Started with Integration point  39 of  40
+  INTEG_INFO| Started with Integration point  40 of  40
+  PERFORMANCE| Average DGEMM flop rate (Gflops / MPI rank):                 0.04
+  ----------------------------------
+  scGW0 selfconsistency cycle:    2
+  ----------------------------------
+   
+  Molecular orbital   E_SCF (eV)       Sigc (eV)   Sigx-vxc (eV)       E_GW (eV)
+     1 ( occ )          -15.5003          0.1372         -5.8183        -16.0005
+     2 ( vir )            2.1221         -0.2299          2.0931          2.1375
+     3 ( vir )            1.8026         -0.1165          1.2936          1.8121
+     4 ( vir )            5.5668         -0.3697          2.6705          5.6012
+     5 ( vir )            7.4447         -0.2996          3.6193          7.4914
+     6 ( vir )            7.4447         -0.2996          3.6193          7.4914
+     7 ( vir )           10.6069         -0.5636          3.1189         10.7760
+     8 ( vir )           11.9386         -0.4128          3.1146         12.0868
+     9 ( vir )           11.9386         -0.4128          3.1146         12.0868
+    10 ( vir )           14.1055         -0.8893          3.3718         14.2654
+    11 ( vir )           16.8735         -1.9166          4.9531         17.4985
+    12 ( vir )           31.4969         -1.7926          6.7149         31.6626
+    13 ( vir )           41.3992         -1.6441          8.0863         41.9118
+    14 ( vir )           41.3989         -1.6442          8.0863         41.9117
+    15 ( vir )           50.7048         -5.3194          8.9726         51.2890
+    16 ( vir )           55.9095         -2.7304          8.7279         58.2442
+    17 ( vir )           55.9107         -2.7312          8.7279         58.2434
+    18 ( vir )          102.7093          2.1187         10.7126        102.7255
+   
+  HOMO-LUMO gap in evGW0 iteration  2 (eV)                               17.8127
+  
+  ------------------------------------------------------------------------------
+  INTEG_INFO| Started with Integration point   1 of  40
+  INTEG_INFO| Started with Integration point   2 of  40
+  INTEG_INFO| Started with Integration point   3 of  40
+  INTEG_INFO| Started with Integration point   4 of  40
+  INTEG_INFO| Started with Integration point   5 of  40
+  INTEG_INFO| Started with Integration point   6 of  40
+  INTEG_INFO| Started with Integration point   7 of  40
+  INTEG_INFO| Started with Integration point   8 of  40
+  INTEG_INFO| Started with Integration point   9 of  40
+  INTEG_INFO| Started with Integration point  10 of  40
+  INTEG_INFO| Started with Integration point  11 of  40
+  INTEG_INFO| Started with Integration point  12 of  40
+  INTEG_INFO| Started with Integration point  13 of  40
+  INTEG_INFO| Started with Integration point  14 of  40
+  INTEG_INFO| Started with Integration point  15 of  40
+  INTEG_INFO| Started with Integration point  16 of  40
+  INTEG_INFO| Started with Integration point  17 of  40
+  INTEG_INFO| Started with Integration point  18 of  40
+  INTEG_INFO| Started with Integration point  19 of  40
+  INTEG_INFO| Started with Integration point  20 of  40
+  INTEG_INFO| Started with Integration point  21 of  40
+  INTEG_INFO| Started with Integration point  22 of  40
+  INTEG_INFO| Started with Integration point  23 of  40
+  INTEG_INFO| Started with Integration point  24 of  40
+  INTEG_INFO| Started with Integration point  25 of  40
+  INTEG_INFO| Started with Integration point  26 of  40
+  INTEG_INFO| Started with Integration point  27 of  40
+  INTEG_INFO| Started with Integration point  28 of  40
+  INTEG_INFO| Started with Integration point  29 of  40
+  INTEG_INFO| Started with Integration point  30 of  40
+  INTEG_INFO| Started with Integration point  31 of  40
+  INTEG_INFO| Started with Integration point  32 of  40
+  INTEG_INFO| Started with Integration point  33 of  40
+  INTEG_INFO| Started with Integration point  34 of  40
+  INTEG_INFO| Started with Integration point  35 of  40
+  INTEG_INFO| Started with Integration point  36 of  40
+  INTEG_INFO| Started with Integration point  37 of  40
+  INTEG_INFO| Started with Integration point  38 of  40
+  INTEG_INFO| Started with Integration point  39 of  40
+  INTEG_INFO| Started with Integration point  40 of  40
+  PERFORMANCE| Average DGEMM flop rate (Gflops / MPI rank):                 0.02
+  ----------------------------------
+  scGW0 selfconsistency cycle:    3
+  ----------------------------------
+   
+  Molecular orbital   E_SCF (eV)       Sigc (eV)   Sigx-vxc (eV)       E_GW (eV)
+     1 ( occ )          -16.0005          0.1050         -5.8183        -16.0328
+     2 ( vir )            2.1375         -0.2292          2.0931          2.1382
+     3 ( vir )            1.8121         -0.1161          1.2936          1.8125
+     4 ( vir )            5.6012         -0.3678          2.6705          5.6031
+     5 ( vir )            7.4914         -0.2965          3.6193          7.4946
+     6 ( vir )            7.4914         -0.2965          3.6193          7.4946
+     7 ( vir )           10.7760         -0.5613          3.1189         10.7782
+     8 ( vir )           12.0868         -0.4110          3.1146         12.0886
+     9 ( vir )           12.0868         -0.4110          3.1146         12.0886
+    10 ( vir )           14.2654         -0.8802          3.3718         14.2745
+    11 ( vir )           17.4985         -1.8964          4.9531         17.5186
+    12 ( vir )           31.6626         -1.7788          6.7149         31.6764
+    13 ( vir )           41.9118         -1.6008          8.0863         41.9551
+    14 ( vir )           41.9117         -1.6010          8.0863         41.9550
+    15 ( vir )           51.2890         -5.2803          8.9726         51.3281
+    16 ( vir )           58.2442         -2.6548          8.7279         58.3197
+    17 ( vir )           58.2434         -2.6549          8.7279         58.3197
+    18 ( vir )          102.7255          2.1385         10.7126        102.7453
+   
+  HOMO-LUMO gap in evGW0 iteration  3 (eV)                               17.8452
+  
+  ------------------------------------------------------------------------------
+  INTEG_INFO| Started with Integration point   1 of  40
+  INTEG_INFO| Started with Integration point   2 of  40
+  INTEG_INFO| Started with Integration point   3 of  40
+  INTEG_INFO| Started with Integration point   4 of  40
+  INTEG_INFO| Started with Integration point   5 of  40
+  INTEG_INFO| Started with Integration point   6 of  40
+  INTEG_INFO| Started with Integration point   7 of  40
+  INTEG_INFO| Started with Integration point   8 of  40
+  INTEG_INFO| Started with Integration point   9 of  40
+  INTEG_INFO| Started with Integration point  10 of  40
+  INTEG_INFO| Started with Integration point  11 of  40
+  INTEG_INFO| Started with Integration point  12 of  40
+  INTEG_INFO| Started with Integration point  13 of  40
+  INTEG_INFO| Started with Integration point  14 of  40
+  INTEG_INFO| Started with Integration point  15 of  40
+  INTEG_INFO| Started with Integration point  16 of  40
+  INTEG_INFO| Started with Integration point  17 of  40
+  INTEG_INFO| Started with Integration point  18 of  40
+  INTEG_INFO| Started with Integration point  19 of  40
+  INTEG_INFO| Started with Integration point  20 of  40
+  INTEG_INFO| Started with Integration point  21 of  40
+  INTEG_INFO| Started with Integration point  22 of  40
+  INTEG_INFO| Started with Integration point  23 of  40
+  INTEG_INFO| Started with Integration point  24 of  40
+  INTEG_INFO| Started with Integration point  25 of  40
+  INTEG_INFO| Started with Integration point  26 of  40
+  INTEG_INFO| Started with Integration point  27 of  40
+  INTEG_INFO| Started with Integration point  28 of  40
+  INTEG_INFO| Started with Integration point  29 of  40
+  INTEG_INFO| Started with Integration point  30 of  40
+  INTEG_INFO| Started with Integration point  31 of  40
+  INTEG_INFO| Started with Integration point  32 of  40
+  INTEG_INFO| Started with Integration point  33 of  40
+  INTEG_INFO| Started with Integration point  34 of  40
+  INTEG_INFO| Started with Integration point  35 of  40
+  INTEG_INFO| Started with Integration point  36 of  40
+  INTEG_INFO| Started with Integration point  37 of  40
+  INTEG_INFO| Started with Integration point  38 of  40
+  INTEG_INFO| Started with Integration point  39 of  40
+  INTEG_INFO| Started with Integration point  40 of  40
+  PERFORMANCE| Average DGEMM flop rate (Gflops / MPI rank):                 0.02
+  ----------------------------------
+  scGW0 selfconsistency cycle:    4
+  ----------------------------------
+   
+  Molecular orbital   E_SCF (eV)       Sigc (eV)   Sigx-vxc (eV)       E_GW (eV)
+     1 ( occ )          -16.0328          0.1029         -5.8183        -16.0348
+     2 ( vir )            2.1382         -0.2292          2.0931          2.1382
+     3 ( vir )            1.8125         -0.1161          1.2936          1.8125
+     4 ( vir )            5.6031         -0.3677          2.6705          5.6032
+     5 ( vir )            7.4946         -0.2964          3.6193          7.4947
+     6 ( vir )            7.4946         -0.2964          3.6193          7.4947
+     7 ( vir )           10.7782         -0.5612          3.1189         10.7783
+     8 ( vir )           12.0886         -0.4110          3.1146         12.0887
+     9 ( vir )           12.0886         -0.4110          3.1146         12.0887
+    10 ( vir )           14.2745         -0.8798          3.3718         14.2749
+    11 ( vir )           17.5186         -1.8955          4.9531         17.5196
+    12 ( vir )           31.6764         -1.7778          6.7149         31.6775
+    13 ( vir )           41.9551         -1.5987          8.0863         41.9572
+    14 ( vir )           41.9550         -1.5988          8.0863         41.9571
+    15 ( vir )           51.3281         -5.2722          8.9726         51.3361
+    16 ( vir )           58.3197         -2.6518          8.7279         58.3227
+    17 ( vir )           58.3197         -2.6521          8.7279         58.3225
+    18 ( vir )          102.7453          2.1383         10.7126        102.7452
+   
+  HOMO-LUMO gap in evGW0 iteration  4 (eV)                               17.8473
+  
+  ------------------------------------------------------------------------------
+  INTEG_INFO| Started with Integration point   1 of  40
+  INTEG_INFO| Started with Integration point   2 of  40
+  INTEG_INFO| Started with Integration point   3 of  40
+  INTEG_INFO| Started with Integration point   4 of  40
+  INTEG_INFO| Started with Integration point   5 of  40
+  INTEG_INFO| Started with Integration point   6 of  40
+  INTEG_INFO| Started with Integration point   7 of  40
+  INTEG_INFO| Started with Integration point   8 of  40
+  INTEG_INFO| Started with Integration point   9 of  40
+  INTEG_INFO| Started with Integration point  10 of  40
+  INTEG_INFO| Started with Integration point  11 of  40
+  INTEG_INFO| Started with Integration point  12 of  40
+  INTEG_INFO| Started with Integration point  13 of  40
+  INTEG_INFO| Started with Integration point  14 of  40
+  INTEG_INFO| Started with Integration point  15 of  40
+  INTEG_INFO| Started with Integration point  16 of  40
+  INTEG_INFO| Started with Integration point  17 of  40
+  INTEG_INFO| Started with Integration point  18 of  40
+  INTEG_INFO| Started with Integration point  19 of  40
+  INTEG_INFO| Started with Integration point  20 of  40
+  INTEG_INFO| Started with Integration point  21 of  40
+  INTEG_INFO| Started with Integration point  22 of  40
+  INTEG_INFO| Started with Integration point  23 of  40
+  INTEG_INFO| Started with Integration point  24 of  40
+  INTEG_INFO| Started with Integration point  25 of  40
+  INTEG_INFO| Started with Integration point  26 of  40
+  INTEG_INFO| Started with Integration point  27 of  40
+  INTEG_INFO| Started with Integration point  28 of  40
+  INTEG_INFO| Started with Integration point  29 of  40
+  INTEG_INFO| Started with Integration point  30 of  40
+  INTEG_INFO| Started with Integration point  31 of  40
+  INTEG_INFO| Started with Integration point  32 of  40
+  INTEG_INFO| Started with Integration point  33 of  40
+  INTEG_INFO| Started with Integration point  34 of  40
+  INTEG_INFO| Started with Integration point  35 of  40
+  INTEG_INFO| Started with Integration point  36 of  40
+  INTEG_INFO| Started with Integration point  37 of  40
+  INTEG_INFO| Started with Integration point  38 of  40
+  INTEG_INFO| Started with Integration point  39 of  40
+  INTEG_INFO| Started with Integration point  40 of  40
+  PERFORMANCE| Average DGEMM flop rate (Gflops / MPI rank):                 0.01
+  ----------------------------------
+  scGW0 selfconsistency cycle:    5
+  ----------------------------------
+   
+  Molecular orbital   E_SCF (eV)       Sigc (eV)   Sigx-vxc (eV)       E_GW (eV)
+     1 ( occ )          -16.0348          0.1028         -5.8183        -16.0349
+     2 ( vir )            2.1382         -0.2292          2.0931          2.1382
+     3 ( vir )            1.8125         -0.1161          1.2936          1.8125
+     4 ( vir )            5.6032         -0.3677          2.6705          5.6032
+     5 ( vir )            7.4947         -0.2964          3.6193          7.4947
+     6 ( vir )            7.4947         -0.2964          3.6193          7.4947
+     7 ( vir )           10.7783         -0.5612          3.1189         10.7783
+     8 ( vir )           12.0887         -0.4109          3.1146         12.0887
+     9 ( vir )           12.0887         -0.4109          3.1146         12.0887
+    10 ( vir )           14.2749         -0.8798          3.3718         14.2749
+    11 ( vir )           17.5196         -1.8955          4.9531         17.5195
+    12 ( vir )           31.6775         -1.7782          6.7149         31.6771
+    13 ( vir )           41.9572         -1.5986          8.0863         41.9573
+    14 ( vir )           41.9571         -1.5985          8.0863         41.9574
+    15 ( vir )           51.3361         -5.2733          8.9726         51.3350
+    16 ( vir )           58.3227         -2.6513          8.7279         58.3233
+    17 ( vir )           58.3225         -2.6510          8.7279         58.3235
+    18 ( vir )          102.7452          2.1386         10.7126        102.7454
+   
+  HOMO-LUMO gap in evGW0 iteration  5 (eV)                               17.8474
   
   ------------------------------------------------------------------------------
   
@@ -707,15 +979,20 @@
  BSE| No cutoff given for empty orbitals
  BSE| First occupied index                                                     1
  BSE| Last empty index (not MO index!)                                        17
- BSE| Energy of first occupied index [eV]                                -15.500
- BSE| Energy of last empty index [eV]                                    102.709
+ BSE| Energy of first occupied index [eV]                                -16.035
+ BSE| Energy of last empty index [eV]                                    102.745
  BSE| Energy difference of first occupied index to HOMO [eV]              -0.000
- BSE| Energy difference of last empty index to LUMO [eV]                 100.587
+ BSE| Energy difference of last empty index to LUMO [eV]                 100.607
  BSE| Number of GW-corrected occupied MOs                                      1
  BSE| Number of GW-corrected empty MOs                                        17
  BSE|
  BSE| No truncation of BSE matrices applied
  BSE|
+
+ *** WARNING in bse_util.F:1596 :: Keyword NUM_PRINT_EXC_DESCR is either ***
+ *** negative or too large. Printing exciton descriptors up to           ***
+ *** NUM_PRINT_EXC.                                                      ***
+
  BSE| Total peak memory estimate from BSE [GB]                         2.153E-05
  BSE| Peak memory estimate per MPI rank from BSE [GB]                      0.000
  BSE|
@@ -757,23 +1034,21 @@
  BSE| Excitation energies from solving the BSE within the TDA:
  BSE|
  BSE|     Excitation n   Spin Config       TDA/ABBA   Excitation energy Ω^n (eV)
- BSE|                1       Singlet          -TDA-                      11.8488
- BSE|                2       Singlet          -TDA-                      12.5582
- BSE|                3       Singlet          -TDA-                      15.3927
- BSE|                4       Singlet          -TDA-                      15.3927
- BSE|                5       Singlet          -TDA-                      16.2608
- BSE|                6       Singlet          -TDA-                      19.3651
- BSE|                7       Singlet          -TDA-                      19.7081
- BSE|                8       Singlet          -TDA-                      19.7081
- BSE|                9       Singlet          -TDA-                      23.4346
- BSE|               10       Singlet          -TDA-                      24.9661
- BSE|               11       Singlet          -TDA-                      39.3084
- BSE|               12       Singlet          -TDA-                      47.9774
- BSE|               13       Singlet          -TDA-                      47.9775
- BSE|               14       Singlet          -TDA-                      56.1484
- BSE|               15       Singlet          -TDA-                      60.4266
- BSE|               16       Singlet          -TDA-                      60.4271
- BSE|               17       Singlet          -TDA-                     106.5511
+ BSE|                1       Singlet          -TDA-                      12.4016
+ BSE|                2       Singlet          -TDA-                      13.1035
+ BSE|                3       Singlet          -TDA-                      15.9774
+ BSE|                4       Singlet          -TDA-                      15.9774
+ BSE|                5       Singlet          -TDA-                      16.8309
+ BSE|                6       Singlet          -TDA-                      20.0824
+ BSE|                7       Singlet          -TDA-                      20.3936
+ BSE|                8       Singlet          -TDA-                      20.3936
+ BSE|                9       Singlet          -TDA-                      24.1379
+ BSE|               10       Singlet          -TDA-                      26.1350
+ BSE|               11       Singlet          -TDA-                      40.0227
+ BSE|               12       Singlet          -TDA-                      49.0706
+ BSE|               13       Singlet          -TDA-                      49.0707
+ BSE|               14       Singlet          -TDA-                      57.3128
+ BSE|               15       Singlet          -TDA-                      63.3737
  BSE|
  BSE| Single-particle transitions are built up by (de-)excitations,
  BSE| which we denote by
@@ -787,29 +1062,29 @@
  BSE|
  BSE| Excitation n           i =>/<=     a      TDA/ABBA       |X_ia^n|/|Y_ia^n|
  BSE|
- BSE|            1           1    =>     2         -TDA-                  0.6773
- BSE|            1           1    =>     4         -TDA-                  0.1996
+ BSE|            1           1    =>     2         -TDA-                  0.6776
+ BSE|            1           1    =>     4         -TDA-                  0.1988
  BSE|
- BSE|            2           1    =>     3         -TDA-                  0.7058
+ BSE|            2           1    =>     3         -TDA-                  0.7059
  BSE|
- BSE|            3           1    =>     5         -TDA-                  0.7030
+ BSE|            3           1    =>     6         -TDA-                  0.7071
  BSE|
- BSE|            4           1    =>     6         -TDA-                  0.7030
+ BSE|            4           1    =>     5         -TDA-                  0.7071
  BSE|
- BSE|            5           1    =>     2         -TDA-                  0.1983
- BSE|            5           1    =>     4         -TDA-                  0.6768
+ BSE|            5           1    =>     2         -TDA-                  0.1976
+ BSE|            5           1    =>     4         -TDA-                  0.6771
  BSE|
- BSE|            6           1    =>     7         -TDA-                  0.6965
- BSE|            6           1    =>    11         -TDA-                  0.1151
+ BSE|            6           1    =>     7         -TDA-                  0.6980
+ BSE|            6           1    =>    11         -TDA-                  0.1063
  BSE|
- BSE|            7           1    =>     8         -TDA-                  0.7048
+ BSE|            7           1    =>     9         -TDA-                  0.7063
  BSE|
- BSE|            8           1    =>     9         -TDA-                  0.7048
+ BSE|            8           1    =>     8         -TDA-                  0.7063
  BSE|
- BSE|            9           1    =>    10         -TDA-                  0.7050
+ BSE|            9           1    =>    10         -TDA-                  0.7051
  BSE|
- BSE|           10           1    =>     7         -TDA-                  0.1146
- BSE|           10           1    =>    11         -TDA-                  0.6974
+ BSE|           10           1    =>     7         -TDA-                  0.1058
+ BSE|           10           1    =>    11         -TDA-                  0.6988
  BSE|
  BSE|           11           1    =>    12         -TDA-                  0.7064
  BSE|
@@ -821,14 +1096,10 @@
  BSE|
  BSE|           15           1    =>    16         -TDA-                  0.7070
  BSE|
- BSE|           16           1    =>    17         -TDA-                  0.7070
- BSE|
- BSE|           17           1    =>    18         -TDA-                  0.7071
- BSE|
  BSE| Transition moments d_r^n (with r∈(x,y,z), in atomic units)
  BSE| and oscillator strength f^n of excitation level n are obtained from
  BSE|
- BSE|      d_r^n = sqrt(2) sum_ia < ψ_i | r | ψ_a >  X_ia^n
+ BSE|    d_r^n = sqrt(2) sum_ia < ψ_i | r | ψ_a >  X_ia^n
  BSE|
  BSE|        f^n = 2/3 * Ω^n sum_r∈(x,y,z) ( d_r^n )^2
  BSE|
@@ -843,24 +1114,29 @@
  BSE|
  BSE| Optical properties from solving the BSE within the TDA:
  BSE|
- BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n     Osc. strength
- BSE|             1     -TDA-        0.000     0.000    -1.295             0.487
+ BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n Osc. strength f^n
+ BSE|             1     -TDA-       -0.000    -0.000     1.294             0.509
  BSE|             2     -TDA-       -0.000    -0.000    -0.000             0.000
- BSE|             3     -TDA-        0.790    -0.844     0.000             0.504
- BSE|             4     -TDA-       -0.844    -0.790    -0.000             0.504
- BSE|             5     -TDA-       -0.000     0.000     0.546             0.119
- BSE|             6     -TDA-        0.000    -0.000    -0.000             0.000
- BSE|             7     -TDA-        0.000    -0.000     0.000             0.000
- BSE|             8     -TDA-        0.000     0.000    -0.000             0.000
- BSE|             9     -TDA-       -0.000    -0.000    -0.372             0.079
- BSE|            10     -TDA-       -0.000    -0.000     0.000             0.000
- BSE|            11     -TDA-        0.000     0.000    -0.208             0.042
- BSE|            12     -TDA-        0.298    -0.307    -0.000             0.215
- BSE|            13     -TDA-       -0.307    -0.298     0.000             0.215
- BSE|            14     -TDA-       -0.000    -0.000    -0.000             0.000
+ BSE|             3     -TDA-        0.850     0.783    -0.000             0.523
+ BSE|             4     -TDA-        0.783    -0.850     0.000             0.523
+ BSE|             5     -TDA-       -0.000    -0.000    -0.547             0.123
+ BSE|             6     -TDA-        0.000     0.000     0.000             0.000
+ BSE|             7     -TDA-       -0.000     0.000    -0.000             0.000
+ BSE|             8     -TDA-       -0.000    -0.000     0.000             0.000
+ BSE|             9     -TDA-        0.000     0.000     0.372             0.082
+ BSE|            10     -TDA-        0.000     0.000    -0.000             0.000
+ BSE|            11     -TDA-       -0.000    -0.000     0.207             0.042
+ BSE|            12     -TDA-        0.292    -0.312     0.000             0.219
+ BSE|            13     -TDA-       -0.312    -0.292     0.000             0.219
+ BSE|            14     -TDA-        0.000     0.000     0.000             0.000
  BSE|            15     -TDA-       -0.000     0.000    -0.000             0.000
- BSE|            16     -TDA-        0.000     0.000    -0.000             0.000
- BSE|            17     -TDA-       -0.000    -0.000     0.039             0.004
+ BSE|
+ BSE| Check for Thomas-Reiche-Kuhn sum rule
+ BSE|
+ BSE|                             N_e = Σ_n f^n
+ BSE|
+ BSE| Number of electrons N_e:                                                 2
+ BSE| Sum over oscillator strengths Σ_n f^n :                              2.245
  BSE|
  BSE|
  BSE| Printed optical absorption spectrum to local file BSE-TDA-eta=0.020.spectrum    
@@ -868,8 +1144,152 @@
  BSE|
  BSE|    Im{α_{avg}(ω)} = Im{\sum_{n=1}^{N_exc} \frac{f_n}{(ω+iη)² - (Ω^n)²
  BSE|
- BSE| with oscillator strengths f_n and excitation energies Ω^n.
+ BSE| or for the full polarizability tensor:
+ BSE|    α_{µ µ'}(ω) =  \sum_n [2 Ω^n d_µ^n d_µ'^n] / [(ω+iη)²- (Ω^n)²]
  BSE|
+ BSE| with transition moments d_µ^n, oscillator strengths f_n,
+ BSE| and excitation energies Ω^n.
+ BSE|
+ BSE| Exciton descriptors for excitation level n are given by
+ BSE|
+ BSE|         d_eh   = | <r_h - r_e>_X |
+ BSE|
+ BSE|         σ_e    = sqrt( <r_e^2>_X - <r_e>_X^2 )
+ BSE|
+ BSE|         σ_h    = sqrt( <r_h^2>_X - <r_h>_X^2 )
+ BSE|
+ BSE|         COV_eh = <r_e r_h>_X - <r_e>_X <r_h>_X
+ BSE|
+ BSE|         d_exc  = sqrt( d_eh^2 + σ_e^2 + σ_h^2 - 2 * COV_eh )
+ BSE|
+ BSE|         R_eh   = COV_eh / (σ_e * σ_h)
+ BSE|
+ BSE| where the expectation values <.>_X are taken with respect to the 
+ BSE| exciton wavefunction  of excitation n:
+ BSE|
+ BSE|              𝚿_n(r_e,r_h) = Σ_{i,a} X_ia^n ψ_i(r_h) ψ_a(r_e)  ,
+ BSE|
+ BSE| i.e.
+ BSE|
+ BSE|              < O >_X = < 𝚿_n | O | 𝚿_n > / < 𝚿_n | 𝚿_n >  ,
+ BSE|
+ BSE| where c_n = < 𝚿_n | 𝚿_n > = 1 within TDA.
+ BSE|
+ BSE| The exciton descriptors can then be expressed by electron coordinate
+ BSE|
+ BSE|         <r_e>_X = <𝚿_n|𝚿_n> [ Σ_{i,a,b} X_ia^n < ψ_a | r | ψ_b > X_ib^n ]
+ BSE|
+ BSE| and hole coordinate
+ BSE|
+ BSE|         <r_h>_X = <𝚿_n|𝚿_n> [ Σ_{i,j,a} X_ia^n < ψ_i | r | ψ_j > X_ja^n ]
+ BSE|
+ BSE|
+ BSE| Here, we introduced
+ BSE|
+ BSE| ψ_i:   occupied molecular orbitals,
+ BSE| ψ_a:   empty molecular orbitals and
+ BSE|   r:   position operator.
+ BSE|
+ BSE| prelim Ref.: Eqs. (15)-(22)
+ BSE| JCTC 2018, 14, 710-725; http://doi.org/10.1021/acs.jctc.7b01145
+ BSE|
+ BSE|
+ BSE| Exciton descriptors from solving the BSE within the TDA:
+ BSE|
+ BSE|    n      c_n     d_eh [Å]     σ_e [Å]     σ_h [Å]   d_exc [Å]        R_eh
+ BSE|    1    1.000       0.0000      2.2029      0.8560      2.3634      0.0000
+ BSE|    2    1.000       0.0000      3.0129      0.8560      3.1322     -0.0000
+ BSE|    3    1.000       0.0000      1.5903      0.8560      1.8061     -0.0000
+ BSE|    4    1.000       0.0000      1.5903      0.8560      1.8061     -0.0000
+ BSE|    5    1.000       0.0000      3.4836      0.8560      3.5873      0.0000
+ BSE|    6    1.000       0.0000      2.2669      0.8560      2.4231     -0.0000
+ BSE|    7    1.000       0.0000      1.8837      0.8560      2.0691      0.0000
+ BSE|    8    1.000       0.0000      1.8837      0.8560      2.0691     -0.0000
+ BSE|    9    1.000       0.0000      2.5316      0.8560      2.6724     -0.0000
+ BSE|   10    1.000       0.0000      1.7738      0.8560      1.9695     -0.0000
+ BSE|   11    1.000       0.0000      1.5666      0.8560      1.7852      0.0000
+ BSE|   12    1.000       0.0000      1.0205      0.8560      1.3320     -0.0000
+ BSE|   13    1.000       0.0000      1.0205      0.8560      1.3320     -0.0000
+ BSE|   14    1.000       0.0000      1.1005      0.8560      1.3942     -0.0000
+ BSE|   15    1.000       0.0000      1.0256      0.8560      1.3359     -0.0000
+ BSE|
+ BSE| With the center of charge as reference point r_0,
+ BSE|         r_0 = (   10.0000,    10.0000,    10.0000)
+ BSE| we further obtain r_e and r_h from solving the BSE within the TDA
+ BSE|
+ BSE|  Excitation n              x_e [Å]             y_e [Å]             z_e [Å]
+ BSE|             1              -0.0000             -0.0000             -0.0000
+ BSE|             2               0.0000              0.0000             -0.0000
+ BSE|             3              -0.0000             -0.0000              0.0000
+ BSE|             4               0.0000             -0.0000              0.0000
+ BSE|             5              -0.0000             -0.0000              0.0000
+ BSE|             6              -0.0000             -0.0000              0.0000
+ BSE|             7               0.0000             -0.0000             -0.0000
+ BSE|             8              -0.0000             -0.0000             -0.0000
+ BSE|             9              -0.0000             -0.0000              0.0000
+ BSE|            10              -0.0000              0.0000             -0.0000
+ BSE|            11              -0.0000             -0.0000              0.0000
+ BSE|            12              -0.0000              0.0000              0.0000
+ BSE|            13              -0.0000             -0.0000             -0.0000
+ BSE|            14               0.0000              0.0000              0.0000
+ BSE|            15               0.0000             -0.0000             -0.0000
+ BSE|
+ BSE|  Excitation n              x_h [Å]             y_h [Å]             z_h [Å]
+ BSE|             1              -0.0000             -0.0000              0.0000
+ BSE|             2              -0.0000             -0.0000              0.0000
+ BSE|             3              -0.0000             -0.0000              0.0000
+ BSE|             4              -0.0000             -0.0000              0.0000
+ BSE|             5              -0.0000             -0.0000              0.0000
+ BSE|             6              -0.0000             -0.0000              0.0000
+ BSE|             7              -0.0000             -0.0000              0.0000
+ BSE|             8              -0.0000             -0.0000              0.0000
+ BSE|             9              -0.0000             -0.0000              0.0000
+ BSE|            10              -0.0000             -0.0000              0.0000
+ BSE|            11              -0.0000             -0.0000              0.0000
+ BSE|            12              -0.0000             -0.0000              0.0000
+ BSE|            13              -0.0000             -0.0000              0.0000
+ BSE|            14              -0.0000             -0.0000              0.0000
+ BSE|            15              -0.0000             -0.0000              0.0000
+ BSE|
+ BSE| The reference atomic geometry for these values is given by
+ BSE|
+ BSE|       Element                x [Å]               y [Å]               z [Å]
+ BSE|            H               10.0000             10.0000              9.6293
+ BSE|            H               10.0000             10.0000             10.3707
+ BSE|
+ BSE|
+ BSE| Calculating Natural Transition Orbitals (NTOs).
+ BSE|
+ BSE| The Natural Transition Orbital (NTO) pairs φ_I(r_e) and χ_I(r_h) for a fixed
+ BSE| excitation index n are obtained by singular value decomposition of T
+ BSE|
+ BSE|                 = (0   X)
+ BSE|         T       = (0   0)
+ BSE|
+ BSE|         T        = U Λ V^T
+ BSE|         φ_I(r_e) = \sum_p V_pI ψ_p(r_e)
+ BSE|         χ_I(r_h) = \sum_p U_pI ψ_p(r_e)
+ BSE|
+ BSE| where we have introduced
+ BSE|
+ BSE| ψ_p:        occupied and virtual molecular orbitals,
+ BSE| φ_I(r_e):   NTO state for the electron,
+ BSE| χ_I(r_h):   NTO state for the hole,
+ BSE| Λ:          diagonal matrix of NTO weights λ_I,
+ BSE|
+ BSE| The NTOs are calculated with the following settings:
+ BSE|
+ BSE| Number of excitations, for which NTOs are computed                       2
+ BSE| Threshold for oscillator strength f^n                                  ---
+ BSE| Threshold for NTO weights (λ_I)^2                                    0.010
+ BSE|
+ BSE| NTOs from solving the BSE within the TDA:
+ BSE|
+ BSE|  Excitation n  TDA/ABBA   Index of NTO I               NTO weights (λ_I)^2
+ BSE|
+ BSE|             1     -TDA-                1                           1.00000
+ BSE|
+ BSE|             2     -TDA-                1                           1.00000
  BSE|
  BSE|
  BSE| Diagonalizing C. This will take around 0.E+00 s.
@@ -915,23 +1335,21 @@
  BSE| Excitation energies from solving the BSE without the TDA:
  BSE|
  BSE|     Excitation n   Spin Config       TDA/ABBA   Excitation energy Ω^n (eV)
- BSE|                1       Singlet         -ABBA-                      11.4669
- BSE|                2       Singlet         -ABBA-                      12.4840
- BSE|                3       Singlet         -ABBA-                      15.2848
- BSE|                4       Singlet         -ABBA-                      15.2848
- BSE|                5       Singlet         -ABBA-                      16.0445
- BSE|                6       Singlet         -ABBA-                      19.3102
- BSE|                7       Singlet         -ABBA-                      19.7034
- BSE|                8       Singlet         -ABBA-                      19.7034
- BSE|                9       Singlet         -ABBA-                      23.2064
- BSE|               10       Singlet         -ABBA-                      24.8051
- BSE|               11       Singlet         -ABBA-                      39.0062
- BSE|               12       Singlet         -ABBA-                      47.8169
- BSE|               13       Singlet         -ABBA-                      47.8170
- BSE|               14       Singlet         -ABBA-                      56.0638
- BSE|               15       Singlet         -ABBA-                      60.4045
- BSE|               16       Singlet         -ABBA-                      60.4050
- BSE|               17       Singlet         -ABBA-                     106.5166
+ BSE|                1       Singlet         -ABBA-                      12.0361
+ BSE|                2       Singlet         -ABBA-                      13.0327
+ BSE|                3       Singlet         -ABBA-                      15.8729
+ BSE|                4       Singlet         -ABBA-                      15.8729
+ BSE|                5       Singlet         -ABBA-                      16.6216
+ BSE|                6       Singlet         -ABBA-                      20.0270
+ BSE|                7       Singlet         -ABBA-                      20.3892
+ BSE|                8       Singlet         -ABBA-                      20.3892
+ BSE|                9       Singlet         -ABBA-                      23.9157
+ BSE|               10       Singlet         -ABBA-                      25.9825
+ BSE|               11       Singlet         -ABBA-                      39.7268
+ BSE|               12       Singlet         -ABBA-                      48.9138
+ BSE|               13       Singlet         -ABBA-                      48.9139
+ BSE|               14       Singlet         -ABBA-                      57.2301
+ BSE|               15       Singlet         -ABBA-                      63.3526
  BSE|
  BSE| Single-particle transitions are built up by (de-)excitations,
  BSE| which we denote by
@@ -945,48 +1363,42 @@
  BSE|
  BSE| Excitation n           i =>/<=     a      TDA/ABBA       |X_ia^n|/|Y_ia^n|
  BSE|
- BSE|            1           1    =>     2        -ABBA-                  0.6682
- BSE|            1           1    =>     4        -ABBA-                  0.2459
+ BSE|            1           1    =>     2        -ABBA-                  0.6687
+ BSE|            1           1    =>     4        -ABBA-                  0.2431
  BSE|
- BSE|            2           1    =>     3        -ABBA-                  0.7060
+ BSE|            2           1    =>     3        -ABBA-                  0.7061
  BSE|
- BSE|            3           1    =>     5        -ABBA-                  0.7052
+ BSE|            3           1    =>     6        -ABBA-                  0.7080
  BSE|
- BSE|            4           1    =>     6        -ABBA-                  0.7052
+ BSE|            4           1    =>     5        -ABBA-                  0.7080
  BSE|
- BSE|            5           1    =>     2        -ABBA-                  0.2376
- BSE|            5           1    =>     4        -ABBA-                  0.6642
+ BSE|            5           1    =>     2        -ABBA-                  0.2354
+ BSE|            5           1    =>     4        -ABBA-                  0.6651
  BSE|
- BSE|            6           1    =>     7        -ABBA-                  0.6984
- BSE|            6           1    =>    11        -ABBA-                  0.1037
+ BSE|            6           1    =>     7        -ABBA-                  0.6996
  BSE|
- BSE|            7           1    =>     8        -ABBA-                  0.7046
+ BSE|            7           1    =>     9        -ABBA-                  0.7065
  BSE|
- BSE|            8           1    =>     9        -ABBA-                  0.7046
+ BSE|            8           1    =>     8        -ABBA-                  0.7065
  BSE|
  BSE|            9           1    =>    10        -ABBA-                  0.7053
  BSE|
- BSE|           10           1    =>     7        -ABBA-                  0.1042
- BSE|           10           1    =>    11        -ABBA-                  0.7002
+ BSE|           10           1    =>    11        -ABBA-                  0.7012
  BSE|
  BSE|           11           1    =>    12        -ABBA-                  0.7082
  BSE|
- BSE|           12           1    =>    13        -ABBA-                  0.7078
+ BSE|           12           1    =>    13        -ABBA-                  0.7077
  BSE|
- BSE|           13           1    =>    14        -ABBA-                  0.7078
+ BSE|           13           1    =>    14        -ABBA-                  0.7077
  BSE|
  BSE|           14           1    =>    15        -ABBA-                  0.7072
  BSE|
- BSE|           15           1    =>    16        -ABBA-                  0.7070
- BSE|
- BSE|           16           1    =>    17        -ABBA-                  0.7070
- BSE|
- BSE|           17           1    =>    18        -ABBA-                  0.7071
+ BSE|           15           1    =>    16        -ABBA-                  0.7071
  BSE|
  BSE| Transition moments d_r^n (with r∈(x,y,z), in atomic units)
  BSE| and oscillator strength f^n of excitation level n are obtained from
  BSE|
- BSE|      d_r^n = sqrt(2) sum_ia < ψ_i | r | ψ_a > ( X_ia^n + Y_ia^n )
+ BSE|    d_r^n = sum_ia sqrt(2) < ψ_i | r | ψ_a > ( X_ia^n + Y_ia^n )
  BSE|
  BSE|        f^n = 2/3 * Ω^n sum_r∈(x,y,z) ( d_r^n )^2
  BSE|
@@ -1001,24 +1413,29 @@
  BSE|
  BSE| Optical properties from solving the BSE without the TDA:
  BSE|
- BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n     Osc. strength
- BSE|             1    -ABBA-        0.000     0.000    -1.186             0.395
+ BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n Osc. strength f^n
+ BSE|             1    -ABBA-       -0.000     0.000     1.191             0.418
  BSE|             2    -ABBA-       -0.000    -0.000    -0.000             0.000
- BSE|             3    -ABBA-        0.763    -0.788     0.000             0.450
- BSE|             4    -ABBA-       -0.788    -0.763    -0.000             0.450
- BSE|             5    -ABBA-       -0.000     0.000     0.378             0.056
- BSE|             6    -ABBA-        0.000    -0.000    -0.000             0.000
+ BSE|             3    -ABBA-        0.813     0.739    -0.000             0.469
+ BSE|             4    -ABBA-       -0.739     0.813     0.000             0.469
+ BSE|             5    -ABBA-       -0.000    -0.000    -0.386             0.061
+ BSE|             6    -ABBA-       -0.000    -0.000    -0.000             0.000
  BSE|             7    -ABBA-       -0.000     0.000    -0.000             0.000
- BSE|             8    -ABBA-        0.000    -0.000    -0.000             0.000
- BSE|             9    -ABBA-       -0.000    -0.000    -0.242             0.033
- BSE|            10    -ABBA-        0.000     0.000    -0.000             0.000
- BSE|            11    -ABBA-        0.000     0.000    -0.107             0.011
- BSE|            12    -ABBA-       -0.263     0.271     0.000             0.167
- BSE|            13    -ABBA-        0.271     0.263    -0.000             0.167
+ BSE|             8    -ABBA-       -0.000    -0.000    -0.000             0.000
+ BSE|             9    -ABBA-        0.000     0.000     0.246             0.036
+ BSE|            10    -ABBA-        0.000    -0.000     0.000             0.000
+ BSE|            11    -ABBA-       -0.000    -0.000     0.109             0.012
+ BSE|            12    -ABBA-        0.259    -0.277     0.000             0.172
+ BSE|            13    -ABBA-        0.277     0.259    -0.000             0.172
  BSE|            14    -ABBA-        0.000     0.000     0.000             0.000
- BSE|            15    -ABBA-       -0.000     0.000    -0.000             0.000
- BSE|            16    -ABBA-       -0.000    -0.000     0.000             0.000
- BSE|            17    -ABBA-       -0.000    -0.000     0.051             0.007
+ BSE|            15    -ABBA-        0.000     0.000     0.000             0.000
+ BSE|
+ BSE| Check for Thomas-Reiche-Kuhn sum rule
+ BSE|
+ BSE|                             N_e = Σ_n f^n
+ BSE|
+ BSE| Number of electrons N_e:                                                 2
+ BSE| Sum over oscillator strengths Σ_n f^n :                              1.816
  BSE|
  BSE|
  BSE| Printed optical absorption spectrum to local file BSE-ABBA-eta=0.020.spectrum   
@@ -1026,13 +1443,161 @@
  BSE|
  BSE|    Im{α_{avg}(ω)} = Im{\sum_{n=1}^{N_exc} \frac{f_n}{(ω+iη)² - (Ω^n)²
  BSE|
- BSE| with oscillator strengths f_n and excitation energies Ω^n.
+ BSE| or for the full polarizability tensor:
+ BSE|    α_{µ µ'}(ω) =  \sum_n [2 Ω^n d_µ^n d_µ'^n] / [(ω+iη)²- (Ω^n)²]
  BSE|
+ BSE| with transition moments d_µ^n, oscillator strengths f_n,
+ BSE| and excitation energies Ω^n.
+ BSE|
+ BSE| Exciton descriptors for excitation level n are given by
+ BSE|
+ BSE|         d_eh   = | <r_h - r_e>_X |
+ BSE|
+ BSE|         σ_e    = sqrt( <r_e^2>_X - <r_e>_X^2 )
+ BSE|
+ BSE|         σ_h    = sqrt( <r_h^2>_X - <r_h>_X^2 )
+ BSE|
+ BSE|         COV_eh = <r_e r_h>_X - <r_e>_X <r_h>_X
+ BSE|
+ BSE|         d_exc  = sqrt( d_eh^2 + σ_e^2 + σ_h^2 - 2 * COV_eh )
+ BSE|
+ BSE|         R_eh   = COV_eh / (σ_e * σ_h)
+ BSE|
+ BSE| where the expectation values <.>_X are taken with respect to the 
+ BSE| exciton wavefunction  of excitation n:
+ BSE|
+ BSE|              𝚿_n(r_e,r_h) = Σ_{i,a} X_ia^n ψ_i(r_h) ψ_a(r_e)
+ BSE|                                  + Y_ia^n ψ_a(r_h) ψ_i(r_e) ,
+ BSE|
+ BSE| i.e.
+ BSE|
+ BSE|              < O >_X = < 𝚿_n | O | 𝚿_n > / < 𝚿_n | 𝚿_n >  ,
+ BSE|
+ BSE| where c_n = < 𝚿_n | 𝚿_n > deviates from 1 without TDA.
+ BSE|
+ BSE| The exciton descriptors can then be expressed by electron coordinate
+ BSE|
+ BSE|         <r_e>_X = <𝚿_n|𝚿_n> [ Σ_{i,a,b} X_ia^n < ψ_a | r | ψ_b > X_ib^n
+ BSE|                             + Σ_{i,j,a} Y_ia^n < ψ_i | r | ψ_j > Y_ja^n ]
+ BSE|
+ BSE| and hole coordinate
+ BSE|
+ BSE|         <r_h>_X = <𝚿_n|𝚿_n> [ Σ_{i,j,a} X_ia^n < ψ_i | r | ψ_j > X_ja^n
+ BSE|                             + Σ_{i,a,b} Y_ia^n < ψ_a | r | ψ_b > Y_ib^n ]
+ BSE|
+ BSE|
+ BSE| Here, we introduced
+ BSE|
+ BSE| ψ_i:   occupied molecular orbitals,
+ BSE| ψ_a:   empty molecular orbitals and
+ BSE|   r:   position operator.
+ BSE|
+ BSE| prelim Ref.: Eqs. (15)-(22)
+ BSE| JCTC 2018, 14, 710-725; http://doi.org/10.1021/acs.jctc.7b01145
+ BSE|
+ BSE|
+ BSE| Exciton descriptors from solving the BSE without the TDA:
+ BSE|
+ BSE|    n      c_n     d_eh [Å]     σ_e [Å]     σ_h [Å]   d_exc [Å]        R_eh
+ BSE|    1    1.026       0.0000      2.0542      0.8576      2.2521     -0.0176
+ BSE|    2    1.004       0.0000      2.9922      0.8578      3.1127     -0.0000
+ BSE|    3    1.005       0.0000      1.5859      0.8568      1.8134     -0.0077
+ BSE|    4    1.005       0.0000      1.5859      0.8568      1.8134     -0.0077
+ BSE|    5    1.011       0.0000      3.5032      0.8563      3.6101     -0.0024
+ BSE|    6    1.003       0.0000      2.2813      0.8569      2.4369     -0.0000
+ BSE|    7    1.000       0.0000      1.8835      0.8561      2.0689     -0.0000
+ BSE|    8    1.000       0.0000      1.8835      0.8561      2.0689     -0.0000
+ BSE|    9    1.010       0.0000      2.5622      0.8560      2.7045     -0.0020
+ BSE|   10    1.006       0.0000      1.7744      0.8581      1.9709      0.0000
+ BSE|   11    1.009       0.0000      1.5823      0.8556      1.8011     -0.0016
+ BSE|   12    1.004       0.0000      1.0229      0.8559      1.3378     -0.0032
+ BSE|   13    1.004       0.0000      1.0229      0.8559      1.3378     -0.0032
+ BSE|   14    1.002       0.0000      1.1022      0.8561      1.3957     -0.0000
+ BSE|   15    1.000       0.0000      1.0257      0.8560      1.3360     -0.0000
+ BSE|
+ BSE| With the center of charge as reference point r_0,
+ BSE|         r_0 = (   10.0000,    10.0000,    10.0000)
+ BSE| we further obtain r_e and r_h from solving the BSE within the TDA
+ BSE|
+ BSE|  Excitation n              x_e [Å]             y_e [Å]             z_e [Å]
+ BSE|             1              -0.0000             -0.0000              0.0000
+ BSE|             2               0.0000              0.0000             -0.0000
+ BSE|             3              -0.0000             -0.0000              0.0000
+ BSE|             4               0.0000             -0.0000              0.0000
+ BSE|             5               0.0000              0.0000              0.0000
+ BSE|             6              -0.0000             -0.0000              0.0000
+ BSE|             7               0.0000             -0.0000             -0.0000
+ BSE|             8              -0.0000             -0.0000             -0.0000
+ BSE|             9              -0.0000             -0.0000              0.0000
+ BSE|            10              -0.0000             -0.0000             -0.0000
+ BSE|            11              -0.0000             -0.0000              0.0000
+ BSE|            12              -0.0000              0.0000              0.0000
+ BSE|            13              -0.0000             -0.0000             -0.0000
+ BSE|            14               0.0000              0.0000              0.0000
+ BSE|            15               0.0000             -0.0000             -0.0000
+ BSE|
+ BSE|  Excitation n              x_h [Å]             y_h [Å]             z_h [Å]
+ BSE|             1              -0.0000             -0.0000              0.0000
+ BSE|             2              -0.0000             -0.0000              0.0000
+ BSE|             3              -0.0000             -0.0000              0.0000
+ BSE|             4              -0.0000             -0.0000              0.0000
+ BSE|             5              -0.0000             -0.0000              0.0000
+ BSE|             6              -0.0000             -0.0000              0.0000
+ BSE|             7              -0.0000             -0.0000              0.0000
+ BSE|             8              -0.0000             -0.0000              0.0000
+ BSE|             9              -0.0000             -0.0000              0.0000
+ BSE|            10              -0.0000             -0.0000              0.0000
+ BSE|            11              -0.0000             -0.0000              0.0000
+ BSE|            12              -0.0000             -0.0000              0.0000
+ BSE|            13              -0.0000             -0.0000              0.0000
+ BSE|            14              -0.0000             -0.0000              0.0000
+ BSE|            15              -0.0000             -0.0000              0.0000
+ BSE|
+ BSE| The reference atomic geometry for these values is given by
+ BSE|
+ BSE|       Element                x [Å]               y [Å]               z [Å]
+ BSE|            H               10.0000             10.0000              9.6293
+ BSE|            H               10.0000             10.0000             10.3707
+ BSE|
+ BSE|
+ BSE| Calculating Natural Transition Orbitals (NTOs).
+ BSE|
+ BSE| The Natural Transition Orbital (NTO) pairs φ_I(r_e) and χ_I(r_h) for a fixed
+ BSE| excitation index n are obtained by singular value decomposition of T
+ BSE|
+ BSE|                 = (0   X)
+ BSE|         T       = (Y^T 0)
+ BSE|
+ BSE|         T        = U Λ V^T
+ BSE|         φ_I(r_e) = \sum_p V_pI ψ_p(r_e)
+ BSE|         χ_I(r_h) = \sum_p U_pI ψ_p(r_e)
+ BSE|
+ BSE| where we have introduced
+ BSE|
+ BSE| ψ_p:        occupied and virtual molecular orbitals,
+ BSE| φ_I(r_e):   NTO state for the electron,
+ BSE| χ_I(r_h):   NTO state for the hole,
+ BSE| Λ:          diagonal matrix of NTO weights λ_I,
+ BSE|
+ BSE| The NTOs are calculated with the following settings:
+ BSE|
+ BSE| Number of excitations, for which NTOs are computed                       2
+ BSE| Threshold for oscillator strength f^n                                  ---
+ BSE| Threshold for NTO weights (λ_I)^2                                    0.010
+ BSE|
+ BSE| NTOs from solving the BSE without the TDA:
+ BSE|
+ BSE|  Excitation n  TDA/ABBA   Index of NTO I               NTO weights (λ_I)^2
+ BSE|
+ BSE|             1    -ABBA-                1                           1.01320
+ BSE|             1    -ABBA-                2                           0.01320
+ BSE|
+ BSE|             2    -ABBA-                1                           1.00210
  BSE|
  BSE|
  BSE| The BSE was successfully calculated. Have a nice day!
 
-  Total RI-RPA Time=                                                    0.247127
+  Total RI-RPA Time=                                                    3.788875
 
 
  ENERGY| Total FORCE_EVAL ( QS ) energy [a.u.]:               -1.160424720311141
@@ -1046,24 +1611,24 @@
  flops     1 x     1 x     9                 1368     100.0%      0.0%      0.0%     
  flops     9 x     9 x     1                 5346     100.0%      0.0%      0.0%     
  flops     9 x     9 x     9                11664     100.0%      0.0%      0.0%     
- flops    18 x    18 x    18                11664     100.0%      0.0%      0.0%     
+ flops     9 x    18 x    18                11664     100.0%      0.0%      0.0%     
  flops     1 x    17 x     9                23256     100.0%      0.0%      0.0%     
- flops     9 x     1 x     9                63504     100.0%      0.0%      0.0%     
+ flops     9 x     1 x     9                59616     100.0%      0.0%      0.0%     
  flops    17 x    17 x     9               478584     100.0%      0.0%      0.0%     
  flops     9 x    17 x     9               506736     100.0%      0.0%      0.0%     
- flops     9 x    18 x     9               536544     100.0%      0.0%      0.0%     
  flops    18 x    18 x     9               536544     100.0%      0.0%      0.0%     
+ flops     9 x    18 x     9               816480     100.0%      0.0%      0.0%     
  flops inhomo. stacks                           0       0.0%      0.0%      0.0%
- flops total                         2.175210E+06     100.0%      0.0%      0.0%
- flops max/rank                      2.175210E+06     100.0%      0.0%      0.0%
+ flops total                         2.451258E+06     100.0%      0.0%      0.0%
+ flops max/rank                      2.451258E+06     100.0%      0.0%      0.0%
  matmuls inhomo. stacks                         0       0.0%      0.0%      0.0%
- matmuls total                               1138     100.0%      0.0%      0.0%
- number of processed stacks                   371     100.0%      0.0%      0.0%
- average stack size                                     3.1       0.0       0.0
- marketing flops                     2.182176E+06
+ matmuls total                               1211     100.0%      0.0%      0.0%
+ number of processed stacks                   610     100.0%      0.0%      0.0%
+ average stack size                                     2.0       0.0       0.0
+ marketing flops                     2.458224E+06
  -------------------------------------------------------------------------------
- # multiplications                            387
- max memory usage/rank               4.926079E+09
+ # multiplications                            405
+ max memory usage/rank               5.168534E+09
  # max total images/rank                        1
  # max 3D layers                                1
  # MPI messages exchanged                       0
@@ -1074,10 +1639,10 @@
  -------------------------------------------------------------------------------
  ROUTINE             CALLS      AVE VOLUME [Bytes]
  MP_Bcast               11                     12.
- MP_Allreduce         1615                      8.
- MP_Alltoall          3521                    693.
- MP_ISend             1516                     50.
- MP_IRecv             1516                     50.
+ MP_Allreduce         1669                      8.
+ MP_Alltoall          3899                    818.
+ MP_ISend             1588                     51.
+ MP_IRecv             1588                     51.
  -------------------------------------------------------------------------------
 
  -------------------------------------------------------------------------------
@@ -1097,28 +1662,28 @@
  -                                                                             -
  -------------------------------------------------------------------------------
  LP    KERNEL             BACKEND                              COUNT     PERCENT
- 0     collocate ortho    CPU                                    576      21.79%
- 1     collocate ortho    CPU                                    576      21.79%
- 0     integrate ortho    CPU                                    576      21.79%
- 1     integrate ortho    CPU                                    576      21.79%
- 2     collocate ortho    CPU                                    144       5.45%
- 2     integrate ortho    CPU                                    144       5.45%
- 2     collocate general  CPU                                     24       0.91%
- 2     integrate general  CPU                                     24       0.91%
- 0     collocate general  CPU                                      2       0.08%
- 0     integrate general  CPU                                      2       0.08%
+ 0     collocate ortho    CPU                                    676      24.28%
+ 1     collocate ortho    CPU                                    616      22.13%
+ 0     integrate ortho    CPU                                    576      20.69%
+ 1     integrate ortho    CPU                                    576      20.69%
+ 2     collocate ortho    CPU                                    144       5.17%
+ 2     integrate ortho    CPU                                    144       5.17%
+ 2     collocate general  CPU                                     24       0.86%
+ 2     integrate general  CPU                                     24       0.86%
+ 0     collocate general  CPU                                      2       0.07%
+ 0     integrate general  CPU                                      2       0.07%
  -------------------------------------------------------------------------------
 
- MEMORY| Estimated peak process memory [MiB]                                4698
+ MEMORY| Estimated peak process memory [MiB]                                4930
 
  -------------------------------------------------------------------------------
  ----                             MULTIGRID INFO                            ----
  -------------------------------------------------------------------------------
- count for grid        1:            254          cutoff [a.u.]          140.00
- count for grid        2:            190          cutoff [a.u.]           46.67
- count for grid        3:            149          cutoff [a.u.]           15.56
- count for grid        4:             82          cutoff [a.u.]            5.19
- total gridlevel count  :            675
+ count for grid        1:            274          cutoff [a.u.]          140.00
+ count for grid        2:            210          cutoff [a.u.]           46.67
+ count for grid        3:            189          cutoff [a.u.]           15.56
+ count for grid        4:            142          cutoff [a.u.]            5.19
+ total gridlevel count  :            815
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -1129,9 +1694,9 @@
  ROUTINE             CALLS      AVE VOLUME [Bytes]
  MP_Group              160
  MP_Bcast              137                    346.
- MP_Allreduce         1034                    123.
- MP_Sync               192
- MP_Alltoall            38                     11.
+ MP_Allreduce         2442                    120.
+ MP_Sync             13636
+ MP_Alltoall            89                      9.
  MP_Wait                 4
  MP_comm_split          63
  -------------------------------------------------------------------------------
@@ -1250,56 +1815,65 @@
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.229    0.229   83.145   83.145
- qs_energies                          1  2.0    0.007    0.007   71.739   71.739
- scf_env_do_scf                       1  3.0    0.002    0.002   68.730   68.730
- scf_env_do_scf_inner_loop           11  4.0    0.000    0.000   68.728   68.728
- qs_ks_build_kohn_sham_matrix        12  6.8    0.004    0.004   60.824   60.824
- qs_ks_update_qs_env                 11  5.0    0.000    0.000   59.252   59.252
- rebuild_ks_matrix                   11  6.0    0.000    0.000   59.252   59.252
- fft_wrap_pw1pw2                    210 10.2    0.003    0.003   51.273   51.273
- fft_wrap_pw1pw2_140                137 11.6    3.211    3.211   48.613   48.613
- qs_vxc_create                       12  7.8    0.002    0.002   38.693   38.693
- xc_vxc_pw_create                    11  9.0    0.705    0.705   38.691   38.691
- fft3d_s                            211 12.1   26.824   26.824   26.839   26.839
- xc_pw_derive                        66 11.0    0.000    0.000   25.809   25.809
- xc_rho_set_and_dset_create          11 10.0    0.590    0.590   19.852   19.852
- xc_pw_divergence                    11 10.0    0.000    0.000   17.881   17.881
- qs_init_subsys                       1  2.0    0.038    0.038   11.108   11.108
- qs_env_setup                         1  3.0    0.001    0.001   11.064   11.064
- qs_env_rebuild_pw_env                2  3.5    0.000    0.000   11.060   11.060
- pw_env_rebuild                       1  5.0    0.009    0.009   11.060   11.060
- pw_grid_setup                        5  6.0    0.000    0.000   11.049   11.049
- pw_grid_setup_internal               5  7.0    0.074    0.074   11.049   11.049
- pw_gather_s                        106 11.8   10.546   10.546   10.546   10.546
- qs_rho_update_rho_low               12  5.0    0.002    0.002   10.451   10.451
- calculate_rho_elec                  12  6.0    0.440    0.440   10.447   10.447
- pw_grid_sort                         5  8.0    8.594    8.594   10.352   10.352
- density_rs2pw                       12  7.0    0.000    0.000    9.754    9.754
- pw_scatter_s                       104 12.5    8.855    8.855    8.855    8.855
- xc_functional_eval                  55 10.2    0.000    0.000    6.736    6.736
- pbe_lda_eval                        55 11.2    6.736    6.736    6.736    6.736
- pw_poisson_solve                    12  7.8    0.000    0.000    5.817    5.817
- sum_up_and_integrate                12  7.8    0.002    0.002    5.704    5.704
- prepare_gapw_den                    12  7.8    0.000    0.000    5.618    5.618
- put_rho0_on_grid                    12  8.8    0.444    0.444    5.615    5.615
- integrate_v_rspace                  12  8.8    0.000    0.000    5.544    5.544
- potential_pw2rs                     12  9.8    0.013    0.013    5.516    5.516
- pw_derive                          102 11.2    2.963    2.963    2.963    2.963
- pw_copy                            199 10.3    2.516    2.516    2.516    2.516
- pw_poisson_rebuild                  12  8.8    0.054    0.054    2.499    2.499
- MTin_create_screen_fn                1 10.0    0.184    0.184    2.444    2.444
- mp2_main                             1  3.0    0.005    0.005    1.827    1.827
- pw_poisson_set                      13  8.6    0.000    0.000    1.774    1.774
- sort_shells                          5  9.0    1.759    1.759    1.759    1.759
+ CP2K                                 1  1.0    0.041    0.041   43.289   43.289
+ qs_energies                          1  2.0    0.000    0.000   33.172   33.172
+ scf_env_do_scf                       1  3.0    0.000    0.000   28.250   28.250
+ scf_env_do_scf_inner_loop           11  4.0    0.000    0.000   28.250   28.250
+ qs_ks_build_kohn_sham_matrix        12  6.8    0.001    0.001   24.725   24.725
+ qs_ks_update_qs_env                 11  5.0    0.000    0.000   24.062   24.062
+ rebuild_ks_matrix                   11  6.0    0.000    0.000   24.062   24.062
+ fft_wrap_pw1pw2                    260 10.9    0.003    0.003   22.359   22.359
+ fft_wrap_pw1pw2_140                157 12.0    1.447    1.447   21.068   21.068
+ qs_vxc_create                       12  7.8    0.000    0.000   15.314   15.314
+ xc_vxc_pw_create                    11  9.0    0.546    0.546   15.313   15.313
+ fft3d_s                            261 12.9   12.227   12.227   12.232   12.232
+ qs_init_subsys                       1  2.0    0.007    0.007    9.998    9.998
+ qs_env_setup                         1  3.0    0.000    0.000    9.988    9.988
+ qs_env_rebuild_pw_env                2  3.5    0.000    0.000    9.988    9.988
+ pw_env_rebuild                       1  5.0    0.000    0.000    9.988    9.988
+ pw_grid_setup                        5  6.0    0.000    0.000    9.986    9.986
+ pw_grid_setup_internal               5  7.0    0.076    0.076    9.986    9.986
+ xc_pw_derive                        66 11.0    0.000    0.000    9.647    9.647
+ pw_grid_sort                         5  8.0    7.871    7.871    9.554    9.554
+ xc_rho_set_and_dset_create          11 10.0    0.310    0.310    7.914    7.914
+ xc_pw_divergence                    11 10.0    0.000    0.000    6.736    6.736
+ qs_rho_update_rho_low               12  5.0    0.000    0.000    4.510    4.510
+ calculate_rho_elec                  12  6.0    0.450    0.450    4.508    4.508
+ mp2_main                             1  3.0    0.000    0.000    4.456    4.456
+ pw_gather_s                        146 13.0    3.972    3.972    3.972    3.972
+ mp2_gpw_main                         1  4.0    0.000    0.000    3.789    3.789
+ density_rs2pw                       12  7.0    0.000    0.000    3.719    3.719
+ rpa_ri_compute_en                    1  5.0    0.000    0.000    3.621    3.621
+ rpa_num_int                          1  6.0    0.001    0.001    3.619    3.619
+ start_bse_calculation                1  7.0    0.000    0.000    3.532    3.532
+ postprocess_bse                      2  9.0    0.000    0.000    3.530    3.530
+ calculate_NTOs                       2 10.0    0.000    0.000    3.461    3.461
+ print_bse_nto_cubes                  4 11.0    0.025    0.025    3.459    3.459
+ pw_scatter_s                       114 12.9    3.229    3.229    3.229    3.229
+ calculate_wavefunction              10 12.0    0.000    0.000    3.132    3.132
+ collocate_function                  10 13.0    0.004    0.004    3.132    3.132
+ xc_functional_eval                  55 10.2    0.000    0.000    3.053    3.053
+ pbe_lda_eval                        55 11.2    3.052    3.052    3.052    3.052
+ pw_poisson_solve                    12  7.8    0.000    0.000    2.826    2.826
+ prepare_gapw_den                    12  7.8    0.000    0.000    2.493    2.493
+ put_rho0_on_grid                    12  8.8    0.450    0.450    2.490    2.490
+ sum_up_and_integrate                12  7.8    0.000    0.000    2.356    2.356
+ integrate_v_rspace                  12  8.8    0.000    0.000    2.291    2.291
+ potential_pw2rs                     12  9.8    0.014    0.014    2.273    2.273
+ diagonalize_C                        1  8.0    0.000    0.000    2.126    2.126
+ sort_shells                          5  9.0    1.683    1.683    1.683    1.683
+ pw_poisson_rebuild                  12  8.8    0.033    0.033    1.465    1.465
+ MTin_create_screen_fn                1 10.0    0.168    0.168    1.432    1.432
+ diagonalize_A                        1  8.0    0.000    0.000    1.406    1.406
+ pw_derive                          102 11.2    0.870    0.870    0.870    0.870
  -------------------------------------------------------------------------------
 
- The number of warnings for this run is : 1
+ The number of warnings for this run is : 2
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2024-10-14 16:56:13.843
+  **** **** ******  **  PROGRAM ENDED AT                 2024-11-19 13:49:40.692
  ***** ** ***  *** **   PROGRAM RAN ON                                  n2login2
  **    ****   ******    PROGRAM RAN BY                                  eprop2d2
- ***** **    ** ** **   PROGRAM PROCESS ID                                644725
+ ***** **    ** ** **   PROGRAM PROCESS ID                               3719650
   **** **  *******  **  PROGRAM STOPPED IN /scratch/hpc-prf-metdyn/eprop2d2_Max/
                                            cp2k-examples/bethe-salpeter/H2

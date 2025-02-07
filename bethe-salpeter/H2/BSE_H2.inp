@@ -16,10 +16,9 @@
     &END QS
     &POISSON
       PERIODIC NONE
-      PSOLVER MT
+      PSOLVER MULTIPOLE
     &END
     &SCF
-      SCF_GUESS RESTART
       EPS_SCF 1e-7
     &END SCF
     &XC

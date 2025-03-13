@@ -50,7 +50,8 @@
 			POISSON_SOLVER WAVELET
 		&END POISSON
 		&REAL_TIME_PROPAGATION
-			RTP_METHOD RTBSE
+			&RTBSE
+			&END RTBSE
 			! Convergence threshold of self-consistent ETRS
 			EPS_ITER 1.0E-8
 			! max iters for self-consistent ETRS

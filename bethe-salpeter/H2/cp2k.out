@@ -1,4 +1,3 @@
-SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS/git/ref/tags/v7.6.1
  DBCSR| CPU Multiplication driver                                           XSMM (U)
  DBCSR| Multrec recursion limit                                              512 (U)
  DBCSR| Multiplication stack size                                           1000 (D)
@@ -19,20 +18,20 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2025-02-07 16:04:55.669
- ***** ** ***  *** **   PROGRAM STARTED ON                              n2login2
+  **** **** ******  **  PROGRAM STARTED AT               2025-10-13 10:49:41.361
+ ***** ** ***  *** **   PROGRAM STARTED ON                              n2login1
  **    ****   ******    PROGRAM STARTED BY                              eprop2d2
- ***** **    ** ** **   PROGRAM PROCESS ID                               1917155
+ ***** **    ** ** **   PROGRAM PROCESS ID                                941282
   **** **  *******  **  PROGRAM STARTED IN /scratch/hpc-prf-metdyn/eprop2d2_Max/
                                            cp2k-examples/bethe-salpeter/H2
 
- CP2K| version string:                 CP2K version 2025.1 (Development Version)
- CP2K| source code revision number:                                  git:9da7e4a
+ CP2K| version string:                 CP2K version 2025.2 (Development Version)
+ CP2K| source code revision number:                                  git:f93931d
  CP2K| cp2kflags: omp libint fftw3 libxc libgrpp elpa parallel scalapack mpi_f08
- CP2K|             cosma xsmm plumed2 spglib sirius libvori libbqb libvdwxc hdf5
+ CP2K|             cosma xsmm plumed2 spglib libvori libbqb libvdwxc hdf5
  CP2K| is freely available from                            https://www.cp2k.org/
- CP2K| Program compiled at                          Wed Feb  5 13:35:25 CET 2025
- CP2K| Program compiled on                                              n2login2
+ CP2K| Program compiled at                         Mon Oct 13 10:41:38 CEST 2025
+ CP2K| Program compiled on                                              n2login1
  CP2K| Program compiled for                                              local25
  CP2K| Data directory path    /opt/software/pc2/EB-SW/software/CP2K/2025.1-foss-
  CP2K| Input file name                                                BSE_H2.inp
@@ -47,6 +46,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  GLOBAL| Run type                                                         ENERGY
  GLOBAL| FFT library                                                       FFTW3
  GLOBAL| Diagonalization library                                            ELPA
+ GLOBAL| Cholesky decomposition library                                ScaLAPACK
  GLOBAL| DGEMM library                                                      BLAS
  GLOBAL| Minimum number of eigenvectors for ELPA usage                        16
  GLOBAL| Orthonormality check for eigenvectors                          DISABLED
@@ -65,13 +65,13 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
 
  MEMORY| system memory details [Kb]
  MEMORY|                        rank 0           min           max       average
- MEMORY| MemTotal            527672632     527672632     527672632     527672632
- MEMORY| MemFree             266617448     266617448     266617448     266617448
- MEMORY| Buffers               1453492       1453492       1453492       1453492
- MEMORY| Cached               88249660      88249660      88249660      88249660
- MEMORY| Slab                135326916     135326916     135326916     135326916
- MEMORY| SReclaimable         70960332      70960332      70960332      70960332
- MEMORY| MemLikelyFree       427280932     427280932     427280932     427280932
+ MEMORY| MemTotal            527669384     527669384     527669384     527669384
+ MEMORY| MemFree             179571072     179571072     179571072     179571072
+ MEMORY| Buffers                881440        881440        881440        881440
+ MEMORY| Cached              130428420     130428420     130428420     130428420
+ MEMORY| Slab                149837700     149837700     149837700     149837700
+ MEMORY| SReclaimable         71961540      71961540      71961540      71961540
+ MEMORY| MemLikelyFree       382842472     382842472     382842472     382842472
 
 
  *** Fundamental physical constants (SI units) ***
@@ -467,13 +467,6 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  RI-RPA| using GPW style
  
 
- Number of electrons:                                                          2
- Number of occupied orbitals:                                                  1
- Number of molecular orbitals:                                                 1
-
- Number of orbital functions:                                                 18
- Number of independent orbital functions:                                     18
-
  Extrapolation method: initial_guess
 
  Atomic guess: The first density matrix is obtained in terms of atomic orbitals
@@ -516,33 +509,40 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
                   # Electrons              Trace(P)               Scaling factor
                             2                 2.000                        1.000
 
+ Number of electrons:                                                          2
+ Number of occupied orbitals:                                                  1
+ Number of molecular orbitals:                                                 1
+
+ Number of orbital functions:                                                 18
+ Number of independent orbital functions:                                     18
+
 
  SCF WAVEFUNCTION OPTIMIZATION
 
   Step     Update method      Time    Convergence         Total energy    Change
   ------------------------------------------------------------------------------
   Decoupling Energy:                                              -0.0000000000
-     1 P_Mix/Diag. 0.40E+00    3.1     1.16890425        -0.9623833929 -9.62E-01
+     1 P_Mix/Diag. 0.40E+00    4.4     1.16890425        -0.9623833929 -9.62E-01
   Decoupling Energy:                                              -0.0000000000
-     2 P_Mix/Diag. 0.40E+00    3.4     0.61731594        -1.0475779800 -8.52E-02
+     2 P_Mix/Diag. 0.40E+00    5.5     0.61731594        -1.0475779800 -8.52E-02
   Decoupling Energy:                                              -0.0000000000
-     3 P_Mix/Diag. 0.40E+00    3.1     0.32159701        -1.0941903854 -4.66E-02
+     3 P_Mix/Diag. 0.40E+00    5.0     0.32159701        -1.0941903854 -4.66E-02
   Decoupling Energy:                                              -0.0000000000
-     4 P_Mix/Diag. 0.40E+00    3.3     0.16788695        -1.1210194225 -2.68E-02
+     4 P_Mix/Diag. 0.40E+00    5.5     0.16788695        -1.1210194225 -2.68E-02
   Decoupling Energy:                                              -0.0000000000
-     5 P_Mix/Diag. 0.40E+00    3.4     0.08853293        -1.1368549640 -1.58E-02
+     5 P_Mix/Diag. 0.40E+00    4.6     0.08853293        -1.1368549640 -1.58E-02
   Decoupling Energy:                                              -0.0000000000
-     6 DIIS/Diag.  0.34E-02    3.4     0.04201933        -1.1462986029 -9.44E-03
+     6 DIIS/Diag.  0.34E-02    5.1     0.04201933        -1.1462986029 -9.44E-03
   Decoupling Energy:                                              -0.0000000000
-     7 DIIS/Diag.  0.96E-04    3.4     0.00037641        -1.1604247007 -1.41E-02
+     7 DIIS/Diag.  0.96E-04    5.7     0.00037641        -1.1604247007 -1.41E-02
   Decoupling Energy:                                              -0.0000000000
-     8 DIIS/Diag.  0.25E-03    3.4     0.00044621        -1.1604246772  2.35E-08
+     8 DIIS/Diag.  0.25E-03    5.1     0.00044621        -1.1604246772  2.35E-08
   Decoupling Energy:                                              -0.0000000000
-     9 DIIS/Diag.  0.13E-03    3.3     0.00022527        -1.1604246969 -1.97E-08
+     9 DIIS/Diag.  0.13E-03    4.7     0.00022527        -1.1604246969 -1.97E-08
   Decoupling Energy:                                              -0.0000000000
-    10 DIIS/Diag.  0.50E-04    3.2     0.00006488        -1.1604247037 -6.77E-09
+    10 DIIS/Diag.  0.50E-04    4.6     0.00006488        -1.1604247037 -6.77E-09
   Decoupling Energy:                                              -0.0000000000
-    11 DIIS/Diag.  0.10E-08    3.2     0.00000002        -1.1604247047 -1.01E-09
+    11 DIIS/Diag.  0.10E-08    4.6     0.00000002        -1.1604247047 -1.01E-09
 
   *** SCF run converged in    11 steps ***
 
@@ -560,7 +560,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
   Hartree energy:                                               1.11435805577697
   Exchange-correlation energy:                                 -0.67286524914975
 
-  GAPW| Exc from hard and soft atomic rho1:                    -0.01514681813222
+  GAPW| Exc from hard and soft atomic rho1:                    -0.01514681813223
   GAPW| local Eh = 1 center integrals:                          0.27591514003570
 
   Total energy:                                                -1.16042470470391
@@ -571,7 +571,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  #  Atom  Element  Kind  Atomic population                           Net charge
        1     H        1          1.000000                             -0.000000
        2     H        1          1.000000                              0.000000
- # Total charge                              2.000000                 -0.000000
+ # Total charge                              2.000000                  0.000000
 
  !-----------------------------------------------------------------------------!
 
@@ -683,17 +683,17 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
      5 ( vir )            4.1722         -0.3464          3.6193          7.4450
      6 ( vir )            4.1722         -0.3464          3.6193          7.4450
      7 ( vir )            8.2211         -0.7326          3.1189         10.6073
-     8 ( vir )            9.3854         -0.5610          3.1146         11.9389
+     8 ( vir )            9.3854         -0.5610          3.1146         11.9390
      9 ( vir )            9.3854         -0.5610          3.1146         11.9390
     10 ( vir )           11.7832         -1.0493          3.3718         14.1058
     11 ( vir )           14.4623         -2.5414          4.9531         16.8740
-    12 ( vir )           26.7406         -1.9584          6.7149         31.4972
-    13 ( vir )           35.4700         -2.1580          8.0863         41.3982
-    14 ( vir )           35.4700         -2.1573          8.0863         41.3990
-    15 ( vir )           47.6361         -5.9038          8.9726         50.7049
-    16 ( vir )           52.2470         -5.0635          8.7279         55.9115
-    17 ( vir )           52.2470         -5.0637          8.7279         55.9112
-    18 ( vir )           89.8946          2.1012         10.7126        102.7084
+    12 ( vir )           26.7406         -1.9583          6.7149         31.4973
+    13 ( vir )           35.4700         -2.1571          8.0863         41.3992
+    14 ( vir )           35.4700         -2.1577          8.0863         41.3986
+    15 ( vir )           47.6361         -5.9035          8.9726         50.7052
+    16 ( vir )           52.2470         -5.0629          8.7279         55.9120
+    17 ( vir )           52.2470         -5.0630          8.7279         55.9120
+    18 ( vir )           89.8946          2.1018         10.7126        102.7090
    
   G0W0 HOMO-LUMO gap (eV)                                                17.3028
   
@@ -751,17 +751,17 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
      5 ( vir )            7.4450         -0.2996          3.6193          7.4918
      6 ( vir )            7.4450         -0.2996          3.6193          7.4918
      7 ( vir )           10.6073         -0.5636          3.1189         10.7763
-     8 ( vir )           11.9389         -0.4128          3.1146         12.0872
+     8 ( vir )           11.9390         -0.4128          3.1146         12.0872
      9 ( vir )           11.9390         -0.4128          3.1146         12.0872
     10 ( vir )           14.1058         -0.8893          3.3718         14.2657
     11 ( vir )           16.8740         -1.9166          4.9531         17.4988
-    12 ( vir )           31.4972         -1.7927          6.7149         31.6629
-    13 ( vir )           41.3982         -1.6441          8.0863         41.9122
-    14 ( vir )           41.3990         -1.6441          8.0863         41.9122
-    15 ( vir )           50.7049         -5.3171          8.9726         51.2916
-    16 ( vir )           55.9115         -2.7305          8.7279         58.2444
-    17 ( vir )           55.9112         -2.7311          8.7279         58.2439
-    18 ( vir )          102.7084          2.1195         10.7126        102.7267
+    12 ( vir )           31.4973         -1.7928          6.7149         31.6627
+    13 ( vir )           41.3992         -1.6440          8.0863         41.9123
+    14 ( vir )           41.3986         -1.6440          8.0863         41.9123
+    15 ( vir )           50.7052         -5.3193          8.9726         51.2894
+    16 ( vir )           55.9120         -2.7300          8.7279         58.2450
+    17 ( vir )           55.9120         -2.7304          8.7279         58.2445
+    18 ( vir )          102.7090          2.1205         10.7126        102.7277
    
   HOMO-LUMO gap in evGW0 iteration  2 (eV)                               17.8127
   
@@ -823,13 +823,13 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
      9 ( vir )           12.0872         -0.4110          3.1146         12.0889
     10 ( vir )           14.2657         -0.8803          3.3718         14.2748
     11 ( vir )           17.4988         -1.8965          4.9531         17.5189
-    12 ( vir )           31.6629         -1.7790          6.7149         31.6766
-    13 ( vir )           41.9122         -1.6012          8.0863         41.9551
-    14 ( vir )           41.9122         -1.6013          8.0863         41.9550
-    15 ( vir )           51.2916         -5.2819          8.9726         51.3268
-    16 ( vir )           58.2444         -2.6548          8.7279         58.3202
-    17 ( vir )           58.2439         -2.6543          8.7279         58.3206
-    18 ( vir )          102.7267          2.1387         10.7126        102.7458
+    12 ( vir )           31.6627         -1.7790          6.7149         31.6766
+    13 ( vir )           41.9123         -1.6011          8.0863         41.9552
+    14 ( vir )           41.9123         -1.6011          8.0863         41.9552
+    15 ( vir )           51.2894         -5.2799          8.9726         51.3288
+    16 ( vir )           58.2450         -2.6555          8.7279         58.3194
+    17 ( vir )           58.2445         -2.6554          8.7279         58.3195
+    18 ( vir )          102.7277          2.1386         10.7126        102.7458
    
   HOMO-LUMO gap in evGW0 iteration  3 (eV)                               17.8452
   
@@ -889,15 +889,15 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
      7 ( vir )           10.7786         -0.5612          3.1189         10.7787
      8 ( vir )           12.0889         -0.4110          3.1146         12.0890
      9 ( vir )           12.0889         -0.4110          3.1146         12.0890
-    10 ( vir )           14.2748         -0.8798          3.3718         14.2752
+    10 ( vir )           14.2748         -0.8798          3.3718         14.2753
     11 ( vir )           17.5189         -1.8955          4.9531         17.5199
-    12 ( vir )           31.6766         -1.7780          6.7149         31.6776
-    13 ( vir )           41.9551         -1.5988          8.0863         41.9575
-    14 ( vir )           41.9550         -1.5987          8.0863         41.9576
-    15 ( vir )           51.3268         -5.2731          8.9726         51.3356
-    16 ( vir )           58.3202         -2.6521          8.7279         58.3228
-    17 ( vir )           58.3206         -2.6522          8.7279         58.3228
-    18 ( vir )          102.7458          2.1379         10.7126        102.7450
+    12 ( vir )           31.6766         -1.7778          6.7149         31.6777
+    13 ( vir )           41.9552         -1.5989          8.0863         41.9574
+    14 ( vir )           41.9552         -1.5988          8.0863         41.9574
+    15 ( vir )           51.3288         -5.2745          8.9726         51.3342
+    16 ( vir )           58.3194         -2.6533          8.7279         58.3216
+    17 ( vir )           58.3195         -2.6532          8.7279         58.3217
+    18 ( vir )          102.7458          2.1400         10.7126        102.7472
    
   HOMO-LUMO gap in evGW0 iteration  4 (eV)                               17.8473
   
@@ -957,15 +957,15 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
      7 ( vir )           10.7787         -0.5612          3.1189         10.7787
      8 ( vir )           12.0890         -0.4109          3.1146         12.0890
      9 ( vir )           12.0890         -0.4109          3.1146         12.0890
-    10 ( vir )           14.2752         -0.8798          3.3718         14.2753
+    10 ( vir )           14.2753         -0.8798          3.3718         14.2752
     11 ( vir )           17.5199         -1.8955          4.9531         17.5199
-    12 ( vir )           31.6776         -1.7782          6.7149         31.6774
-    13 ( vir )           41.9575         -1.5988          8.0863         41.9575
-    14 ( vir )           41.9576         -1.5988          8.0863         41.9575
-    15 ( vir )           51.3356         -5.2736          8.9726         51.3351
-    16 ( vir )           58.3228         -2.6512          8.7279         58.3237
-    17 ( vir )           58.3228         -2.6512          8.7279         58.3237
-    18 ( vir )          102.7450          2.1393         10.7126        102.7465
+    12 ( vir )           31.6777         -1.7778          6.7149         31.6778
+    13 ( vir )           41.9574         -1.5986          8.0863         41.9576
+    14 ( vir )           41.9574         -1.5987          8.0863         41.9576
+    15 ( vir )           51.3342         -5.2745          8.9726         51.3341
+    16 ( vir )           58.3216         -2.6523          8.7279         58.3227
+    17 ( vir )           58.3217         -2.6523          8.7279         58.3226
+    18 ( vir )          102.7472          2.1387         10.7126        102.7458
    
   HOMO-LUMO gap in evGW0 iteration  5 (eV)                               17.8474
   
@@ -985,7 +985,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE| Energy of first occupied index [eV]                                -16.035
  BSE| Energy of last empty index [eV]                                    102.746
  BSE| Energy difference of first occupied index to HOMO [eV]              -0.000
- BSE| Energy difference of last empty index to LUMO [eV]                 100.608
+ BSE| Energy difference of last empty index to LUMO [eV]                 100.607
  BSE| Number of GW-corrected occupied MOs                                      1
  BSE| Number of GW-corrected empty MOs                                        17
  BSE|
@@ -1047,12 +1047,12 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|                7       Singlet          -TDA-                      20.3936
  BSE|                8       Singlet          -TDA-                      20.3936
  BSE|                9       Singlet          -TDA-                      24.1378
- BSE|               10       Singlet          -TDA-                      26.1350
- BSE|               11       Singlet          -TDA-                      40.0226
+ BSE|               10       Singlet          -TDA-                      26.1349
+ BSE|               11       Singlet          -TDA-                      40.0230
  BSE|               12       Singlet          -TDA-                      49.0704
- BSE|               13       Singlet          -TDA-                      49.0704
- BSE|               14       Singlet          -TDA-                      57.3125
- BSE|               15       Singlet          -TDA-                      63.3738
+ BSE|               13       Singlet          -TDA-                      49.0705
+ BSE|               14       Singlet          -TDA-                      57.3115
+ BSE|               15       Singlet          -TDA-                      63.3727
  BSE|
  BSE| Single-particle transitions are built up by (de-)excitations,
  BSE| which we denote by
@@ -1066,41 +1066,41 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|
  BSE| Excitation n           i =>/<=     a      TDA/ABBA       |X_ia^n|/|Y_ia^n|
  BSE|
- BSE|            1           1    =>     2         -TDA-                  0.6776
- BSE|            1           1    =>     4         -TDA-                  0.1988
+ BSE|            1           1    =>     2         -TDA-                  0.9583
+ BSE|            1           1    =>     4         -TDA-                  0.2811
  BSE|
- BSE|            2           1    =>     3         -TDA-                  0.7059
+ BSE|            2           1    =>     3         -TDA-                  0.9982
  BSE|
- BSE|            3           1    =>     5         -TDA-                  0.7071
+ BSE|            3           1    =>     5         -TDA-                  1.0000
  BSE|
- BSE|            4           1    =>     6         -TDA-                  0.7071
+ BSE|            4           1    =>     6         -TDA-                  1.0000
  BSE|
- BSE|            5           1    =>     2         -TDA-                  0.1976
- BSE|            5           1    =>     4         -TDA-                  0.6771
+ BSE|            5           1    =>     2         -TDA-                  0.2794
+ BSE|            5           1    =>     4         -TDA-                  0.9576
  BSE|
- BSE|            6           1    =>     7         -TDA-                  0.6980
- BSE|            6           1    =>    11         -TDA-                  0.1063
+ BSE|            6           1    =>     7         -TDA-                  0.9871
+ BSE|            6           1    =>    11         -TDA-                  0.1503
  BSE|
- BSE|            7           1    =>     8         -TDA-                  0.1871
- BSE|            7           1    =>     9         -TDA-                  0.6818
+ BSE|            7           1    =>     8         -TDA-                  0.5685
+ BSE|            7           1    =>     9         -TDA-                  0.8225
  BSE|
- BSE|            8           1    =>     8         -TDA-                  0.6818
- BSE|            8           1    =>     9         -TDA-                  0.1871
+ BSE|            8           1    =>     8         -TDA-                  0.8225
+ BSE|            8           1    =>     9         -TDA-                  0.5685
  BSE|
- BSE|            9           1    =>    10         -TDA-                  0.7051
+ BSE|            9           1    =>    10         -TDA-                  0.9971
  BSE|
- BSE|           10           1    =>     7         -TDA-                  0.1058
- BSE|           10           1    =>    11         -TDA-                  0.6988
+ BSE|           10           1    =>     7         -TDA-                  0.1496
+ BSE|           10           1    =>    11         -TDA-                  0.9883
  BSE|
- BSE|           11           1    =>    12         -TDA-                  0.7064
+ BSE|           11           1    =>    12         -TDA-                  0.9990
  BSE|
- BSE|           12           1    =>    13         -TDA-                  0.7071
+ BSE|           12           1    =>    14         -TDA-                  1.0000
  BSE|
- BSE|           13           1    =>    14         -TDA-                  0.7071
+ BSE|           13           1    =>    13         -TDA-                  1.0000
  BSE|
- BSE|           14           1    =>    15         -TDA-                  0.7068
+ BSE|           14           1    =>    15         -TDA-                  0.9996
  BSE|
- BSE|           15           1    =>    17         -TDA-                  0.7070
+ BSE|           15           1    =>    17         -TDA-                  0.9998
  BSE|
  BSE| Transition moments d_r^n (with r∈(x,y,z), in atomic units)
  BSE| and oscillator strength f^n of excitation level n are obtained from
@@ -1122,19 +1122,19 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|
  BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n Osc. strength f^n
  BSE|             1     -TDA-        0.000     0.000    -1.294             0.509
- BSE|             2     -TDA-       -0.000    -0.000    -0.000             0.000
- BSE|             3     -TDA-       -0.867     0.765     0.000             0.523
- BSE|             4     -TDA-       -0.765    -0.867    -0.000             0.523
- BSE|             5     -TDA-        0.000    -0.000     0.547             0.123
- BSE|             6     -TDA-       -0.000    -0.000     0.000             0.000
- BSE|             7     -TDA-        0.000    -0.000     0.000             0.000
- BSE|             8     -TDA-        0.000     0.000    -0.000             0.000
+ BSE|             2     -TDA-       -0.000    -0.000     0.000             0.000
+ BSE|             3     -TDA-        0.855    -0.778     0.000             0.523
+ BSE|             4     -TDA-       -0.778    -0.855     0.000             0.523
+ BSE|             5     -TDA-        0.000     0.000     0.547             0.123
+ BSE|             6     -TDA-        0.000     0.000    -0.000             0.000
+ BSE|             7     -TDA-       -0.000    -0.000     0.000             0.000
+ BSE|             8     -TDA-        0.000    -0.000    -0.000             0.000
  BSE|             9     -TDA-       -0.000    -0.000    -0.372             0.082
- BSE|            10     -TDA-       -0.000    -0.000     0.000             0.000
+ BSE|            10     -TDA-        0.000     0.000    -0.000             0.000
  BSE|            11     -TDA-        0.000     0.000    -0.207             0.042
- BSE|            12     -TDA-        0.305    -0.299    -0.000             0.219
- BSE|            13     -TDA-       -0.299    -0.305     0.000             0.219
- BSE|            14     -TDA-       -0.000    -0.000    -0.000             0.000
+ BSE|            12     -TDA-       -0.298    -0.306     0.000             0.219
+ BSE|            13     -TDA-       -0.306     0.298     0.000             0.219
+ BSE|            14     -TDA-        0.000     0.000     0.000             0.000
  BSE|            15     -TDA-        0.000     0.000    -0.000             0.000
  BSE|
  BSE| Check for Thomas-Reiche-Kuhn sum rule
@@ -1206,18 +1206,18 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE| Exciton descriptors from solving the BSE   within the TDA:
  BSE|
  BSE|    n      c_n     d_eh [Å]     σ_e [Å]     σ_h [Å]   d_exc [Å]        R_eh
- BSE|    1    1.000       0.0000      2.2029      0.8560      2.3634     -0.0000
- BSE|    2    1.000       0.0000      3.0129      0.8560      3.1322     -0.0000
+ BSE|    1    1.000       0.0000      2.2029      0.8560      2.3634      0.0000
+ BSE|    2    1.000       0.0000      3.0129      0.8560      3.1322      0.0000
  BSE|    3    1.000       0.0000      1.5903      0.8560      1.8061     -0.0000
  BSE|    4    1.000       0.0000      1.5903      0.8560      1.8061      0.0000
  BSE|    5    1.000       0.0000      3.4836      0.8560      3.5873      0.0000
  BSE|    6    1.000       0.0000      2.2669      0.8560      2.4231      0.0000
  BSE|    7    1.000       0.0000      1.8837      0.8560      2.0691     -0.0000
  BSE|    8    1.000       0.0000      1.8837      0.8560      2.0691      0.0000
- BSE|    9    1.000       0.0000      2.5316      0.8560      2.6724      0.0000
- BSE|   10    1.000       0.0000      1.7738      0.8560      1.9695      0.0000
+ BSE|    9    1.000       0.0000      2.5316      0.8560      2.6724     -0.0000
+ BSE|   10    1.000       0.0000      1.7738      0.8560      1.9695     -0.0000
  BSE|   11    1.000       0.0000      1.5666      0.8560      1.7852     -0.0000
- BSE|   12    1.000       0.0000      1.0205      0.8560      1.3320      0.0000
+ BSE|   12    1.000       0.0000      1.0205      0.8560      1.3320     -0.0000
  BSE|   13    1.000       0.0000      1.0205      0.8560      1.3320     -0.0000
  BSE|   14    1.000       0.0000      1.1005      0.8560      1.3942      0.0000
  BSE|   15    1.000       0.0000      1.0256      0.8560      1.3359     -0.0000
@@ -1228,19 +1228,19 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE| we further obtain r_e and r_h from solving the BSE   within the TDA
  BSE|
  BSE|  Excitation n              x_e [Å]             y_e [Å]             z_e [Å]
- BSE|             1              -0.0000             -0.0000             -0.0000
+ BSE|             1              -0.0000             -0.0000              0.0000
  BSE|             2               0.0000              0.0000              0.0000
- BSE|             3              -0.0000              0.0000             -0.0000
+ BSE|             3               0.0000             -0.0000             -0.0000
  BSE|             4              -0.0000             -0.0000             -0.0000
  BSE|             5              -0.0000             -0.0000             -0.0000
  BSE|             6              -0.0000             -0.0000              0.0000
- BSE|             7               0.0000             -0.0000              0.0000
- BSE|             8              -0.0000             -0.0000              0.0000
- BSE|             9              -0.0000             -0.0000              0.0000
- BSE|            10              -0.0000             -0.0000             -0.0000
+ BSE|             7               0.0000              0.0000              0.0000
+ BSE|             8               0.0000             -0.0000              0.0000
+ BSE|             9              -0.0000             -0.0000             -0.0000
+ BSE|            10              -0.0000              0.0000             -0.0000
  BSE|            11              -0.0000             -0.0000              0.0000
- BSE|            12               0.0000             -0.0000             -0.0000
- BSE|            13              -0.0000             -0.0000             -0.0000
+ BSE|            12              -0.0000             -0.0000             -0.0000
+ BSE|            13              -0.0000              0.0000             -0.0000
  BSE|            14               0.0000              0.0000              0.0000
  BSE|            15              -0.0000             -0.0000              0.0000
  BSE|
@@ -1356,11 +1356,11 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|                8       Singlet         -ABBA-                      20.3892
  BSE|                9       Singlet         -ABBA-                      23.9156
  BSE|               10       Singlet         -ABBA-                      25.9825
- BSE|               11       Singlet         -ABBA-                      39.7267
- BSE|               12       Singlet         -ABBA-                      48.9136
- BSE|               13       Singlet         -ABBA-                      48.9136
- BSE|               14       Singlet         -ABBA-                      57.2298
- BSE|               15       Singlet         -ABBA-                      63.3527
+ BSE|               11       Singlet         -ABBA-                      39.7271
+ BSE|               12       Singlet         -ABBA-                      48.9137
+ BSE|               13       Singlet         -ABBA-                      48.9137
+ BSE|               14       Singlet         -ABBA-                      57.2288
+ BSE|               15       Singlet         -ABBA-                      63.3516
  BSE|
  BSE| Single-particle transitions are built up by (de-)excitations,
  BSE| which we denote by
@@ -1374,39 +1374,42 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|
  BSE| Excitation n           i =>/<=     a      TDA/ABBA       |X_ia^n|/|Y_ia^n|
  BSE|
- BSE|            1           1    =>     2        -ABBA-                  0.6687
- BSE|            1           1    =>     4        -ABBA-                  0.2431
+ BSE|            1           1    =>     2        -ABBA-                  0.9457
+ BSE|            1           1    =>     4        -ABBA-                  0.3437
  BSE|
- BSE|            2           1    =>     3        -ABBA-                  0.7061
+ BSE|            2           1    =>     3        -ABBA-                  0.9985
  BSE|
- BSE|            3           1    =>     5        -ABBA-                  0.7080
+ BSE|            3           1    =>     5        -ABBA-                  1.0010
  BSE|
- BSE|            4           1    =>     6        -ABBA-                  0.7080
+ BSE|            4           1    =>     6        -ABBA-                  1.0010
  BSE|
- BSE|            5           1    =>     2        -ABBA-                  0.2354
- BSE|            5           1    =>     4        -ABBA-                  0.6651
+ BSE|            5           1    =>     2        -ABBA-                  0.3329
+ BSE|            5           1    =>     4        -ABBA-                  0.9405
+ BSE|            5           1    =>    10        -ABBA-                  0.1008
  BSE|
- BSE|            6           1    =>     7        -ABBA-                  0.6996
+ BSE|            6           1    =>     7        -ABBA-                  0.9893
+ BSE|            6           1    =>    11        -ABBA-                  0.1357
  BSE|
- BSE|            7           1    =>     8        -ABBA-                  0.2452
- BSE|            7           1    =>     9        -ABBA-                  0.6631
+ BSE|            7           1    =>     8        -ABBA-                  0.6414
+ BSE|            7           1    =>     9        -ABBA-                  0.7671
  BSE|
- BSE|            8           1    =>     8        -ABBA-                  0.6631
- BSE|            8           1    =>     9        -ABBA-                  0.2452
+ BSE|            8           1    =>     8        -ABBA-                  0.7671
+ BSE|            8           1    =>     9        -ABBA-                  0.6414
  BSE|
- BSE|            9           1    =>    10        -ABBA-                  0.7053
+ BSE|            9           1    =>    10        -ABBA-                  0.9975
  BSE|
- BSE|           10           1    =>    11        -ABBA-                  0.7012
+ BSE|           10           1    =>     7        -ABBA-                  0.1364
+ BSE|           10           1    =>    11        -ABBA-                  0.9917
  BSE|
- BSE|           11           1    =>    12        -ABBA-                  0.7082
+ BSE|           11           1    =>    12        -ABBA-                  1.0015
  BSE|
- BSE|           12           1    =>    13        -ABBA-                  0.7077
+ BSE|           12           1    =>    14        -ABBA-                  1.0009
  BSE|
- BSE|           13           1    =>    14        -ABBA-                  0.7077
+ BSE|           13           1    =>    13        -ABBA-                  1.0009
  BSE|
- BSE|           14           1    =>    15        -ABBA-                  0.7072
+ BSE|           14           1    =>    15        -ABBA-                  1.0001
  BSE|
- BSE|           15           1    =>    17        -ABBA-                  0.7071
+ BSE|           15           1    =>    17        -ABBA-                  0.9999
  BSE|
  BSE| Transition moments d_r^n (with r∈(x,y,z), in atomic units)
  BSE| and oscillator strength f^n of excitation level n are obtained from
@@ -1427,21 +1430,21 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE| Optical properties from solving the BSE without the TDA:
  BSE|
  BSE|  Excitation n  TDA/ABBA        d_x^n     d_y^n     d_z^n Osc. strength f^n
- BSE|             1    -ABBA-        0.000     0.000    -1.191             0.418
- BSE|             2    -ABBA-       -0.000    -0.000    -0.000             0.000
- BSE|             3    -ABBA-        0.819    -0.732    -0.000             0.469
- BSE|             4    -ABBA-        0.732     0.819     0.000             0.469
- BSE|             5    -ABBA-        0.000    -0.000     0.386             0.061
- BSE|             6    -ABBA-       -0.000     0.000     0.000             0.000
- BSE|             7    -ABBA-       -0.000     0.000    -0.000             0.000
- BSE|             8    -ABBA-        0.000     0.000    -0.000             0.000
+ BSE|             1    -ABBA-        0.000    -0.000    -1.191             0.418
+ BSE|             2    -ABBA-       -0.000    -0.000     0.000             0.000
+ BSE|             3    -ABBA-       -0.829     0.721    -0.000             0.469
+ BSE|             4    -ABBA-       -0.721    -0.829     0.000             0.469
+ BSE|             5    -ABBA-        0.000     0.000     0.386             0.061
+ BSE|             6    -ABBA-        0.000     0.000     0.000             0.000
+ BSE|             7    -ABBA-        0.000     0.000    -0.000             0.000
+ BSE|             8    -ABBA-       -0.000     0.000     0.000             0.000
  BSE|             9    -ABBA-       -0.000    -0.000    -0.246             0.036
  BSE|            10    -ABBA-       -0.000     0.000     0.000             0.000
  BSE|            11    -ABBA-        0.000     0.000    -0.109             0.012
- BSE|            12    -ABBA-       -0.271     0.265     0.000             0.172
- BSE|            13    -ABBA-        0.265     0.271    -0.000             0.172
- BSE|            14    -ABBA-       -0.000    -0.000    -0.000             0.000
- BSE|            15    -ABBA-       -0.000    -0.000     0.000             0.000
+ BSE|            12    -ABBA-       -0.265    -0.271     0.000             0.172
+ BSE|            13    -ABBA-       -0.271     0.265     0.000             0.172
+ BSE|            14    -ABBA-        0.000     0.000     0.000             0.000
+ BSE|            15    -ABBA-        0.000     0.000    -0.000             0.000
  BSE|
  BSE| Check for Thomas-Reiche-Kuhn sum rule
  BSE|
@@ -1513,26 +1516,26 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE| Exciton descriptors from solving the BSE   without the TDA:
  BSE|
  BSE|    n      c_n     d_eh [Å]     σ_e [Å]     σ_h [Å]   d_exc [Å]        R_eh
- BSE|    1    1.026       0.0000      2.0542      0.8576      2.2521     -0.0176
+ BSE|    1    1.026       0.0000      2.0542      0.8576      2.2521     -0.0332
  BSE|    2    1.004       0.0000      2.9922      0.8578      3.1127     -0.0000
- BSE|    3    1.005       0.0000      1.5859      0.8568      1.8134     -0.0077
- BSE|    4    1.005       0.0000      1.5859      0.8568      1.8134     -0.0077
- BSE|    5    1.011       0.0000      3.5032      0.8563      3.6101     -0.0024
+ BSE|    3    1.005       0.0000      1.5859      0.8568      1.8134     -0.0145
+ BSE|    4    1.005       0.0000      1.5859      0.8568      1.8134     -0.0145
+ BSE|    5    1.011       0.0000      3.5032      0.8563      3.6101     -0.0045
  BSE|    6    1.003       0.0000      2.2813      0.8569      2.4369     -0.0000
- BSE|    7    1.000       0.0000      1.8835      0.8561      2.0689      0.0000
+ BSE|    7    1.000       0.0000      1.8835      0.8561      2.0689     -0.0000
  BSE|    8    1.000       0.0000      1.8835      0.8561      2.0689     -0.0000
- BSE|    9    1.010       0.0000      2.5622      0.8560      2.7045     -0.0020
- BSE|   10    1.006       0.0000      1.7744      0.8581      1.9709     -0.0000
- BSE|   11    1.009       0.0000      1.5823      0.8556      1.8011     -0.0016
- BSE|   12    1.004       0.0000      1.0229      0.8559      1.3378     -0.0032
- BSE|   13    1.004       0.0000      1.0229      0.8559      1.3378     -0.0032
+ BSE|    9    1.010       0.0000      2.5622      0.8560      2.7045     -0.0038
+ BSE|   10    1.006       0.0000      1.7744      0.8581      1.9709      0.0000
+ BSE|   11    1.009       0.0000      1.5823      0.8556      1.8011     -0.0030
+ BSE|   12    1.004       0.0000      1.0229      0.8559      1.3378     -0.0061
+ BSE|   13    1.004       0.0000      1.0229      0.8559      1.3378     -0.0061
  BSE|   14    1.002       0.0000      1.1022      0.8561      1.3957     -0.0000
  BSE|   15    1.000       0.0000      1.0257      0.8560      1.3360     -0.0000
  BSE|
  BSE|
  BSE| With the center of charge as reference point r_0,
  BSE|         r_0 = (   10.0000,    10.0000,    10.0000)
- BSE| we further obtain r_e and r_h from solving the BSE   within the TDA
+ BSE| we further obtain r_e and r_h from solving the BSE   without the TDA
  BSE|
  BSE|  Excitation n              x_e [Å]             y_e [Å]             z_e [Å]
  BSE|             1              -0.0000             -0.0000             -0.0000
@@ -1541,13 +1544,13 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|             4              -0.0000             -0.0000             -0.0000
  BSE|             5               0.0000              0.0000             -0.0000
  BSE|             6              -0.0000             -0.0000              0.0000
- BSE|             7               0.0000             -0.0000              0.0000
- BSE|             8              -0.0000             -0.0000              0.0000
- BSE|             9              -0.0000             -0.0000              0.0000
+ BSE|             7              -0.0000             -0.0000              0.0000
+ BSE|             8               0.0000             -0.0000              0.0000
+ BSE|             9              -0.0000             -0.0000             -0.0000
  BSE|            10              -0.0000             -0.0000             -0.0000
  BSE|            11              -0.0000             -0.0000              0.0000
- BSE|            12               0.0000             -0.0000              0.0000
- BSE|            13               0.0000              0.0000             -0.0000
+ BSE|            12              -0.0000             -0.0000             -0.0000
+ BSE|            13              -0.0000              0.0000             -0.0000
  BSE|            14               0.0000              0.0000              0.0000
  BSE|            15              -0.0000             -0.0000              0.0000
  BSE|
@@ -1612,10 +1615,10 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  BSE|
  BSE| The BSE was successfully calculated. Have a nice day!
 
-  Total RI-RPA Time=                                                    4.545041
+  Total RI-RPA Time=                                                    7.053652
 
 
- ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.160424704703910
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]             -1.160424704703912
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -1643,7 +1646,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  marketing flops                     2.458224E+06
  -------------------------------------------------------------------------------
  # multiplications                            405
- max memory usage/rank               4.044919E+09
+ max memory usage/rank               3.971322E+09
  # max total images/rank                        1
  # max 3D layers                                1
  # MPI messages exchanged                       0
@@ -1654,7 +1657,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  -------------------------------------------------------------------------------
  ROUTINE             CALLS      AVE VOLUME [Bytes]
  MP_Bcast               11                     12.
- MP_Allreduce         1669                      8.
+ MP_Allreduce         1646                      8.
  MP_Alltoall          3899                    836.
  MP_ISend             1588                     51.
  MP_IRecv             1588                     51.
@@ -1669,9 +1672,6 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
     ?  x    ?  x    ?                                            504      50.00%
    ??  x   ??  x   ??                                            288      28.57%
     ?  x   ??  x   ??                                            216      21.43%
- -------------------------------------------------------------------------------
- Memory consumption                            Number of allocations  Size [MiB]
- Host                                                             10           0
  -------------------------------------------------------------------------------
 
  -------------------------------------------------------------------------------
@@ -1692,7 +1692,16 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  0     integrate general  CPU                                      2       0.07%
  -------------------------------------------------------------------------------
 
- MEMORY| Estimated peak process memory [MiB]                                3858
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                          OFFLOAD MEMPOOL STATISTICS                         -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ Memory consumption                Number of allocations  Used [MiB]  Size [MiB]
+ Host                                                 84           4          11
+ -------------------------------------------------------------------------------
+
+ MEMORY| Estimated peak process memory [MiB]                                3788
 
  -------------------------------------------------------------------------------
  ----                             MULTIGRID INFO                            ----
@@ -1712,7 +1721,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  ROUTINE             CALLS      AVE VOLUME [Bytes]
  MP_Group              160
  MP_Bcast              119                    393.
- MP_Allreduce         2536                    172.
+ MP_Allreduce         2641                    165.
  MP_Sync             13636
  MP_Alltoall            89                      9.
  MP_Wait                 4
@@ -1726,7 +1735,7 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  -                                                                             -
  -------------------------------------------------------------------------------
  
- CP2K version 2025.1 (Development Version), the CP2K developers group (2025).
+ CP2K version 2025.2 (Development Version), the CP2K developers group (2025).
  CP2K is freely available from https://www.cp2k.org/ .
  
  T. D. Kuehne, M. Iannuzzi, M. Del Ben, V. V. Rybkin, P. Seewald, F. Stein, T. 
@@ -1838,67 +1847,66 @@ SIRIUS 7.6.1, git hash: https://api.github.com/repos/electronic-structure/SIRIUS
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.100    0.100   45.256   45.256
- qs_energies                          1  2.0    0.000    0.000   42.912   42.912
- scf_env_do_scf                       1  3.0    0.000    0.000   36.826   36.826
- scf_env_do_scf_inner_loop           11  4.0    0.000    0.000   36.825   36.825
- qs_ks_build_kohn_sham_matrix        12  6.8    0.002    0.002   32.305   32.305
- qs_ks_update_qs_env                 11  5.0    0.000    0.000   31.431   31.431
- rebuild_ks_matrix                   11  6.0    0.000    0.000   31.431   31.431
- fft_wrap_pw1pw2                    259 11.0    0.003    0.003   28.882   28.882
- fft_wrap_pw1pw2_140                157 12.1    4.117    4.117   27.895   27.895
- qs_vxc_create                       12  7.8    0.000    0.000   20.198   20.198
- xc_vxc_pw_create                    11  9.0    0.658    0.658   20.198   20.198
- fft3d_s                            260 12.9   14.226   14.226   14.230   14.230
- xc_pw_derive                        66 11.0    0.000    0.000   13.031   13.031
- xc_rho_set_and_dset_create          11 10.0    0.516    0.516   10.238   10.238
- xc_pw_divergence                    11 10.0    0.000    0.000    9.145    9.145
- qs_rho_update_rho_low               12  5.0    0.000    0.000    5.931    5.931
- calculate_rho_elec                  12  6.0    0.449    0.449    5.929    5.929
- mp2_main                             1  3.0    0.000    0.000    5.422    5.422
- density_rs2pw                       12  7.0    0.000    0.000    5.035    5.035
- pw_scatter_s                       114 13.0    4.936    4.936    4.936    4.936
- mp2_gpw_main                         1  4.0    0.000    0.000    4.545    4.545
- rpa_ri_compute_en                    1  5.0    0.000    0.000    4.405    4.405
- rpa_num_int                          1  6.0    0.001    0.001    4.403    4.403
- start_bse_calculation                1  7.0    0.000    0.000    4.286    4.286
- postprocess_bse                      2  9.0    0.000    0.000    4.284    4.284
- calculate_NTOs                       2 10.0    0.000    0.000    4.179    4.179
- print_bse_nto_cubes                  4 11.0    0.011    0.011    4.176    4.176
- pw_gather_s                        145 13.0    3.880    3.880    3.880    3.880
- calculate_wavefunction              10 12.0    0.000    0.000    3.869    3.869
- collocate_function                  10 13.0    0.004    0.004    3.868    3.868
- xc_functional_eval                  55 10.2    0.000    0.000    3.292    3.292
- pbe_lda_eval                        55 11.2    3.291    3.291    3.291    3.291
- prepare_gapw_den                    12  7.8    0.000    0.000    3.114    3.114
- put_rho0_on_grid                    12  8.8    0.451    0.451    3.111    3.111
- sum_up_and_integrate                12  7.8    0.000    0.000    3.052    3.052
- integrate_v_rspace                  12  8.8    0.000    0.000    2.941    2.941
- qs_ks_ddapc                         12  7.8    0.000    0.000    2.926    2.926
- potential_pw2rs                     12  9.8    0.014    0.014    2.925    2.925
- diagonalize_C                        1  8.0    0.000    0.000    2.567    2.567
- pw_poisson_solve                    12  7.8    0.000    0.000    2.500    2.500
- qs_init_subsys                       1  2.0    0.001    0.001    2.181    2.181
- qs_env_setup                         1  3.0    0.000    0.000    2.178    2.178
- qs_env_rebuild_pw_env                2  3.5    0.000    0.000    2.178    2.178
- pw_env_rebuild                       1  5.0    0.000    0.000    2.178    2.178
- pw_grid_setup                        5  5.2    0.000    0.000    2.177    2.177
- pw_grid_setup_internal               5  6.2    0.027    0.027    2.177    2.177
- pw_grid_sort                         5  7.2    1.490    1.490    2.029    2.029
- pw_integral_ab_c1d_c1d_gs           24  9.3    1.749    1.749    1.749    1.749
- diagonalize_A                        1  8.0    0.000    0.000    1.718    1.718
- pw_copy                            212 10.3    1.673    1.673    1.673    1.673
- pw_derive                          102 11.2    1.396    1.396    1.396    1.396
- pw_poisson_set                      13  8.6    0.000    0.000    1.060    1.060
- cp_ddapc_apply_CD                   12  8.8    0.001    0.001    0.980    0.980
+ CP2K                                 1  1.0    0.293    0.293   68.776   68.776
+ qs_energies                          1  2.0    0.003    0.003   65.190   65.190
+ scf_env_do_scf                       1  3.0    0.001    0.001   55.579   55.579
+ scf_env_do_scf_inner_loop           11  4.0    0.001    0.001   55.578   55.578
+ qs_ks_build_kohn_sham_matrix        12  6.8    0.004    0.004   48.714   48.714
+ qs_ks_update_qs_env                 11  5.0    0.000    0.000   47.355   47.355
+ rebuild_ks_matrix                   11  6.0    0.000    0.000   47.355   47.355
+ fft_wrap_pw1pw2                    259 11.0    0.004    0.004   43.895   43.895
+ fft_wrap_pw1pw2_140                157 12.1    7.586    7.586   42.322   42.322
+ qs_vxc_create                       12  7.8    0.001    0.001   29.625   29.625
+ xc_vxc_pw_create                    11  9.0    0.849    0.849   29.624   29.624
+ xc_pw_derive                        66 11.0    0.001    0.001   20.002   20.002
+ fft3d_s                            260 12.9   19.970   19.970   19.975   19.975
+ xc_rho_set_and_dset_create          11 10.0    0.830    0.830   14.910   14.910
+ xc_pw_divergence                    11 10.0    0.000    0.000   13.687   13.687
+ qs_rho_update_rho_low               12  5.0    0.001    0.001    9.079    9.079
+ calculate_rho_elec                  12  6.0    0.517    0.517    9.076    9.076
+ mp2_main                             1  3.0    0.001    0.001    8.427    8.427
+ pw_scatter_s                       114 13.0    8.341    8.341    8.341    8.341
+ density_rs2pw                       12  7.0    0.001    0.001    7.578    7.578
+ mp2_gpw_main                         1  4.0    0.001    0.001    7.054    7.054
+ rpa_ri_compute_en                    1  5.0    0.000    0.000    6.900    6.900
+ rpa_num_int                          1  6.0    0.001    0.001    6.898    6.898
+ start_bse_calculation                1  7.0    0.001    0.001    6.780    6.780
+ postprocess_bse                      2  9.0    0.000    0.000    6.769    6.769
+ calculate_NTOs                       2 10.0    0.000    0.000    6.564    6.564
+ print_bse_nto_cubes                  4 11.0    0.049    0.049    6.559    6.559
+ calculate_wavefunction              10 12.0    0.000    0.000    6.127    6.127
+ collocate_function                  10 13.0    0.004    0.004    6.127    6.127
+ pw_gather_s                        145 13.0    5.737    5.737    5.737    5.737
+ sum_up_and_integrate                12  7.8    0.001    0.001    4.793    4.793
+ integrate_v_rspace                  12  8.8    0.000    0.000    4.633    4.633
+ potential_pw2rs                     12  9.8    0.016    0.016    4.611    4.611
+ prepare_gapw_den                    12  7.8    0.000    0.000    4.467    4.467
+ put_rho0_on_grid                    12  8.8    0.456    0.456    4.464    4.464
+ pw_poisson_solve                    12  7.8    0.000    0.000    4.405    4.405
+ qs_ks_ddapc                         12  7.8    0.000    0.000    4.380    4.380
+ diagonalize_C                        1  8.0    0.000    0.000    4.087    4.087
+ xc_functional_eval                  55 10.2    0.000    0.000    3.928    3.928
+ pbe_lda_eval                        55 11.2    3.928    3.928    3.928    3.928
+ pw_copy                            212 10.3    3.354    3.354    3.354    3.354
+ qs_init_subsys                       1  2.0    0.026    0.026    3.119    3.119
+ qs_env_setup                         1  3.0    0.001    0.001    3.087    3.087
+ qs_env_rebuild_pw_env                2  3.5    0.000    0.000    3.085    3.085
+ pw_env_rebuild                       1  5.0    0.001    0.001    3.085    3.085
+ pw_grid_setup                        5  5.2    0.001    0.001    3.084    3.084
+ pw_grid_setup_internal               5  6.2    0.027    0.027    3.083    3.083
+ pw_grid_sort                         5  7.2    2.139    2.139    2.770    2.770
+ diagonalize_A                        1  8.0    0.000    0.000    2.689    2.689
+ pw_derive                          102 11.2    2.585    2.585    2.585    2.585
+ pw_integral_ab_c1d_c1d_gs           24  9.3    2.247    2.247    2.247    2.247
+ pw_poisson_set                      13  8.6    0.000    0.000    2.169    2.169
  -------------------------------------------------------------------------------
 
  The number of warnings for this run is : 0
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2025-02-07 16:05:41.851
- ***** ** ***  *** **   PROGRAM RAN ON                                  n2login2
+  **** **** ******  **  PROGRAM ENDED AT                 2025-10-13 10:50:51.805
+ ***** ** ***  *** **   PROGRAM RAN ON                                  n2login1
  **    ****   ******    PROGRAM RAN BY                                  eprop2d2
- ***** **    ** ** **   PROGRAM PROCESS ID                               1917155
+ ***** **    ** ** **   PROGRAM PROCESS ID                                941282
   **** **  *******  **  PROGRAM STOPPED IN /scratch/hpc-prf-metdyn/eprop2d2_Max/
                                            cp2k-examples/bethe-salpeter/H2

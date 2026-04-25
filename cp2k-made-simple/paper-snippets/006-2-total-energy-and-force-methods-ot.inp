@@ -1,0 +1,16 @@
+! CP2K Made Simple paper snippet 006
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.4 Wavefunction Optimization
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&OT
+  MINIMIZER DIIS
+  SAFE_DIIS TRUE
+  PRECONDITIONER FULL_ALL
+  ENERGY_GAP 0.0001
+  STEPSIZE 0.1
+&END OT
+&OUTER_SCF
+  EPS_SCF 1.0E-7
+  MAX_SCF 10
+&END OUTER_SCF

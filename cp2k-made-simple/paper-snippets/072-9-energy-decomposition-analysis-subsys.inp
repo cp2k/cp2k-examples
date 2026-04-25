@@ -1,0 +1,38 @@
+! CP2K Made Simple paper snippet 072
+! Section: The CP2K Program Package Made Simple > 9 Energy Decomposition Analysis > 9.1 Implementation
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+  &SUBSYS
+    &KIND H
+      ...
+      &BS
+        &ALPHA
+          NEL -1
+          L    0
+          N    1
+        &END
+        &BETA
+          NEL -1
+          L    0
+          N    1
+        &END
+      &END
+    &END KIND
+
+    &KIND O
+      ...
+      &BS
+        &ALPHA
+          NEL +2
+          L    1
+          N    2
+        &END
+        &BETA
+          NEL +2
+          L    1
+          N    2
+        &END
+      &END
+    &END KIND
+  &END SUBSYS

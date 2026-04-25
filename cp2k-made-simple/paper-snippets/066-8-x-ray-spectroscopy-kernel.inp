@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 066
+! Section: The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&KERNEL
+  &XC_FUNCTIONAL
+    &GGA_X_PBE
+    &END GGA_C_PBE
+    &GGA_X_PBE
+      SCALE 0.75
+    &END GGA_X_PBE
+  &END XC_FUNCTIONAL
+  &EXACT_EXCHANGE
+    FRACTION 0.25
+    OPERATOR TRUNCATED
+    CUTOFF_RADIUS 6.0
+  &END EXACT_EXCHANGE
+&END KERNEL

@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 004
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.3 All-Electron Calculations using the GAPW Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&KIND O
+  BASIS_SET ORB TZVPP-MOLOPT-GGA-ae
+  POTENTIAL ALL
+  LEBEDEV_GRID 400
+  RADIAL_GRID 100
+&END KIND

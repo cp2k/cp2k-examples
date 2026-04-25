@@ -1,0 +1,6 @@
+! CP2K Made Simple paper snippet 055
+! Section: The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.4 Hyperfine Couplings
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT%PRINT%HYPERFINE_COUPLING_TENSOR

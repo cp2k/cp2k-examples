@@ -1,0 +1,15 @@
+! CP2K Made Simple paper snippet 016
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.1 Second-order Moller-Plesset Perturbation Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&RI_MP2
+  # Larger block sizes require more
+  # memory but reduce communication,
+  # (default: -1, auto determination)
+  BLOCK_SIZE 2
+  # Large number of groups increase the
+  # memory demands but reduce communication
+  # (default: -1, auto determination)
+  NUMBER_INTEGRATION_GROUPS 2
+&END

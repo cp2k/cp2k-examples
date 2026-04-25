@@ -1,0 +1,7 @@
+! CP2K Made Simple paper snippet 051
+! Section: The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.2 The Magnetic Shielding Tensor
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+SELECTED_STATES_ON_ATOM_LIST
+SELECTED_STATES_ATOM_RADIUS

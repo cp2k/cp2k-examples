@@ -1,0 +1,12 @@
+! CP2K Made Simple paper snippet 092
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.9 Supported Types of Spectra > Storing Compressed Density Cubes:
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  &PRINT
+    &E_DENSITY_BQB
+      FILENAME result.bqb
+    &END E_DENSITY_BQB
+  &END PRINT
+&END DFT

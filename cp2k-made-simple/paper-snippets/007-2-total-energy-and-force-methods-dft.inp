@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 007
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.5 Brillouin-Zone Sampling using k-Points
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  &KPOINTS
+    SCHEME MONKHORST-PACK 8 8 4
+  &END KPOINTS
+  # Rest of the DFT input
+&END DFT

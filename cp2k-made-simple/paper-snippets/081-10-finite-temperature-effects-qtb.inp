@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 081
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.3 Quantum Convergence
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&QTB
+  LAMBDA 0.2
+  TAU 50.0
+  TAUCUT 0.9
+  LAMBCUT 1.5
+&END QTB

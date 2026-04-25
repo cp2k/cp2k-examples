@@ -1,0 +1,20 @@
+! CP2K Made Simple paper snippet 015
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.2 Resolution-of-the-identity Hartree-Fock Exchange
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  SORT_BASIS EXP
+  # Rest of the DFT input
+&END DFT
+&SUBSYS
+  &KIND
+    BASIS_SET cc-pVTZ
+    # If the following line is not
+    # present, the RI_HFX basis is
+    # generated on-the-fly
+    BASIS_SET RI_HFX cc-pVTZ-JKFIT
+    POTENTIAL ALL
+  &END KIND
+  # Rest of the SUBSYS input
+&EBD SUBSYS

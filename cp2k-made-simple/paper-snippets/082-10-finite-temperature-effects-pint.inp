@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 082
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.4 Approximate Quantum Dynamics
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&PINT
+  P 32
+  NUM_STEPS 1000
+  TEMP       250
+  DT        0.25
+  HARM_INT  EXACT
+  NRESPA 1
+  TRANSFORMATION NORMAL
+  PROPAGATOR RPMD
+  &PILE
+    TAU  -1000
+    LAMBDA 0.5
+  &END PILE
+&END PINT

@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 040
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.3 Partial Atomic Charges from Restrained Electrostatic Potential Fitting
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&PROPERTIES
+  &RESP
+    &SPHERE_SAMPLING
+    &END SPHERE_SAMPLING
+  &END RESP
+&END PROPERTIES

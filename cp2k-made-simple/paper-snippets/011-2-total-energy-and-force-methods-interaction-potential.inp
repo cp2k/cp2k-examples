@@ -1,0 +1,14 @@
+! CP2K Made Simple paper snippet 011
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&INTERACTION_POTENTIAL
+  ! Should be <= than L/2 but large
+  ! enough for the erf to decay
+  CUTOFF_RADIUS 6.0
+  OMEGA 0.33
+  POTENTIAL_TYPE MIX_CL_TRUNC
+  SCALE_COULOMB 0.18352
+  SCALE_LONGRANGE 0.94979
+&END INTERACTION_POTENTIAL

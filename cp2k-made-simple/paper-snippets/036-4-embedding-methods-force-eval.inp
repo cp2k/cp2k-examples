@@ -1,0 +1,23 @@
+! CP2K Made Simple paper snippet 036
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD QMMM
+  ...
+  &QMMM
+    ECOUPL Coulomb
+    &CELL
+      ABC 25.0 25.0 25.0
+      PERIODIC XYZ
+    &END CELL
+    &QM_KIND C
+      MM_INDEX 1..6
+    &END QM_KIND
+    &PERIODIC
+      &MULTIPOLE OFF
+      &END MULTIPOLE
+    &END PERIODIC
+ &END QMMM
+&FORCE_EVAL

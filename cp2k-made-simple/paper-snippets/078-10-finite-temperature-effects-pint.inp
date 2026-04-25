@@ -1,0 +1,14 @@
+! CP2K Made Simple paper snippet 078
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.2 Nuclear Quantum Effects
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&PINT
+  P 32
+  NUM_STEPS 1000
+  TEMP       250
+  DT        0.25
+  TRANSFORMATION NORMAL
+  HARM_INT EXACT
+  PROPAGATOR PIMD
+&END PINT

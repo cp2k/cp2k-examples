@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 012
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.1 Auxiliary Density Matrix Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&AUXILIARY_DENSITY_MATRIX_METHOD
+  # Choose between ADMM flavors
+  ADMM_TYPE ADMMS
+  # Use PBE exchange (example)
+  EXCH_CORRECTION_FUNC PBEX
+&END AUXILIARY_DENSITY_MATRIX_METHOD

@@ -1,0 +1,9 @@
+! CP2K Made Simple paper snippet 077
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&BIAS
+  SIGMA_0 [hartree] 0.0001
+  K_B 5000
+&END BIAS

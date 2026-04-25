@@ -1,0 +1,24 @@
+! CP2K Made Simple paper snippet 005
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.4 Wavefunction Optimization
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&QS
+  EPS_DEFAULT 1.0E-12
+&END QS
+&SCF
+  MAX_SCF 100
+  EPS_SCF 1.0E-6
+  SCF_GUESS RESTART
+  ADDED_MOS 10
+  &MIXING
+    METHOD BROYDEN_MIXING
+    ALPHA 0.2
+    BETA 0.8
+    NBROYDEN 10
+  &END MIXING
+  &SMEAR
+    METHOD FERMI_DIRAC
+    ELECTRONIC_TEMPERATURE [K] 300
+  &END SMEAR
+&END SCF

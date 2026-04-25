@@ -1,0 +1,21 @@
+! CP2K Made Simple paper snippet 075
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD NNP
+  &NNP
+    NNP_INPUT_FILE_NAME input.nn
+    SCALE_FILE_NAME scaling.data
+    &MODEL
+      WEIGHTS nnp-1/weigths
+    &END MODEL
+    &MODEL
+      WEIGHTS nnp-2/weigths
+    &END MODEL
+    &MODEL
+      WEIGHTS nnp-3/weigths
+    &END MODEL
+  &END NNP
+&END FORCE_EVAL

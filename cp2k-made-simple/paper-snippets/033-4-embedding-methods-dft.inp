@@ -1,0 +1,12 @@
+! CP2K Made Simple paper snippet 033
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  &POISSON
+    PERIODIC none
+    POISSON_SOLVER MT
+  &END POISSON
+  ...
+&END DFT

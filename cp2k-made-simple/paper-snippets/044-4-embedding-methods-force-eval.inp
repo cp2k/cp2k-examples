@@ -1,0 +1,48 @@
+! CP2K Made Simple paper snippet 044
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD EMBED
+  &EMBED
+    &MAPPING
+      &FORCE_EVAL 1
+        &FRAGMENT 1
+          1 3
+          MAP 1
+        &END FRAGMENT
+      &END FORCE_EVAL
+      &FORCE_EVAL 2
+        &FRAGMENT 1
+          1 2
+          MAP 2
+        &END FRAGMENT
+      &END FORCE_EVAL
+      &FORCE_EVAL 3
+        &FRAGMENT 1
+          1 5
+          MAP 3
+        &END FRAGMENT
+      &END FORCE_EVAL
+      &FORCE_EVAL 4
+        &FRAGMENT 1
+          1 2
+          MAP 2
+        &END FRAGMENT
+      &END FORCE_EVAL
+      &FORCE_EVAL_EMBED
+        &FRAGMENT 1
+          1 3
+        &END FRAGMENT
+        &FRAGMENT 2
+          4 5
+        &END FRAGMENT
+        &FRAGMENT 3
+          1 5
+        &END FRAGMENT
+      &END FORCE_EVAL_EMBED
+    &END MAPPING
+  &END EMBED
+  ...
+&END FORCE_EVAL

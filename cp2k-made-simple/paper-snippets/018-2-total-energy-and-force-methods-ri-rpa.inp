@@ -1,0 +1,16 @@
+! CP2K Made Simple paper snippet 018
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.2 Random Phase Approximation and Laplace-transformed Scaled Opposite-spin Second-order Moller-Plesset Perturbation Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&RI_RPA
+  # Switch to the Minimax quadrature
+  # rules (default: turned off, use
+  # Clenshaw-Curtis-quadrature)
+  MINIMAX .TRUE.
+  # Choose it as large as necessary
+  # and as small as possible
+  QUADRATURE_POINTS 6
+  # Fine-tuning of the parallelization
+  NUM_INTEG_GROUPS -1
+&END

@@ -1,0 +1,17 @@
+! CP2K Made Simple paper snippet 002
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.2 Pseudopotentials and Basis Sets
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT_UZH
+    POTENTIAL_FILE_NAME POTENTIAL_UZH
+  &END DFT
+  &SUBSYS
+    &KIND Au
+      BASIS_SET TZV2P-MOLOPT-GGA-GTH-q19
+      POTENTIAL GTH-GGA-q19
+    &END KIND
+  &SUBSYS
+&END FORCE_EVAL

@@ -1,0 +1,92 @@
+file	section	status	notes
+001-2-total-energy-and-force-methods-force-eval.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.1 Basis Set Convergence using the Quickstep Method	fragment	-
+002-2-total-energy-and-force-methods-force-eval.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.2 Pseudopotentials and Basis Sets	fragment	-
+003-2-total-energy-and-force-methods-qs.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.3 All-Electron Calculations using the GAPW Method	fragment	-
+004-2-total-energy-and-force-methods-kind-o.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.3 All-Electron Calculations using the GAPW Method	fragment	-
+005-2-total-energy-and-force-methods-qs.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.4 Wavefunction Optimization	fragment	-
+006-2-total-energy-and-force-methods-ot.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.4 Wavefunction Optimization	fragment	-
+007-2-total-energy-and-force-methods-dft.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.5 Brillouin-Zone Sampling using k-Points	fragment	requires surrounding input
+008-2-total-energy-and-force-methods-print.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.5 Brillouin-Zone Sampling using k-Points	fragment	-
+009-2-total-energy-and-force-methods-xc.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory	fragment	-
+010-2-total-energy-and-force-methods-xc.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory	fragment	-
+011-2-total-energy-and-force-methods-interaction-potential.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory	fragment	-
+012-2-total-energy-and-force-methods-auxiliary-density-matrix-method.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.1 Auxiliary Density Matrix Method	fragment	-
+013-2-total-energy-and-force-methods-dft.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.1 Auxiliary Density Matrix Method	fragment	requires surrounding input
+014-2-total-energy-and-force-methods-ri.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.2 Resolution-of-the-identity Hartree-Fock Exchange	fragment	-
+015-2-total-energy-and-force-methods-dft.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.2 Resolution-of-the-identity Hartree-Fock Exchange	fragment	requires surrounding input
+016-2-total-energy-and-force-methods-ri-mp2.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.1 Second-order Moller-Plesset Perturbation Theory	fragment	-
+017-2-total-energy-and-force-methods-canonical-gradients.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.1 Second-order Moller-Plesset Perturbation Theory	fragment	-
+018-2-total-energy-and-force-methods-ri-rpa.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.2 Random Phase Approximation and Laplace-transformed Scaled Opposite-spin Second-order Moller-Plesset Perturbation Theory	fragment	-
+019-2-total-energy-and-force-methods-ri-sos-mp2.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.2 Random Phase Approximation and Laplace-transformed Scaled Opposite-spin Second-order Moller-Plesset Perturbation Theory	fragment	-
+020-2-total-energy-and-force-methods-ri-rpa.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.2 Random Phase Approximation and Laplace-transformed Scaled Opposite-spin Second-order Moller-Plesset Perturbation Theory	fragment	contains placeholders
+021-2-total-energy-and-force-methods-wf-correlation.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.3 Low-scaling post-Hartree-Fock	fragment	-
+022-2-total-energy-and-force-methods-force-eval.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.4 Density Functional Theory plus Hubbard U	fragment	contains placeholders
+023-2-total-energy-and-force-methods-kind-u-a.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.4 Density Functional Theory plus Hubbard U	fragment	contains placeholders
+024-2-total-energy-and-force-methods-kind-u-a.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.4 Density Functional Theory plus Hubbard U	fragment	contains placeholders
+025-2-total-energy-and-force-methods-kind-o.inp	The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.4 Density Functional Theory plus Hubbard U	fragment	-
+026-3-electronic-band-structure-force-eval.inp	The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.1 SIRIUS	fragment	-
+027-3-electronic-band-structure-force-eval.inp	The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.1 SIRIUS	fragment	-
+028-3-electronic-band-structure-xc.inp	The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.2 The GW Method > 3.2.3 GW for Molecules	fragment	-
+030-3-electronic-band-structure-dft.inp	The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.2 The GW Method > 3.2.4 GW for Small Unit Cells with k-point Sampling	fragment	contains placeholders
+031-3-electronic-band-structure-properties.inp	The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.2 The GW Method > 3.2.4 GW for Small Unit Cells with k-point Sampling	fragment	-
+032-4-embedding-methods-dft.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods	fragment	contains placeholders
+033-4-embedding-methods-dft.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods	fragment	contains placeholders
+034-4-embedding-methods-subsys.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods	fragment	contains placeholders
+035-4-embedding-methods-print.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods	fragment	contains placeholders
+036-4-embedding-methods-force-eval.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods	fragment	contains placeholders
+037-4-embedding-methods-qmmm.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.1 Electrostatic Embedding by the Gaussian Expansion of the Electrostatic Potential Method	fragment	-
+038-4-embedding-methods-qmmm.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.1 Electrostatic Embedding by the Gaussian Expansion of the Electrostatic Potential Method	fragment	-
+039-4-embedding-methods-qmmm.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.2 Image-charge Augmented Quantum Mechanics/Molecular Mechanics Method	fragment	contains placeholders
+040-4-embedding-methods-properties.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.3 Partial Atomic Charges from Restrained Electrostatic Potential Fitting	fragment	-
+041-4-embedding-methods-resp.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.3 Partial Atomic Charges from Restrained Electrostatic Potential Fitting	fragment	contains placeholders
+042-4-embedding-methods-constraint.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.3 Partial Atomic Charges from Restrained Electrostatic Potential Fitting	fragment	-
+043-4-embedding-methods-multiple-force-evals.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	-
+044-4-embedding-methods-force-eval.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	contains placeholders
+045-4-embedding-methods-cluster-embed-subsys-true.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	keyword-only snippet
+046-4-embedding-methods-ref-embed-subsys-true.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	keyword-only snippet
+047-4-embedding-methods-opt-embed.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	contains placeholders
+048-4-embedding-methods-high-level-embed-subsys-true.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	keyword-only snippet
+049-4-embedding-methods-qs.inp	The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation	fragment	contains placeholders
+050-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-global.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.1 Density Functional Perturbation Theory	fragment	contains placeholders
+051-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-selected-states-on-atom-list.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.2 The Magnetic Shielding Tensor	fragment	keyword-only snippet
+052-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-subsys.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.2 The Magnetic Shielding Tensor	fragment	-
+053-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-localize.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.2 The Magnetic Shielding Tensor	fragment	-
+054-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-linres-epr-print-g-tensor.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.3 The Electron Paramagnetic Resonance g-tensor	fragment	-
+055-5-nuclear-magnetic-and-electron-paramagnetic-resonance-s-dft-print-hyperfine-coupling-tensor.inp	The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.4 Hyperfine Couplings	fragment	-
+056-6-optical-spectroscopy-tddfpt.inp	The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.1 Linear-Response Time-Dependent Density Functional Theory	fragment	-
+057-6-optical-spectroscopy-stda.inp	The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.1 Linear-Response Time-Dependent Density Functional Theory	fragment	keyword-only snippet
+058-6-optical-spectroscopy-dft.inp	The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.1 Linear-Response Time-Dependent Density Functional Theory	fragment	-
+059-6-optical-spectroscopy-print.inp	The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.1 Linear-Response Time-Dependent Density Functional Theory	fragment	-
+060-6-optical-spectroscopy-gw.inp	The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.2 Bethe-Salpeter Equation > 6.2.2 Optical absorption spectrum	fragment	-
+061-7-excited-state-dynamics-real-time-propagation.inp	The CP2K Program Package Made Simple > 7 Excited State Dynamics > 7.2 Real-Time Bethe Salpeter Propagation	fragment	-
+062-7-excited-state-dynamics-force-eval.inp	The CP2K Program Package Made Simple > 7 Excited State Dynamics > 7.3 Surface Hopping via NEWTON-X	fragment	contains placeholders
+063-7-excited-state-dynamics-vibrational-analysis.inp	The CP2K Program Package Made Simple > 7 Excited State Dynamics > 7.3 Surface Hopping via NEWTON-X	fragment	-
+064-8-x-ray-spectroscopy-xas.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.1 Transition Potential Method	fragment	contains placeholders
+065-8-x-ray-spectroscopy-donor-states.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory	fragment	-
+066-8-x-ray-spectroscopy-kernel.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory	fragment	-
+067-8-x-ray-spectroscopy-grid-o-100-250.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory	fragment	keyword-only snippet
+068-8-x-ray-spectroscopy-spin-orbit-coupling.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory	fragment	keyword-only snippet
+069-8-x-ray-spectroscopy-real-time-propagation.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.3 Real-Time Time-Dependent Density Functional Theory	fragment	-
+070-8-x-ray-spectroscopy-real-time-propagation.inp	The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.3 Real-Time Time-Dependent Density Functional Theory	fragment	-
+071-9-energy-decomposition-analysis-subsys.inp	The CP2K Program Package Made Simple > 9 Energy Decomposition Analysis > 9.1 Implementation	fragment	-
+072-9-energy-decomposition-analysis-subsys.inp	The CP2K Program Package Made Simple > 9 Energy Decomposition Analysis > 9.1 Implementation	fragment	contains placeholders
+073-9-energy-decomposition-analysis-qs.inp	The CP2K Program Package Made Simple > 9 Energy Decomposition Analysis > 9.1 Implementation	fragment	-
+074-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials	fragment	-
+075-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials	fragment	-
+076-10-finite-temperature-effects-print.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials	fragment	-
+077-10-finite-temperature-effects-bias.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.1 Neural Network and Machine Learning Interaction Potentials	fragment	-
+078-10-finite-temperature-effects-pint.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.2 Nuclear Quantum Effects	fragment	-
+079-10-finite-temperature-effects-nose.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.2 Nuclear Quantum Effects	fragment	-
+080-10-finite-temperature-effects-pile.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.2 Nuclear Quantum Effects	fragment	-
+081-10-finite-temperature-effects-qtb.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.3 Quantum Convergence	fragment	-
+082-10-finite-temperature-effects-pint.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.4 Approximate Quantum Dynamics	fragment	-
+083-10-finite-temperature-effects-helium.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.5 Bosonic Quantum Solvation at Ultra-low Temperatures	fragment	contains placeholders
+084-10-finite-temperature-effects-motion.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.5 Bosonic Quantum Solvation at Ultra-low Temperatures	fragment	-
+085-10-finite-temperature-effects-motion.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.5 Bosonic Quantum Solvation at Ultra-low Temperatures	fragment	-
+086-10-finite-temperature-effects-global.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.1 Static-Harmonic Approach	fragment	-
+087-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.3 Computing Electromagnetic Moments	fragment	-
+088-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.5 Orbital Localization	fragment	-
+089-10-finite-temperature-effects-dft.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.6 Voronoi Integration	fragment	-
+090-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.7 Polarizabilities	fragment	-
+091-10-finite-temperature-effects-force-eval.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.7 Polarizabilities	fragment	-
+092-10-finite-temperature-effects-dft.inp	The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.9 Supported Types of Spectra > Storing Compressed Density Cubes:	fragment	-

@@ -1,0 +1,32 @@
+! CP2K Made Simple paper snippet 027
+! Section: The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.1 SIRIUS
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD SIRIUS
+  &PW_DFT
+    &PARAMETERS
+      ELECTRONIC_STRUCTURE_METHOD \
+        FULL_POTENTIAL_LAPWLO
+      DENSITY_TOL 1e-06
+      ENERGY_TOL 1e-10
+      GK_CUTOFF 4.0
+      NGRIDK 4 4 4
+      PW_CUTOFF 20
+      SMEARING GAUSSIAN
+      SMEARING_WIDTH 0.0004
+      AUTO_RMT 1
+      CORE_RELATIVITY DIRAC
+      VALENCE_RELATIVITY IORA
+      LMAX_APW 12
+      LMAX_POT 12
+      LMAX_RHO 12
+    &END PARAMETERS
+  &END PW_DFT
+  &SUBSYS
+    &KIND C
+      POTENTIAL UPF C.json
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

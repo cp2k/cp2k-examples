@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 017
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.1 Second-order Moller-Plesset Perturbation Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&CANONICAL_GRADIENTS
+  # The default is usually good enough
+  EPS_CANONICAL 1E-6
+  # This option which should always work
+  # Try to set it to .TRUE.
+  FREE_HFX_BUFFER .FALSE.
+  &CPHF
+    # Choose as tight as necessary
+    EPS_CONV 1.0E-6
+    # Smaller values of EPS_CONV
+    # may require more iterations
+    MAX_ITER 10
+  &END CPHF
+&END CANONICAL_GRADIENTS

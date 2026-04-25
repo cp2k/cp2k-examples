@@ -1,0 +1,13 @@
+! CP2K Made Simple paper snippet 090
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.7 Polarizabilities
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  &DFT
+    &PERIODIC_EFIELD
+      INTENSITY 5.0E-3
+      POLARISATION 1.0 0.0 0.0
+    &END PERIODIC_EFIELD
+  &END DFT
+&END FORCE_EVAL

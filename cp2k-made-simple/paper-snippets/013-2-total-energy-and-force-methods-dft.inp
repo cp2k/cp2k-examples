@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 013
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory > 2.2.1 Auxiliary Density Matrix Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  BASIS_SET_FILE_NAME BASIS_ccGRB_UZH
+  BASIS_SET_FILE_NAME BASIS_ADMM_UZH
+  POTENTIAL_FILE_NAME POTENTIAL_UZH
+  # Rest of DFT input
+&END DFT
+&SUBSYS
+  &KIND O
+    BASIS_SET ccGRB-D-q6
+    BASIS_SET AUX_FIT admm-dz-q6
+    POTENTIAL GTH-HYB-q6
+  &END KIND
+  # Rest of SUBSYS input
+&END SUBSYS

@@ -1,0 +1,22 @@
+! CP2K Made Simple paper snippet 069
+! Section: The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.3 Real-Time Time-Dependent Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&REAL_TIME_PROPAGATION
+  INITIAL_WFN  SCF_WFN
+  PROPAGATOR ETRS
+  EXP_ACCURACY 1E-15
+  EPS_ITER 1E-9
+  MAX_ITER 100
+  MAT_EXP TAYLOR
+  APPLY_DELTA_PULSE .TRUE.
+  DELTA_PULSE_DIRECTION 0 0 1
+  DELTA_PULSE_SCALE 0.001
+&END REAL_TIME_PROPAGATION
+&PRINT
+  &MOMENTS
+    FILENAME =mom.dat
+    PERIODIC F
+  &END MOMENTS
+&END PRINT

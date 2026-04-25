@@ -1,0 +1,71 @@
+! Quickstep/GPW water single-point calculation using PBE0 and ADMM.
+! Derived from CP2K Made Simple snippets 010, 011, 012, and 013.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-pbe0-admm
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_ccGRB_UZH
+    BASIS_SET_FILE_NAME BASIS_ADMM_UZH
+    POTENTIAL_FILE_NAME POTENTIAL_UZH
+    &AUXILIARY_DENSITY_MATRIX_METHOD
+      ADMM_TYPE ADMMS
+      EXCH_CORRECTION_FUNC PBEX
+    &END AUXILIARY_DENSITY_MATRIX_METHOD
+    &MGRID
+      CUTOFF 400
+      REL_CUTOFF 50
+    &END MGRID
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT
+    &END POISSON
+    &SCF
+      EPS_SCF 1.0E-6
+      MAX_SCF 80
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL
+        &GGA_C_PBE
+        &END GGA_C_PBE
+        &GGA_X_PBE
+          SCALE 0.75
+        &END GGA_X_PBE
+      &END XC_FUNCTIONAL
+      &HF
+        FRACTION 0.25
+        &INTERACTION_POTENTIAL
+          CUTOFF_RADIUS 4.0
+          POTENTIAL_TYPE TRUNCATED
+        &END INTERACTION_POTENTIAL
+      &END HF
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O  5.0000  5.0000  5.0000
+      H  5.7586  5.0000  5.5043
+      H  4.2414  5.0000  5.5043
+    &END COORD
+    &KIND O
+      BASIS_SET ccGRB-D-q6
+      BASIS_SET AUX_FIT admm-dz-q6
+      POTENTIAL GTH-HYB-q6
+    &END KIND
+    &KIND H
+      BASIS_SET ccGRB-D-q1
+      BASIS_SET AUX_FIT admm-dz-q1
+      POTENTIAL GTH-HYB-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

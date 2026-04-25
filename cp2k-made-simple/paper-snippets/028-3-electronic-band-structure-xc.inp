@@ -1,0 +1,18 @@
+! CP2K Made Simple paper snippet 028
+! Section: The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.2 The GW Method > 3.2.3 GW for Molecules
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&XC
+  &XC_FUNCTIONAL PBE
+  &END XC_FUNCTIONAL
+  &WF_CORRELATION
+    &RI_RPA
+      QUADRATURE_POINTS 100
+      &GW
+        ! Also possible: EV_GW0 or EV_GW
+        SELF_CONSISTENCY G0W0
+      &END GW
+    &END RI_RPA
+  &END WF_CORRELATION
+&END XC

@@ -1,0 +1,17 @@
+! CP2K Made Simple paper snippet 022
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.4 Density Functional Theory plus Hubbard U
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    PLUS_U_METHOD Mulliken
+    ...
+    &PRINT
+      &PLUS_U on
+      &END PLUS_U
+    &END PRINT
+  &END DFT
+  ...
+&END FORCE_EVAL

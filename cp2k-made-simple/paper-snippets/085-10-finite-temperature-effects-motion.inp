@@ -1,0 +1,76 @@
+! CP2K Made Simple paper snippet 085
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.5 Bosonic Quantum Solvation at Ultra-low Temperatures
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&MOTION
+  &PINT
+    DT 0.1
+    NUM_STEPS 1000000
+    P 160
+    PROPAGATOR RPMD
+    TEMP 1.0
+    &HELIUM T
+      CELL_SHAPE OCTAHEDRON
+      CELL_SIZE 19.1157
+      DROPLET_RADIUS 15.0
+      GET_FORCES LAST
+      NATOMS 8
+      NBEADS 80
+      N_OUTER 1000
+      PERIODIC F
+      POTENTIAL_FILE_NAME ./helium.potx
+      PRESAMPLE T
+      SAMPLING_METHOD WORM
+      SOLUTE_INTERACTION NNP
+      &NNP
+        NNP_INPUT_FILE_NAME inter-input.nn
+        SCALE_FILE_NAME inter-scaling.data
+        &MODEL
+          WEIGHTS inter-weights
+        &END MODEL
+        &SR_CUTOFF
+          ELEMENT "H"
+          RADIUS  1.25
+        &END SR_CUTOFF
+        &SR_CUTOFF
+          ELEMENT "He"
+          RADIUS  0.00
+        &END SR_CUTOFF
+        &SR_CUTOFF
+          ELEMENT "O"
+          RADIUS  2.05
+        &END SR_CUTOFF
+      &END NNP
+      &WORM
+        ALLOW_OPEN T
+        CENTROID_DRMAX  0.25
+        MAX_OPEN_CYCLES 100
+        OPEN_CLOSE_SCALE  50.0
+        STAGING_L 6
+      &END WORM
+    &END HELIUM
+    &PILE
+       LAMBDA 0.5
+       TAU 200
+    &END PILE
+  &END PINT
+&END MOTION
+&FORCE_EVAL
+  METHOD NNP
+  &NNP
+    NNP_INPUT_FILE_NAME solute-input.nn
+    SCALE_FILE_NAME solute-scaling.data
+    &MODEL
+      WEIGHTS solute-weights
+    &END MODEL
+  &END NNP
+  &SUBSYS
+    &COORD
+      O  0.00  0.00  0.00
+      H  1.05  0.00  0.00
+      H -0.49  0.77  0.00
+      H -0.55 -0.51 -0.48
+    &END COORD
+  &END SUBSYS
+&END FORCE_EVAL

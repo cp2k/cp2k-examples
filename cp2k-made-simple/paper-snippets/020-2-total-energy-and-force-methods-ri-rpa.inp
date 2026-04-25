@@ -1,0 +1,34 @@
+! CP2K Made Simple paper snippet 020
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.2 Random Phase Approximation and Laplace-transformed Scaled Opposite-spin Second-order Moller-Plesset Perturbation Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&RI_RPA
+  ...
+  # The RSE correction is only relevant
+  # for non-HF reference states
+  RSE .TRUE.
+  # Exchange corrections can be costly
+  &EXCHANGE_CORRECTION [NONE|AXK|SOSEX]
+    # The Hartree-Fock-based implemen-
+    # tation scales better for larger
+    # systems but introduces more noise
+    USE_HFX_IMPLEMENTATION F
+    # This parameter is ignored if
+    # USE_HFX_IMPLEMENTATION is set to T
+    # Larger values improve performance
+    # but increase memory usage
+    BLOCK_SIZE 16
+  &END EXCHANGE_CORRECTION
+  # This HF section activates the exact
+  # exchange correction and is also used
+  # by the RSE and the AXK/SOSEX methods
+  &HF
+    ...
+    &MEMORY
+      # Set to zero if RSE/AXK/SOSEX
+      # are not requested
+      MAX_MEMORY 500
+    &END MEMORY
+  &END HF
+&END

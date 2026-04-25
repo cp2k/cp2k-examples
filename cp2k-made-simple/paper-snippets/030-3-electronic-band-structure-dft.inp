@@ -1,0 +1,12 @@
+! CP2K Made Simple paper snippet 030
+! Section: The CP2K Program Package Made Simple > 3 Electronic Band Structure > 3.2 The GW Method > 3.2.4 GW for Small Unit Cells with k-point Sampling
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  ...
+  &KPOINTS
+    SCHEME MONKHORST-PACK 32 32 1
+    PARALLEL_GROUP_SIZE -1
+  &END KPOINTS
+&END DFT

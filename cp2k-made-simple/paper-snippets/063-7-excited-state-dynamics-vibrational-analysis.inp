@@ -1,0 +1,11 @@
+! CP2K Made Simple paper snippet 063
+! Section: The CP2K Program Package Made Simple > 7 Excited State Dynamics > 7.3 Surface Hopping via NEWTON-X
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&VIBRATIONAL_ANALYSIS
+  &PRINT
+    &NAMD_PRINT
+    &END NAMD_PRINT
+  &END PRINT
+&END VIBRATIONAL ANALYSIS

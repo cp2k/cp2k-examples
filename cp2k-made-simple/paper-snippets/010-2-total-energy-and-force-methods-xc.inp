@@ -1,0 +1,18 @@
+! CP2K Made Simple paper snippet 010
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.2 Hartree-Fock and Hybrid Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&XC
+  &XC_FUNCTIONAL
+    &GGA_C_PBE
+    &END GGA_C_PBE
+    &GGA_X_PBE
+      SCALE 0.75
+    &END GGA_X_PBE
+  &END XC_FUNCTIONAL
+  &HF
+    FRACTION 0.25
+    # Additional HF inputs below
+  &END HF
+&END XC

@@ -1,0 +1,18 @@
+! CP2K Made Simple paper snippet 021
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.3 Post-Hartree-Fock and Double-Hybrid Density Functional Theory > 2.3.3 Low-scaling post-Hartree-Fock
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&WF_CORRELATION
+  # Usual RI_RPA/RI_SOS_MP2 input here
+  &LOW_SCALING
+    MEMORY_CUT 3
+    EPS_FILTER 1.0E-9
+  &END LOW_SCALING
+  &RI
+    &RI_METRIC
+      POTENTIAL_TYPE TRUNCATED
+      CUTOFF_RADIUS 1.5
+    &END RI_METRIC
+  &END RI
+&END WF_CORRELATION

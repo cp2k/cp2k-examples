@@ -1,0 +1,6 @@
+! CP2K Made Simple paper snippet 048
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+HIGH_LEVEL_EMBED_SUBSYS .TRUE.

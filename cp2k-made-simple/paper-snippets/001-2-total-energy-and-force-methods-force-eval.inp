@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 001
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.1 Basis Set Convergence using the Quickstep Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&FORCE_EVAL
+  METHOD QUICKSTEP
+  &DFT
+    &QS
+      METHOD GPW
+    &END QS
+    &MGRID
+      CUTOFF 400
+      REL_CUTOFF 50
+      NGRIDS 5
+      PROGRESSION_FACTOR 3.0
+    &END MGRID
+  &END DFT
+&END FORCE_EVAL

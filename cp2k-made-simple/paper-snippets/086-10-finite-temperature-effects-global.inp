@@ -1,0 +1,13 @@
+! CP2K Made Simple paper snippet 086
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.6 Vibrational Spectroscopy > 10.6.1 Static-Harmonic Approach
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&GLOBAL
+  RUN_TYPE VIBRATIONAL_ANALYSIS
+&END GLOBAL
+&VIBRATIONAL_ANALYSIS
+  DX 0.01
+  FULLY_PERIODIC TRUE
+  INTENSITIES TRUE
+&END VIBRATIONAL_ANALYSIS

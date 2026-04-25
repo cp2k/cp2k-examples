@@ -1,0 +1,40 @@
+! CP2K Made Simple paper snippet 061
+! Section: The CP2K Program Package Made Simple > 7 Excited State Dynamics > 7.2 Real-Time Bethe Salpeter Propagation
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&REAL_TIME_PROPAGATION
+  &RTBSE ! Start the RTBSE Method
+    FT_DAMPING [fs] 5.0 ! FT damping
+    FT_START_TIME 0.0 ! FT offset
+    &PADE_FT ! Pad interpolation
+      E_MIN [eV] 0.0
+      E_MAX [eV] 50.0
+      E_STEP [eV] 0.001
+      FIT_E_MIN [eV] 0.0
+      FIT_E_MAX [eV] 300.0
+    &END PADE_FT
+  &END RTBSE
+  EPS_ITER 1.0E-8 ! Check convergence
+  MAX_ITER 50
+  MAT_EXP BCH
+  EXP_ACCURACY 1.0E-14 ! < EPS_ITER
+  APPLY_DELTA_PULSE
+  DELTA_PULSE_DIRECTION 1 0 0
+  DELTA_PULSE_SCALE 0.0001
+  &PRINT
+    &MOMENTS ! Print moments time trace
+      FILENAME MOMENTS
+    &END MOMENTS
+    &MOMENTS_FT ! Fourier transform
+      FILENAME MOMENTS_FT
+    &END MOMENTS_FT
+    &FIELD ! Print applied field trace
+      FILENAME FIELD
+    &END FIELD
+    &POLARIZABILITY
+      FILENAME POLARIZABILITY
+      ELEMENT 1 1 ! Tensor element
+    &END POLARIZABILITY
+  &END PRINT
+&END REAL_TIME_PROPAGATION

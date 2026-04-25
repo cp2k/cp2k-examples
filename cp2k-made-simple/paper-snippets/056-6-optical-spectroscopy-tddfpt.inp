@@ -1,0 +1,12 @@
+! CP2K Made Simple paper snippet 056
+! Section: The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.1 Linear-Response Time-Dependent Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&TDDFPT
+  KERNEL FULL
+  NSTATES 10
+  MAX_ITER 50
+  CONVERGENCE [eV] 1.0E-6
+  RKS_TRIPLETS F
+&END TDDFPT

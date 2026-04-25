@@ -1,0 +1,19 @@
+! CP2K Made Simple paper snippet 060
+! Section: The CP2K Program Package Made Simple > 6 Optical Spectroscopy > 6.2 Bethe-Salpeter Equation > 6.2.2 Optical absorption spectrum
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&GW
+  SELF_CONSISTENCY      evGW0
+  &BSE
+    TDA                 TDA+ABBA
+    SPIN_CONFIG         SINGLET
+    NUM_PRINT_EXC       15
+    ENERGY_CUTOFF_OCC   -1
+    ENERGY_CUTOFF_EMPTY -1
+    NUM_PRINT_EXC_DESCR -1
+    &BSE_SPECTRUM
+      ETA_LIST 0.01 0.02
+    &END BSE_SPECTRUM
+  &END BSE
+&END GW

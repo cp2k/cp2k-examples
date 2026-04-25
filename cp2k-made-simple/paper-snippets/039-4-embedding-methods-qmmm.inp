@@ -1,0 +1,12 @@
+! CP2K Made Simple paper snippet 039
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.2 Image-charge Augmented Quantum Mechanics/Molecular Mechanics Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&QMMM
+  ...
+  &IMAGE_CHARGE
+    MM_ATOM_LIST 1..576
+    EXT_POTENTIAL 0.0
+  &END IMAGE_CHARGE
+&END QMMM

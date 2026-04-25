@@ -1,0 +1,15 @@
+! CP2K Made Simple paper snippet 050
+! Section: The CP2K Program Package Made Simple > 5 Nuclear Magnetic and Electron Paramagnetic Resonance Spectroscopy > 5.1 Density Functional Perturbation Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&GLOBAL
+  RUN_TYPE LINEAR_RESPONSE
+&END GLOBAL
+&FORCE_EVAL
+  &PROPERTIES
+    &LINRES
+      ...
+    &END LINRES
+  &END PROPERTIES
+&END FORCE_EVAL

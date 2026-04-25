@@ -1,0 +1,18 @@
+! CP2K Made Simple paper snippet 037
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.2 Quantum Mechanics/Molecular Mechanics Methods > 4.2.1 Electrostatic Embedding by the Gaussian Expansion of the Electrostatic Potential Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&QMMM
+  ECOUPL GAUSS
+  USE_GEEP_LIB 9
+  &MM_KIND H
+    RADIUS 0.44
+  &END MM_KIND
+  &MM_KIND O
+    RADIUS 0.78
+  &END MM_KIND
+  &QM_KIND C
+    MM_INDEX 1..6
+  &END QM_KIND
+&END QMMM

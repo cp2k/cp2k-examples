@@ -1,0 +1,7 @@
+file	topic	snippets	test_status	result
+dft/h2o-gpw-pbe.inp	GPW/PBE single point	001,002	passed	energy -17.212337144585153 Ha
+dft/h2o-gpw-ot.inp	GPW/PBE with OT	001,005,006	passed	energy -17.212337144506982 Ha
+dft/h2o-gpw-smearing.inp	GPW/PBE with diagonalization and smearing	001,005	passed	energy -17.212334309139813 Ha
+gapw/h2o-gapw-all-electron.inp	all-electron GAPW/PBE	003,004	passed	energy -76.238068224190314 Ha
+hfx-admm/h2o-pbe0-admm.inp	hybrid DFT with ADMM	010,011,012,013	passed	energy -17.151344159601688 Ha
+properties/h2o-tddfpt.inp	linear-response TDDFPT	056	passed	first excitation 8.43471 eV

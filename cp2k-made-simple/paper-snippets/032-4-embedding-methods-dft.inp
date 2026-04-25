@@ -1,0 +1,29 @@
+! CP2K Made Simple paper snippet 032
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.1 Implicit Solvation Methods
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&DFT
+  &SCCS on
+    ALPHA [mN/m] 50.0
+    BETA [GPa] -0.35
+    DELTA_RHO 2.0E-5
+    DERIVATIVE_METHOD CD5 # or FFT
+    DIELECTRIC_CONSTANT 78.36
+    EPS_SCCS 1.0E-9
+    GAMMA [mN/m] 0.0
+    EPS_SCF 1.0E-3
+    MAX_ITER 100
+    METHOD Andreussi # or Fatteberg-Gygi
+    MIXING 0.6
+    &ANDREUSSI
+      RHO_MAX 0.005
+      RHO_MIN 0.0001
+    &END ANDREUSSI
+    &FATTEBERT-GYGI
+      BETA 1.7
+      RHO_ZERO 6.0E-4
+    &END FATTEBERT-GYGI
+  &END SCCS
+  ...
+&END DFT

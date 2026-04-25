@@ -1,0 +1,30 @@
+! CP2K Made Simple paper snippet 064
+! Section: The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.1 Transition Potential Method
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&XAS
+  &SCF
+    ...
+  &END SCF
+  METHOD        TP_HH
+  DIPOLE_FORM   VELOCITY
+  STATE_TYPE    1s
+  STATE_SEARCH  10
+  ATOMS_LIST    1
+  ADDED_MOS     1000
+  &LOCALIZE
+  &END LOCALIZE
+  &PRINT
+    &PROGRAM_RUN_INFO
+  &END PRINT
+  &RESTART
+    FILENAME ./root
+  &END RESTART
+  &XAS_SPECTRUM
+    FILENAME ./root
+  &END XAS_SPECTRUM
+  &XES_SPECTRUM
+    FILENAME ./root
+  &END XES_SPECTRUM
+&END XAS

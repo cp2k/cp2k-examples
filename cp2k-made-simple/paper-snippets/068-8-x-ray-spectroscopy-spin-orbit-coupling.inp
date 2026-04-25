@@ -1,0 +1,8 @@
+! CP2K Made Simple paper snippet 068
+! Section: The CP2K Program Package Made Simple > 8 X-Ray Spectroscopy > 8.2 Linear-Response Time-Dependent Density Functional Theory
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+SPIN_ORBIT_COUPLING
+EXCITATIONS RCS_SINGLET
+EXCITATIONS RCS_TRIPLET

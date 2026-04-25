@@ -1,0 +1,23 @@
+! CP2K Made Simple paper snippet 084
+! Section: The CP2K Program Package Made Simple > 10 Finite Temperature Effects > 10.5 Bosonic Quantum Solvation at Ultra-low Temperatures
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&MOTION
+  &PINT
+    NUM_STEPS 100
+    &HELIUM
+      HELIUM_ONLY
+      NATOMS 32
+      NBEADS 80
+      DENSITY 0.0218312
+      CELL_SHAPE OCTAHEDRON
+      PERIODIC T
+      POTENTIAL_FILE_NAME \
+          helium_aziz95_80k.potx
+      PRESAMPLE T
+      SAMPLING_METHOD WORM
+      N_OUTER 10000
+    &END HELIUM
+  &END PINT
+&END MOTION

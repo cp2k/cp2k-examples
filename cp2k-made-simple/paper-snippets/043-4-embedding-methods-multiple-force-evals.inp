@@ -1,0 +1,9 @@
+! CP2K Made Simple paper snippet 043
+! Section: The CP2K Program Package Made Simple > 4 Embedding Methods > 4.3 Density Functional Embedding Theory > 4.3.2 Implementation
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&MULTIPLE_FORCE_EVALS
+  FORCE_EVAL_ORDER 2 3 4 5
+  MULTIPLE_SUBSYS T
+&END MULTIPLE_FORCE_EVALS

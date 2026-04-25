@@ -1,0 +1,22 @@
+! CP2K Made Simple paper snippet 008
+! Section: The CP2K Program Package Made Simple > 2 Total Energy and Force Methods > 2.1 Density Functional Theory > 2.1.5 Brillouin-Zone Sampling using k-Points
+! Source: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+! Status: illustrative fragment; see ../README.md before running.
+
+&PRINT
+  &BAND_STRUCTURE
+    # Output file:
+    FILE_NAME graphene.bs
+    # Number of empty bands:
+    ADDED_MOS 2
+    # Specifying the band path:
+    &KPOINT_SET
+      NPOINTS 10
+      UNITS B_VECTOR
+      SPECIAL_POINT G 0.0 0.0 0.0
+      SPECIAL_POINT K 1/3 1/3 0.0
+      SPECIAL_POINT M 1/2 0.0 0.0
+      SPECIAL_POINT G 0.0 0.0 0.0
+    &END KPOINT_SET
+  &END BAND_STRUCTURE
+&END PRINT

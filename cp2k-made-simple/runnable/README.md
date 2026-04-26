@@ -118,6 +118,19 @@ To run only a representative quick subset with numeric output checks:
 python3 run_smoke_tests.py --cp2k /path/to/cp2k.psmp --data-dir /path/to/cp2k/data --quick
 ```
 
+To check the manifest and generated README before review:
+
+```bash
+python3 validate_manifest.py
+python3 generate_readme.py --check
+```
+
+To run one selected input:
+
+```bash
+python3 run_smoke_tests.py --cp2k /path/to/cp2k.psmp --data-dir /path/to/cp2k/data --only '05-magnetic-resonance/h2o-hyperfine-coupling.inp'
+```
+
 Use `--jobs N` only when the machine has enough cores and memory for several independent CP2K
 runs. Each input is executed in its own work directory.
 

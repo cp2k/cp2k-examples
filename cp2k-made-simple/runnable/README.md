@@ -50,6 +50,15 @@ CP2K_DATA_DIR=/path/to/cp2k/data cp2k.psmp -i 02-total-energy-and-force-methods/
 
 When CP2K has been installed with a configured data directory, `CP2K_DATA_DIR` is not needed.
 
+To smoke-test the complete set:
+
+```bash
+python3 run_smoke_tests.py --cp2k /path/to/cp2k.psmp --data-dir /path/to/cp2k/data --jobs 1
+```
+
+Use `--jobs N` only when the machine has enough cores and memory for several independent CP2K
+runs. Each input is executed in its own work directory.
+
 The results above were checked with a local `cp2k.psmp` build using `OMP_NUM_THREADS=1`.
 Snippets for SIRIUS and the larger GW/BSE workflows remain in `../paper-snippets/` because they
 can require optional libraries, external data, or substantially larger production-style settings.

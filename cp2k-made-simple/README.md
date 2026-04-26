@@ -32,3 +32,5 @@ The complete examples in `runnable/` are curated derived inputs. Each file heade
 paper snippets it is based on; the raw extracted snippets remain unchanged in `paper-snippets/`.
 
 See `runnable/README.md` for the full runnable-example table and local test results.
+The `guided-workflows/` directory groups runnable examples into short learning paths, while
+`optional-workflows/` records larger or dependency-sensitive candidates for future examples.

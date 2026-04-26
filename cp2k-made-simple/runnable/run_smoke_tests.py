@@ -9,6 +9,7 @@ import csv
 import fnmatch
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -25,6 +26,11 @@ MANIFEST = ROOT / "manifest.tsv"
 class Example:
     index: int
     path: str
+    check_pattern: str = ""
+    expected_value: float | None = None
+    tolerance: float | None = None
+    quick: bool = False
+    requires_feature: str = ""
 
 
 @dataclass(frozen=True)
@@ -35,6 +41,9 @@ class Result:
     returncode: int | None
     output: Path
     message: str
+
+
+FLOAT_RE = re.compile(r"[-+]?(?:\d+\.\d*|\.\d+|\d+)(?:[Ee][-+]?\d+)?")
 
 
 def find_cp2k(value: str | None) -> str:
@@ -57,10 +66,28 @@ def find_cp2k(value: str | None) -> str:
 def read_manifest() -> list[Example]:
     with MANIFEST.open(newline="") as handle:
         reader = csv.DictReader(handle, delimiter="\t")
-        return [Example(index=i, path=row["file"]) for i, row in enumerate(reader)]
+        examples = []
+        for i, row in enumerate(reader):
+            expected = row.get("expected_value", "").strip()
+            tolerance = row.get("tolerance", "").strip()
+            requires_feature = row.get("requires_feature", "").strip()
+            examples.append(
+                Example(
+                    index=i,
+                    path=row["file"],
+                    check_pattern=row.get("check_pattern", "").strip(),
+                    expected_value=float(expected) if expected else None,
+                    tolerance=float(tolerance) if tolerance else None,
+                    quick=row.get("quick", "").strip().lower() in {"1", "true", "yes", "y"},
+                    requires_feature="" if requires_feature == "-" else requires_feature,
+                )
+            )
+        return examples
 
 
-def select_examples(examples: list[Example], patterns: list[str]) -> list[Example]:
+def select_examples(examples: list[Example], patterns: list[str], quick: bool) -> list[Example]:
+    if quick:
+        examples = [example for example in examples if example.quick]
     if not patterns:
         return examples
     selected = [
@@ -71,6 +98,51 @@ def select_examples(examples: list[Example], patterns: list[str]) -> list[Exampl
     if not selected:
         raise SystemExit(f"No examples matched: {', '.join(patterns)}")
     return selected
+
+
+def matching_line(output: Path, pattern: str) -> str:
+    match = ""
+    with output.open(errors="replace") as handle:
+        for line in handle:
+            if pattern in line:
+                match = line.strip()
+    return match
+
+
+def extract_last_number(line: str) -> float | None:
+    matches = FLOAT_RE.findall(line)
+    if not matches:
+        return None
+    return float(matches[-1])
+
+
+def validate_output(example: Example, output: Path) -> tuple[bool, str]:
+    if "PROGRAM ENDED" not in output.read_text(errors="replace"):
+        return False, "missing PROGRAM ENDED"
+
+    if not example.check_pattern:
+        return True, summarize_output(output)
+
+    line = matching_line(output, example.check_pattern)
+    if not line:
+        return False, f"missing marker: {example.check_pattern}"
+
+    if example.expected_value is None:
+        return True, line
+
+    actual = extract_last_number(line)
+    if actual is None:
+        return False, f"marker has no numeric value: {line}"
+
+    tolerance = example.tolerance if example.tolerance is not None else 0.0
+    delta = abs(actual - example.expected_value)
+    if delta > tolerance:
+        return (
+            False,
+            f"value {actual:.16g} differs from expected {example.expected_value:.16g} "
+            f"by {delta:.3g} > {tolerance:.3g}: {line}",
+        )
+    return True, line
 
 
 def summarize_output(output: Path) -> str:
@@ -131,10 +203,8 @@ def run_example(
     if not output.exists():
         return Result(example, elapsed, False, completed.returncode, output, "missing output")
 
-    summary = summarize_output(output)
-    if "PROGRAM ENDED" not in output.read_text(errors="replace"):
-        return Result(example, elapsed, False, completed.returncode, output, "missing PROGRAM ENDED")
-    return Result(example, elapsed, True, completed.returncode, output, summary)
+    ok, message = validate_output(example, output)
+    return Result(example, elapsed, ok, completed.returncode, output, message)
 
 
 def parse_args() -> argparse.Namespace:
@@ -147,6 +217,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--work-dir", type=Path, default=None)
     parser.add_argument("--keep", action="store_true", help="keep the temporary work directory")
     parser.add_argument("--list", action="store_true", help="list selected examples without running")
+    parser.add_argument("--quick", action="store_true", help="run only the quick manifest subset")
     parser.add_argument("--only", action="append", default=[], help="glob for input paths")
     return parser.parse_args()
 
@@ -158,7 +229,7 @@ def main() -> int:
     if args.omp_threads < 1:
         raise SystemExit("--omp-threads must be at least 1")
 
-    examples = select_examples(read_manifest(), args.only)
+    examples = select_examples(read_manifest(), args.only, args.quick)
     if args.list:
         for example in examples:
             print(example.path)
@@ -176,6 +247,8 @@ def main() -> int:
     print(f"Work directory: {work_root}", flush=True)
     print(f"Examples: {len(examples)}", flush=True)
     print(f"Jobs: {args.jobs}; OMP threads per job: {args.omp_threads}", flush=True)
+    if args.quick:
+        print("Mode: quick", flush=True)
 
     results: list[Result] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as executor:

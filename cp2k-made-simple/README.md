@@ -3,7 +3,7 @@
 This directory collects CP2K input material associated with the paper
 ["The CP2K Program Package Made Simple"](https://doi.org/10.1021/acs.jpcb.5c05851).
 
-The directory has two parts:
+The directory has four parts:
 
 - `runnable/` contains small, complete input files derived from selected paper snippets. They
   can be run directly with a CP2K binary and a standard CP2K data directory. The inputs are
@@ -11,6 +11,9 @@ The directory has two parts:
 - `paper-snippets/` contains 91 CP2K input fragments extracted from the paper. Many of these
   fragments intentionally show only the method-specific section and contain placeholders such as
   `...`, so they are not standalone calculations.
+- `guided-workflows/` groups runnable inputs into short learning paths.
+- `optional-workflows/` records larger, dependency-sensitive, or multi-stage workflows that are
+  better documented separately from the compact smoke-test inputs.
 
 The full list of extracted snippets is in `manifest.tsv`. The snippet numbering follows the order
 of code blocks in the paper HTML source used for extraction.
@@ -34,6 +37,12 @@ larger GW, BSE, SIRIUS, real-time XAS, and LIBVORI-dependent workflows are track
 
 The complete examples in `runnable/` are curated derived inputs. Each file header lists the
 paper snippets it is based on; the raw extracted snippets remain unchanged in `paper-snippets/`.
+
+For a quick local smoke test of representative inputs:
+
+```bash
+python3 runnable/run_smoke_tests.py --cp2k /path/to/cp2k.psmp --data-dir /path/to/cp2k/data --quick
+```
 
 See `runnable/README.md` for the full runnable-example table and local test results.
 The `guided-workflows/` directory groups runnable examples into short learning paths, while

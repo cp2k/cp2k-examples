@@ -1,34 +1,34 @@
-file	topic	snippets	test_status	result
-02-total-energy-and-force-methods/h2o-gpw-pbe.inp	GPW/PBE single point	001,002	passed	energy -17.212337144585153 Ha
-02-total-energy-and-force-methods/h2o-gpw-ot.inp	GPW/PBE with OT	001,005,006	passed	energy -17.212337144506982 Ha
-02-total-energy-and-force-methods/h2o-gpw-smearing.inp	GPW/PBE with diagonalization and smearing	001,005	passed	energy -17.212334309139813 Ha
-02-total-energy-and-force-methods/h2o-gapw-all-electron.inp	all-electron GAPW/PBE	003,004	passed	energy -76.238068224190314 Ha
-02-total-energy-and-force-methods/h2o-pbe0-admm.inp	hybrid DFT with ADMM	010,011,012,013	passed	energy -17.151344159601688 Ha
-02-total-energy-and-force-methods/h2o-dft-plus-u.inp	DFT+U setup	022,023,024,025	passed	energy -17.180669501745012 Ha
-02-total-energy-and-force-methods/h2o-ri-mp2.inp	RI-MP2 correlation	016,017	passed	energy -17.170315778164436 Ha
-03-electronic-band-structure/diamond-kpoints-band-structure.inp	k-point band output	007,008,030,031	passed	energy -45.498947901745879 Ha
-04-embedding-methods/h2o-sccs-solvation.inp	SCCS implicit solvation	032,033,034,035	passed	energy -17.226540497029429 Ha
-04-embedding-methods/h2o-qmmm-gaussian.inp	Gaussian electrostatic QMMM	036,037,038,039	passed	energy -16.860414497766239 Ha
-04-embedding-methods/ch3oh-resp-charges.inp	RESP charge fitting	040,041,042	passed	energy -23.909587912298466 Ha; RESP RMS 7.55141E-05
-04-embedding-methods/h2o-h2-dfet.inp	density functional embedding	043,044,045,046,047,048,049	passed	energy -18.321636385557674 Ha
-05-magnetic-resonance/h2o-nmr-linear-response.inp	NMR linear response	050,051,052,053	passed	shielding checksum 0.605916E+02
-05-magnetic-resonance/no2-epr-g-tensor.inp	EPR g-tensor linear response	050,054	passed	EPR checksum -0.130768E-02
-05-magnetic-resonance/h2o-hyperfine-coupling.inp	EPR hyperfine coupling tensor	055	passed	O Sca-Rel A_iso -118.2292921806 MHz; energy -75.901123242692378 Ha
-06-optical-spectroscopy/h2o-tddfpt.inp	linear-response TDDFPT	056	passed	first excitation 8.43471 eV
-06-optical-spectroscopy/h2o-stda-tddfpt.inp	sTDA-TDDFPT	057,058,059	passed	first excitation 7.86094 eV
-07-excited-state-dynamics/h2o-real-time-propagation.inp	real-time propagation	061,069	passed	final total energy -17.17816551662580 Ha
-08-x-ray-spectroscopy/co-xas-transition-potential.inp	XAS transition potential	064	passed	energy -92.844208496940453 Ha
-08-x-ray-spectroscopy/h2o-xastdp-gw2x.inp	XAS_TDP with GW2X correction	065,066,067	passed	first XAS excitation 538.170258 eV; energy -75.956287566248847 Ha
-08-x-ray-spectroscopy/h2o-real-time-gaussian-field.inp	real-time propagation with Gaussian field	070	passed	final RTP energy -17.17816621169307 Ha
-09-energy-decomposition-analysis/h2o-almo-eda.inp	ALMO energy decomposition	071,073	passed	energy -85.963743073058524 Ha
-09-energy-decomposition-analysis/lif-almo-ionic.inp	ionic ALMO electron assignment	072,073	passed	energy -127.539319485670845 Ha
-10-finite-temperature-effects/h2o-nnp-committee-md.inp	committee NNP molecular dynamics	074,075,076	passed	final energy 58.648809523054418 Ha
-10-finite-temperature-effects/h2o-nnp-biased-md.inp	biased committee NNP molecular dynamics	074,075,076,077	passed	final energy 58.661222155637667 Ha
-10-finite-temperature-effects/h2o-pint-nve.inp	path-integral molecular dynamics	078	passed	final PINT energy -17.137402749384318 Ha
-10-finite-temperature-effects/h2o-pint-nose.inp	PINT with Nose thermostat	078,079	passed	final PINT energy -17.129535930553633 Ha
-10-finite-temperature-effects/h2o-pint-pile.inp	PINT with PILE thermostat	078,080	passed	final PINT energy -68.549498536850606 Ha
-10-finite-temperature-effects/h2o-pint-qtb.inp	PINT with QTB thermostat	078,081	passed	final PINT energy -68.549621077706419 Ha
-10-finite-temperature-effects/h2o-vibrational-analysis.inp	vibrational analysis	086	passed	first frequencies 0.000000 cm^-1
-10-finite-temperature-effects/h2o-periodic-efield.inp	periodic electric field	087,090	passed	energy -16.553933618515682 Ha
-10-finite-temperature-effects/h2o-orbital-localization.inp	orbital localization and Wannier centers	088	passed	localization converged in 26 iterations; energy -17.186709451452117 Ha
-10-finite-temperature-effects/h2o-linear-response-polarizability.inp	linear-response polarizability	091	passed	polarizability xx/yy/zz 0.006179870499/0.958172935260/0.397344896793 ang^3
+file	topic	snippets	test_status	result	check_pattern	expected_value	tolerance	quick	requires_feature
+02-total-energy-and-force-methods/h2o-gpw-pbe.inp	GPW/PBE single point	001,002	passed	energy -17.212337144585153 Ha	ENERGY| Total FORCE_EVAL	-17.212337144585153	1e-10	yes	-
+02-total-energy-and-force-methods/h2o-gpw-ot.inp	GPW/PBE with OT	001,005,006	passed	energy -17.212337144506982 Ha	ENERGY| Total FORCE_EVAL	-17.212337144506982	1e-10	no	-
+02-total-energy-and-force-methods/h2o-gpw-smearing.inp	GPW/PBE with diagonalization and smearing	001,005	passed	energy -17.212334309139813 Ha	ENERGY| Total FORCE_EVAL	-17.212334309139813	1e-10	no	-
+02-total-energy-and-force-methods/h2o-gapw-all-electron.inp	all-electron GAPW/PBE	003,004	passed	energy -76.238068224190314 Ha	ENERGY| Total FORCE_EVAL	-76.238068224190314	1e-10	no	-
+02-total-energy-and-force-methods/h2o-pbe0-admm.inp	hybrid DFT with ADMM	010,011,012,013	passed	energy -17.151344159601688 Ha	ENERGY| Total FORCE_EVAL	-17.151344159601688	1e-10	no	-
+02-total-energy-and-force-methods/h2o-dft-plus-u.inp	DFT+U setup	022,023,024,025	passed	energy -17.180669501745012 Ha	ENERGY| Total FORCE_EVAL	-17.180669501745012	1e-10	yes	-
+02-total-energy-and-force-methods/h2o-ri-mp2.inp	RI-MP2 correlation	016,017	passed	energy -17.170315778164436 Ha	ENERGY| Total FORCE_EVAL	-17.170315778164436	1e-10	no	-
+03-electronic-band-structure/diamond-kpoints-band-structure.inp	k-point band output	007,008,030,031	passed	energy -45.498947901745879 Ha	ENERGY| Total FORCE_EVAL	-45.498947901745879	1e-10	no	-
+04-embedding-methods/h2o-sccs-solvation.inp	SCCS implicit solvation	032,033,034,035	passed	energy -17.226540497029429 Ha	ENERGY| Total FORCE_EVAL	-17.226540497029429	1e-10	no	-
+04-embedding-methods/h2o-qmmm-gaussian.inp	Gaussian electrostatic QMMM	036,037,038,039	passed	energy -16.860414497766239 Ha	ENERGY| Total FORCE_EVAL	-16.860414497766239	1e-10	yes	-
+04-embedding-methods/ch3oh-resp-charges.inp	RESP charge fitting	040,041,042	passed	energy -23.909587912298466 Ha; RESP RMS 7.55141E-05	ENERGY| Total FORCE_EVAL	-23.909587912298466	1e-10	no	-
+04-embedding-methods/h2o-h2-dfet.inp	density functional embedding	043,044,045,046,047,048,049	passed	energy -18.321636385557674 Ha	ENERGY| Total FORCE_EVAL	-18.321636385557674	1e-10	no	-
+05-magnetic-resonance/h2o-nmr-linear-response.inp	NMR linear response	050,051,052,053	passed	shielding checksum 0.605916E+02	Localization  for spin	12	0	yes	-
+05-magnetic-resonance/no2-epr-g-tensor.inp	EPR g-tensor linear response	050,054	passed	EPR checksum -0.130768E-02	Localization  for spin   2	10	0	no	-
+05-magnetic-resonance/h2o-hyperfine-coupling.inp	EPR hyperfine coupling tensor	055	passed	O Sca-Rel A_iso -118.2292921806 MHz; energy -75.901123242692378 Ha	1 O   17	-118.2292921806	1e-7	no	-
+06-optical-spectroscopy/h2o-tddfpt.inp	linear-response TDDFPT	056	passed	first excitation 8.43471 eV	ENERGY| Total FORCE_EVAL	-17.212337144586243	1e-10	no	-
+06-optical-spectroscopy/h2o-stda-tddfpt.inp	sTDA-TDDFPT	057,058,059	passed	first excitation 7.86094 eV	ENERGY| Total FORCE_EVAL	-17.226633774428187	1e-10	yes	-
+07-excited-state-dynamics/h2o-real-time-propagation.inp	real-time propagation	061,069	passed	final total energy -17.17816551662580 Ha	Total energy:	-17.17816551662580	1e-10	no	-
+08-x-ray-spectroscopy/co-xas-transition-potential.inp	XAS transition potential	064	passed	energy -92.844208496940453 Ha	ENERGY| Total FORCE_EVAL	-92.844208496940453	1e-10	no	-
+08-x-ray-spectroscopy/h2o-xastdp-gw2x.inp	XAS_TDP with GW2X correction	065,066,067	passed	first XAS excitation 538.170258 eV; energy -75.956287566248847 Ha	ENERGY| Total FORCE_EVAL	-75.956287566248847	1e-10	no	-
+08-x-ray-spectroscopy/h2o-real-time-gaussian-field.inp	real-time propagation with Gaussian field	070	passed	final RTP energy -17.17816621169307 Ha	Total energy:	-17.17816621169307	1e-10	yes	-
+09-energy-decomposition-analysis/h2o-almo-eda.inp	ALMO energy decomposition	071,073	passed	energy -85.963743073058524 Ha	ENERGY| Total FORCE_EVAL	-85.963743073058524	1e-10	no	-
+09-energy-decomposition-analysis/lif-almo-ionic.inp	ionic ALMO electron assignment	072,073	passed	energy -127.539319485670845 Ha	ENERGY| Total FORCE_EVAL	-127.539319485670845	1e-10	no	-
+10-finite-temperature-effects/h2o-nnp-committee-md.inp	committee NNP molecular dynamics	074,075,076	passed	final energy 58.648809523054418 Ha	ENERGY| Total FORCE_EVAL	58.648809523054418	1e-10	yes	NNP data
+10-finite-temperature-effects/h2o-nnp-biased-md.inp	biased committee NNP molecular dynamics	074,075,076,077	passed	final energy 58.661222155637667 Ha	ENERGY| Total FORCE_EVAL	58.661222155637667	1e-10	no	NNP data
+10-finite-temperature-effects/h2o-pint-nve.inp	path-integral molecular dynamics	078	passed	final PINT energy -17.137402749384318 Ha	PINT| Total energy	-17.137402749384318	1e-10	no	-
+10-finite-temperature-effects/h2o-pint-nose.inp	PINT with Nose thermostat	078,079	passed	final PINT energy -17.129535930553633 Ha	PINT| Total energy	-17.129535930553633	1e-10	no	-
+10-finite-temperature-effects/h2o-pint-pile.inp	PINT with PILE thermostat	078,080	passed	final PINT energy -68.549498536850606 Ha	PINT| Total energy	-68.549498536850606	1e-10	no	-
+10-finite-temperature-effects/h2o-pint-qtb.inp	PINT with QTB thermostat	078,081	passed	final PINT energy -68.549621077706419 Ha	PINT| Total energy	-68.549621077706419	1e-10	no	-
+10-finite-temperature-effects/h2o-vibrational-analysis.inp	vibrational analysis	086	passed	first frequencies 0.000000 cm^-1	VIB|                                     Total energy	0.0	1e-12	no	-
+10-finite-temperature-effects/h2o-periodic-efield.inp	periodic electric field	087,090	passed	energy -16.553933618515682 Ha	ENERGY| Total FORCE_EVAL	-16.553933618515682	1e-10	no	-
+10-finite-temperature-effects/h2o-orbital-localization.inp	orbital localization and Wannier centers	088	passed	localization converged in 26 iterations; energy -17.186709451452117 Ha	Localization  for spin	26	0	yes	-
+10-finite-temperature-effects/h2o-linear-response-polarizability.inp	linear-response polarizability	091	passed	polarizability xx/yy/zz 0.006179870499/0.958172935260/0.397344896793 ang^3	POLAR| xx,yy,zz	0.397344896793	1e-10	yes	-

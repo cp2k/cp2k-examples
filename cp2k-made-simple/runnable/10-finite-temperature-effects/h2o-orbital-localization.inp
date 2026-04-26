@@ -1,0 +1,57 @@
+! Quickstep/GPW water orbital-localization calculation with Wannier centers.
+! Derived from CP2K Made Simple snippet 088.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT h2o-orbital-localization
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME GTH_BASIS_SETS
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &LOCALIZE
+      EPS_LOCALIZATION 1.0E-10
+      METHOD L1SD
+      &PRINT
+        &WANNIER_CENTERS
+        &END WANNIER_CENTERS
+      &END PRINT
+    &END LOCALIZE
+    &MGRID
+      CUTOFF 200
+    &END MGRID
+    &QS
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-6
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 7.0 7.0 7.0
+    &END CELL
+    &COORD
+      O  0.000000  0.000000 -0.065587
+      H  0.000000 -0.757136  0.520545
+      H  0.000000  0.757136  0.520545
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

@@ -32,10 +32,20 @@ and ALMO energy decomposition.
 2. `../runnable/06-optical-spectroscopy/h2o-stda-tddfpt.inp`
 3. `../runnable/08-x-ray-spectroscopy/co-xas-transition-potential.inp`
 4. `../runnable/08-x-ray-spectroscopy/h2o-xastdp-gw2x.inp`
-5. `../runnable/10-finite-temperature-effects/h2o-linear-response-polarizability.inp`
+5. `../runnable/08-x-ray-spectroscopy/h2o-real-time-gaussian-field.inp`
+6. `../runnable/10-finite-temperature-effects/h2o-linear-response-polarizability.inp`
 
 This path walks through optical TDDFPT, sTDA, transition-potential XAS, XAS_TDP with GW2X, and a
-small linear-response polarizability calculation.
+short real-time Gaussian-field propagation before a small linear-response polarizability
+calculation.
+
+## Magnetic Response
+
+1. `../runnable/05-magnetic-resonance/h2o-nmr-linear-response.inp`
+2. `../runnable/05-magnetic-resonance/no2-epr-g-tensor.inp`
+3. `../runnable/05-magnetic-resonance/h2o-hyperfine-coupling.inp`
+
+This path covers NMR shielding, the EPR g-tensor, and EPR hyperfine coupling tensors.
 
 ## Finite-Temperature Methods
 
@@ -44,6 +54,8 @@ small linear-response polarizability calculation.
 3. `../runnable/10-finite-temperature-effects/h2o-pint-nve.inp`
 4. `../runnable/10-finite-temperature-effects/h2o-pint-pile.inp`
 5. `../runnable/10-finite-temperature-effects/h2o-vibrational-analysis.inp`
+6. `../runnable/10-finite-temperature-effects/h2o-periodic-efield.inp`
+7. `../runnable/10-finite-temperature-effects/h2o-orbital-localization.inp`
 
 This path covers committee neural-network potentials, a biased NNP trajectory, path-integral MD,
-and a static vibrational analysis.
+a static vibrational analysis, a periodic electric field, and orbital localization.

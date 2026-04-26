@@ -13,11 +13,13 @@ file	topic	snippets	test_status	result
 04-embedding-methods/h2o-h2-dfet.inp	density functional embedding	043,044,045,046,047,048,049	passed	energy -18.321636385557674 Ha
 05-magnetic-resonance/h2o-nmr-linear-response.inp	NMR linear response	050,051,052,053	passed	shielding checksum 0.605916E+02
 05-magnetic-resonance/no2-epr-g-tensor.inp	EPR g-tensor linear response	050,054	passed	EPR checksum -0.130768E-02
+05-magnetic-resonance/h2o-hyperfine-coupling.inp	EPR hyperfine coupling tensor	055	passed	O Sca-Rel A_iso -118.2292921806 MHz; energy -75.901123242692378 Ha
 06-optical-spectroscopy/h2o-tddfpt.inp	linear-response TDDFPT	056	passed	first excitation 8.43471 eV
 06-optical-spectroscopy/h2o-stda-tddfpt.inp	sTDA-TDDFPT	057,058,059	passed	first excitation 7.86094 eV
 07-excited-state-dynamics/h2o-real-time-propagation.inp	real-time propagation	061,069	passed	final total energy -17.17816551662580 Ha
 08-x-ray-spectroscopy/co-xas-transition-potential.inp	XAS transition potential	064	passed	energy -92.844208496940453 Ha
 08-x-ray-spectroscopy/h2o-xastdp-gw2x.inp	XAS_TDP with GW2X correction	065,066,067	passed	first XAS excitation 538.170258 eV; energy -75.956287566248847 Ha
+08-x-ray-spectroscopy/h2o-real-time-gaussian-field.inp	real-time propagation with Gaussian field	070	passed	final RTP energy -17.17816621169307 Ha
 09-energy-decomposition-analysis/h2o-almo-eda.inp	ALMO energy decomposition	071,073	passed	energy -85.963743073058524 Ha
 09-energy-decomposition-analysis/lif-almo-ionic.inp	ionic ALMO electron assignment	072,073	passed	energy -127.539319485670845 Ha
 10-finite-temperature-effects/h2o-nnp-committee-md.inp	committee NNP molecular dynamics	074,075,076	passed	final energy 58.648809523054418 Ha
@@ -28,4 +30,5 @@ file	topic	snippets	test_status	result
 10-finite-temperature-effects/h2o-pint-qtb.inp	PINT with QTB thermostat	078,081	passed	final PINT energy -68.549621077706419 Ha
 10-finite-temperature-effects/h2o-vibrational-analysis.inp	vibrational analysis	086	passed	first frequencies 0.000000 cm^-1
 10-finite-temperature-effects/h2o-periodic-efield.inp	periodic electric field	087,090	passed	energy -16.553933618515682 Ha
+10-finite-temperature-effects/h2o-orbital-localization.inp	orbital localization and Wannier centers	088	passed	localization converged in 26 iterations; energy -17.186709451452117 Ha
 10-finite-temperature-effects/h2o-linear-response-polarizability.inp	linear-response polarizability	091	passed	polarizability xx/yy/zz 0.006179870499/0.958172935260/0.397344896793 ang^3

@@ -76,10 +76,13 @@ def select_examples(examples: list[Example], patterns: list[str]) -> list[Exampl
 def summarize_output(output: Path) -> str:
     markers = (
         "ENERGY| Total FORCE_EVAL",
+        "Total energy:",
         "PINT| Total energy",
         "First singlet XAS excitation energy",
         "POLAR| xx,yy,zz",
         "Excitation energy",
+        "Sca-Rel A_iso",
+        "Localization  for spin",
     )
     summary = ""
     with output.open(errors="replace") as handle:

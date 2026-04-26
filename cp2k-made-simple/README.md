@@ -21,12 +21,16 @@ The derived complete examples are listed in `runnable/manifest.tsv`.
 From this directory, run for example:
 
 ```bash
+export OMP_NUM_THREADS=1
 cp2k.psmp -i runnable/02-total-energy-and-force-methods/h2o-gpw-pbe.inp -o h2o-gpw-pbe.out
 cp2k.psmp -i runnable/09-energy-decomposition-analysis/h2o-almo-eda.inp -o h2o-almo-eda.out
 ```
 
 If CP2K was built without a configured data directory, set `CP2K_DATA_DIR` to the CP2K `data`
-directory before running.
+directory before running. For quick local checks, prefer a single OpenMP thread and a separate
+work directory or output file for each calculation. The runnable examples are intentionally small;
+larger GW, BSE, SIRIUS, real-time XAS, and LIBVORI-dependent workflows are tracked separately in
+`optional-workflows/`.
 
 The complete examples in `runnable/` are curated derived inputs. Each file header lists the
 paper snippets it is based on; the raw extracted snippets remain unchanged in `paper-snippets/`.

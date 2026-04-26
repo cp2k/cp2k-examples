@@ -45,5 +45,6 @@ python3 runnable/run_smoke_tests.py --cp2k /path/to/cp2k.psmp --data-dir /path/t
 ```
 
 See `runnable/README.md` for the full runnable-example table and local test results.
+That table is generated from `runnable/manifest.tsv` with `runnable/generate_readme.py`.
 The `guided-workflows/` directory groups runnable examples into short learning paths, while
 `optional-workflows/` records larger or dependency-sensitive candidates for future examples.

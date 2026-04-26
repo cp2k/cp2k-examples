@@ -22,17 +22,25 @@ small standalone calculations. The directory names follow the paper chapters.
 | `04-embedding-methods/h2o-sccs-solvation.inp` | SCCS implicit solvation | 032, 033, 034, 035 | energy -17.226540497029429 Ha |
 | `04-embedding-methods/h2o-qmmm-gaussian.inp` | Gaussian electrostatic QMMM | 036, 037, 038, 039 | energy -16.860414497766239 Ha |
 | `04-embedding-methods/ch3oh-resp-charges.inp` | RESP charge fitting | 040, 041, 042 | energy -23.909587912298466 Ha; RESP RMS 7.55141E-05 |
+| `04-embedding-methods/h2o-h2-dfet.inp` | density functional embedding | 043, 044, 045, 046, 047, 048, 049 | energy -18.321636385557674 Ha |
 | `05-magnetic-resonance/h2o-nmr-linear-response.inp` | NMR linear response | 050, 051, 052, 053 | shielding checksum 0.605916E+02 |
 | `05-magnetic-resonance/no2-epr-g-tensor.inp` | EPR g-tensor linear response | 050, 054 | EPR checksum -0.130768E-02 |
 | `06-optical-spectroscopy/h2o-tddfpt.inp` | linear-response TDDFPT | 056 | first excitation 8.43471 eV |
 | `06-optical-spectroscopy/h2o-stda-tddfpt.inp` | sTDA-TDDFPT | 057, 058, 059 | first excitation 7.86094 eV |
 | `07-excited-state-dynamics/h2o-real-time-propagation.inp` | real-time propagation | 061, 069 | final total energy -17.17816551662580 Ha |
 | `08-x-ray-spectroscopy/co-xas-transition-potential.inp` | XAS transition potential | 064 | energy -92.844208496940453 Ha |
+| `08-x-ray-spectroscopy/h2o-xastdp-gw2x.inp` | XAS_TDP with GW2X correction | 065, 066, 067 | first XAS excitation 538.170258 eV; energy -75.956287566248847 Ha |
 | `09-energy-decomposition-analysis/h2o-almo-eda.inp` | ALMO energy decomposition | 071, 073 | energy -85.963743073058524 Ha |
 | `09-energy-decomposition-analysis/lif-almo-ionic.inp` | ionic ALMO electron assignment | 072, 073 | energy -127.539319485670845 Ha |
 | `10-finite-temperature-effects/h2o-nnp-committee-md.inp` | committee NNP molecular dynamics | 074, 075, 076 | final energy 58.648809523054418 Ha |
+| `10-finite-temperature-effects/h2o-nnp-biased-md.inp` | biased committee NNP molecular dynamics | 074, 075, 076, 077 | final energy 58.661222155637667 Ha |
 | `10-finite-temperature-effects/h2o-pint-nve.inp` | path-integral molecular dynamics | 078 | final PINT energy -17.137402749384318 Ha |
+| `10-finite-temperature-effects/h2o-pint-nose.inp` | PINT with Nose thermostat | 078, 079 | final PINT energy -17.129535930553633 Ha |
+| `10-finite-temperature-effects/h2o-pint-pile.inp` | PINT with PILE thermostat | 078, 080 | final PINT energy -68.549498536850606 Ha |
+| `10-finite-temperature-effects/h2o-pint-qtb.inp` | PINT with QTB thermostat | 078, 081 | final PINT energy -68.549621077706419 Ha |
 | `10-finite-temperature-effects/h2o-vibrational-analysis.inp` | vibrational analysis | 086 | first frequencies 0.000000 cm^-1 |
+| `10-finite-temperature-effects/h2o-periodic-efield.inp` | periodic electric field | 087, 090 | energy -16.553933618515682 Ha |
+| `10-finite-temperature-effects/h2o-linear-response-polarizability.inp` | linear-response polarizability | 091 | polarizability xx/yy/zz 0.006179870499/0.958172935260/0.397344896793 ang^3 |
 
 Run from this directory, for example:
 

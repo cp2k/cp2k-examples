@@ -1,0 +1,80 @@
+! All-electron GAPW water XAS_TDP calculation with a GW2X correction.
+! Derived from CP2K Made Simple snippets 065, 066, and 067.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-xastdp-gw2x
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    AUTO_BASIS RI_XAS MEDIUM
+    BASIS_SET_FILE_NAME EMSL_BASIS_SETS
+    POTENTIAL_FILE_NAME POTENTIAL
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT
+    &END POISSON
+    &QS
+      METHOD GAPW
+    &END QS
+    &XAS_TDP
+      DIPOLE_FORM LENGTH
+      GRID O 150 150
+      TAMM_DANCOFF .FALSE.
+      &DONOR_STATES
+        DEFINE_EXCITED BY_KIND
+        KIND_LIST O
+        LOCALIZE
+        N_SEARCH 1
+        STATE_TYPES 1s
+      &END DONOR_STATES
+      &GW2X
+        PSEUDO_CANONICAL T
+      &END GW2X
+      &KERNEL
+        &EXACT_EXCHANGE
+          FRACTION 0.2
+        &END EXACT_EXCHANGE
+        &XC_FUNCTIONAL
+          &HYB_GGA_XC_B3LYP5
+          &END HYB_GGA_XC_B3LYP5
+        &END XC_FUNCTIONAL
+      &END KERNEL
+    &END XAS_TDP
+    &XC
+      &HF
+        FRACTION 0.2
+      &END HF
+      &XC_FUNCTIONAL
+        &HYB_GGA_XC_B3LYP5
+        &END HYB_GGA_XC_B3LYP5
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 5.0 5.0 5.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O   0.00000   0.00000   0.11779
+      H   0.00000   0.75545  -0.47116
+      H   0.00000  -0.75545  -0.47116
+    &END COORD
+    &KIND O
+      BASIS_SET Ahlrichs-def2-SVP
+      POTENTIAL ALL
+    &END KIND
+    &KIND H
+      BASIS_SET Ahlrichs-def2-SVP
+      POTENTIAL ALL
+    &END KIND
+    &TOPOLOGY
+      &CENTER_COORDINATES
+      &END CENTER_COORDINATES
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL

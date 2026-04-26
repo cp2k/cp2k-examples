@@ -1,0 +1,63 @@
+! Quickstep/GPW water calculation with a periodic electric field and moments output.
+! Derived from CP2K Made Simple snippets 087 and 090.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-periodic-efield
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME GTH_BASIS_SETS
+    POTENTIAL_FILE_NAME POTENTIAL
+    &MGRID
+      CUTOFF 200
+    &END MGRID
+    &PERIODIC_EFIELD
+      INTENSITY 0.001
+      POLARISATION 1 0 0
+    &END PERIODIC_EFIELD
+    &PRINT
+      &MOMENTS
+      &END MOMENTS
+    &END PRINT
+    &QS
+      EPS_DEFAULT 1.0E-12
+      EXTRAPOLATION PS
+      EXTRAPOLATION_ORDER 2
+      METHOD GPW
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-6
+      IGNORE_CONVERGENCE_FAILURE
+      MAX_SCF 6
+      SCF_GUESS ATOMIC
+      &OT
+      &END OT
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PADE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 6.0 6.0 6.0
+    &END CELL
+    &COORD
+      O  0.000000  0.000000 -0.065587 H2O
+      H  0.000000 -0.757136  0.520545 H2O
+      H  0.000000  0.757136  0.520545 H2O
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

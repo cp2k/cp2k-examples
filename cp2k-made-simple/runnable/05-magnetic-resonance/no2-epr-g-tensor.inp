@@ -1,0 +1,77 @@
+! Quickstep/GPW NO2 EPR g-tensor calculation using linear response.
+! Derived from CP2K Made Simple snippets 050 and 054.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT no2-epr-g-tensor
+  RUN_TYPE LINEAR_RESPONSE
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME GTH_BASIS_SETS
+    LSD
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      CUTOFF 150
+    &END MGRID
+    &QS
+      EPS_RHO_GSPACE 1.0E-4
+      EPS_RHO_RSPACE 1.0E-4
+      METHOD GPW
+    &END QS
+    &SCF
+      IGNORE_CONVERGENCE_FAILURE
+      MAX_SCF 5
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PADE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &PROPERTIES
+    &LINRES
+      MAX_ITER 5
+      PRECONDITIONER FULL_ALL
+      &CURRENT
+        GAUGE R_AND_STEP_FUNCTION
+      &END CURRENT
+      &EPR
+        &PRINT
+          &G_TENSOR
+            &XC
+              &XC_FUNCTIONAL
+                &XALPHA
+                &END XALPHA
+              &END XC_FUNCTIONAL
+            &END XC
+          &END G_TENSOR
+        &END PRINT
+      &END EPR
+      &LOCALIZE
+        MAX_ITER 10
+        METHOD CRAZY
+      &END LOCALIZE
+    &END LINRES
+  &END PROPERTIES
+  &SUBSYS
+    &CELL
+      ABC 6.0 6.0 6.0
+    &END CELL
+    &COORD
+      N  0.000000  0.000000  0.000000
+      O  0.000000  0.000000  1.207900
+      O  0.872252  0.000000 -0.835583
+    &END COORD
+    &KIND N
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-PADE-q5
+    &END KIND
+    &KIND O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-PADE-q6
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

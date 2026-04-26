@@ -1,0 +1,69 @@
+! Quickstep/GPW water sTDA-TDDFPT calculation.
+! Derived from CP2K Made Simple snippets 057, 058, and 059.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-stda-tddfpt
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_SET
+    POTENTIAL_FILE_NAME POTENTIAL
+    &MGRID
+      CUTOFF 100
+    &END MGRID
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER WAVELET
+    &END POISSON
+    &QS
+      METHOD GPW
+    &END QS
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &PROPERTIES
+    &TDDFPT
+      CONVERGENCE [eV] 1.0E-5
+      KERNEL STDA
+      MAX_ITER 50
+      NSTATES 3
+      &STDA
+        DO_EXCHANGE F
+        FRACTION 0.0
+      &END STDA
+    &END TDDFPT
+  &END PROPERTIES
+  &SUBSYS
+    &CELL
+      ABC 8.0 8.0 8.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O  0.000000  0.000000 -0.065587 H2O
+      H  0.000000 -0.757136  0.520545 H2O
+      H  0.000000  0.757136  0.520545 H2O
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-GTH-PADE
+      POTENTIAL GTH-PADE-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH-PADE
+      POTENTIAL GTH-PADE-q1
+    &END KIND
+    &TOPOLOGY
+      &CENTER_COORDINATES
+      &END CENTER_COORDINATES
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL

@@ -1,0 +1,80 @@
+! Quickstep/GPW water single-point calculation with RI-MP2 correlation.
+! Derived from CP2K Made Simple snippets 016 and 017.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-ri-mp2
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME HFX_BASIS
+    POTENTIAL_FILE_NAME POTENTIAL
+    &MGRID
+      CUTOFF 100
+      REL_CUTOFF 20
+    &END MGRID
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER WAVELET
+    &END POISSON
+    &QS
+      EPS_DEFAULT 1.0E-12
+      METHOD GPW
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-6
+      MAX_SCF 80
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &HF
+        FRACTION 1.0
+        &SCREENING
+          EPS_SCHWARZ 1.0E-8
+        &END SCREENING
+      &END HF
+      &WF_CORRELATION
+        MEMORY 200
+        NUMBER_PROC 1
+        &INTEGRALS
+          &WFC_GPW
+            CUTOFF 100
+            EPS_FILTER 1.0E-6
+            EPS_GRID 1.0E-6
+            REL_CUTOFF 20
+          &END WFC_GPW
+        &END INTEGRALS
+        &RI_MP2
+          BLOCK_SIZE 2
+          NUMBER_INTEGRATION_GROUPS 1
+        &END RI_MP2
+      &END WF_CORRELATION
+      &XC_FUNCTIONAL NONE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 7.0 7.0 7.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O  3.5000  3.5000  3.5000
+      H  4.2586  3.5000  4.0043
+      H  2.7414  3.5000  4.0043
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-GTH
+      BASIS_SET RI_AUX RI_DZVP-GTH
+      POTENTIAL GTH-HF-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH
+      BASIS_SET RI_AUX RI_DZVP-GTH
+      POTENTIAL GTH-HF-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

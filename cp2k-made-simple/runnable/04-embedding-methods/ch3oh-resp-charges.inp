@@ -1,0 +1,93 @@
+! Quickstep/GPW methanol calculation with RESP charge fitting.
+! Derived from CP2K Made Simple snippets 040, 041, and 042.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT ch3oh-resp-charges
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_SET
+    POTENTIAL_FILE_NAME POTENTIAL
+    &MGRID
+      CUTOFF 120
+    &END MGRID
+    &POISSON
+      PERIODIC NONE
+      PSOLVER MT
+    &END POISSON
+    &QS
+      EPS_DEFAULT 1.0E-10
+      METHOD GPW
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-5
+      MAX_SCF 30
+      SCF_GUESS ATOMIC
+      &OT
+        ENERGY_GAP 0.001
+        PRECONDITIONER FULL_ALL
+      &END OT
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &PROPERTIES
+    &FIT_CHARGE
+    &END FIT_CHARGE
+    &RESP
+      STRIDE 3
+      &CONSTRAINT
+        ATOM_COEF 1.0 -1.0
+        ATOM_LIST 3 4
+        TARGET 0.0
+      &END CONSTRAINT
+      &CONSTRAINT
+        ATOM_COEF 1.0 -1.0
+        ATOM_LIST 3 5
+        TARGET 0.0
+      &END CONSTRAINT
+      &RESTRAINT
+        ATOM_COEF 1.0
+        ATOM_LIST 1
+        STRENGTH 0.0001
+        TARGET 0.569796
+      &END RESTRAINT
+      &SPHERE_SAMPLING
+        RMAX 2.5
+        RMIN 2.1
+      &END SPHERE_SAMPLING
+    &END RESP
+  &END PROPERTIES
+  &SUBSYS
+    &CELL
+      ABC 16.0 16.0 16.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      C  -0.0458   0.6537   0.0000
+      O  -0.0458  -0.7445   0.0000
+      H  -1.0815   0.9731   0.0000
+      H   0.4413   1.0630   0.8859
+      H   0.4413   1.0630  -0.8859
+      H   0.8395  -1.0657   0.0000
+    &END COORD
+    &KIND C
+      BASIS_SET DZVP-GTH-BLYP
+      POTENTIAL GTH-BLYP-q4
+    &END KIND
+    &KIND O
+      BASIS_SET DZVP-GTH-BLYP
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH-BLYP
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

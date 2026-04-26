@@ -1,0 +1,62 @@
+! Quickstep/GPW water NMR shielding calculation using linear response.
+! Derived from CP2K Made Simple snippets 050, 051, 052, and 053.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-nmr-linear-response
+  RUN_TYPE LINEAR_RESPONSE
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME GTH_BASIS_SETS
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      CUTOFF 150
+    &END MGRID
+    &QS
+      METHOD GPW
+    &END QS
+    &SCF
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &PROPERTIES
+    &LINRES
+      MAX_ITER 10
+      PRECONDITIONER FULL_ALL
+      RESTART_EVERY 5
+      &CURRENT
+        GAUGE R_AND_STEP_FUNCTION
+      &END CURRENT
+      &LOCALIZE
+        MAX_ITER 20
+      &END LOCALIZE
+      &NMR
+      &END NMR
+    &END LINRES
+  &END PROPERTIES
+  &SUBSYS
+    &CELL
+      ABC 5.0 5.0 5.0
+    &END CELL
+    &COORD
+      H  0.0006894825 -0.7658546897  1.5515149841
+      H  0.0005929401  0.7679873283  1.5532043240
+      O  0.0462395834  0.0018966979  0.9564530746
+    &END COORD
+    &KIND H
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+    &KIND O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

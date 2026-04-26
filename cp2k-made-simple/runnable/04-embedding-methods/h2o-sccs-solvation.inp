@@ -1,0 +1,76 @@
+! Quickstep/GPW water single-point calculation with SCCS implicit solvation.
+! Derived from CP2K Made Simple snippets 032, 033, 034, and 035.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-sccs-solvation
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      CUTOFF 240
+      NGRIDS 4
+    &END MGRID
+    &QS
+      EPS_DEFAULT 1.0E-8
+      METHOD GPW
+    &END QS
+    &SCCS ON
+      ALPHA [N*m^-1] 0.0
+      BETA [kbar] 0.0
+      DELTA_RHO 2.0E-5
+      DERIVATIVE_METHOD CD5
+      DIELECTRIC_CONSTANT 78.36
+      EPS_SCCS 1.0E-3
+      EPS_SCF 0.03
+      GAMMA [mN/m] 0.0
+      MAX_ITER 80
+      METHOD ANDREUSSI
+      MIXING 0.6
+      &ANDREUSSI
+        RHO_MAX 0.001
+        RHO_MIN 0.0001
+      &END ANDREUSSI
+    &END SCCS
+    &SCF
+      EPS_SCF 1.0E-4
+      MAX_SCF 40
+      SCF_GUESS ATOMIC
+      &OT
+        MINIMIZER DIIS
+        PRECONDITIONER FULL_SINGLE_INVERSE
+      &END OT
+      &OUTER_SCF
+        EPS_SCF 1.0E-4
+        MAX_SCF 20
+      &END OUTER_SCF
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 8.0 8.0 8.0
+    &END CELL
+    &COORD
+      O  4.9999870401  4.5606769781  4.5606769833
+      H  5.0000000491  4.4536015938  5.5327585878
+      H  5.0000000214  5.5327585972  4.4536017371
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

@@ -1,0 +1,93 @@
+! Molecular-mechanics water normal-mode calculation for vibrational analysis.
+! Derived from CP2K Made Simple snippet 086.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-vibrational-analysis
+  RUN_TYPE NORMAL_MODES
+&END GLOBAL
+
+&VIBRATIONAL_ANALYSIS
+  DX 0.001
+  &PRINT
+    &ROTATIONAL_INFO
+      COORDINATES
+    &END ROTATIONAL_INFO
+  &END PRINT
+&END VIBRATIONAL_ANALYSIS
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      &BEND
+        ATOMS HT OT HT
+        K 0.0
+        THETA0 1.8
+      &END BEND
+      &BOND
+        ATOMS OT HT
+        K 0.0
+        R0 1.8
+      &END BOND
+      &CHARGE
+        ATOM OT
+        CHARGE 0.0
+      &END CHARGE
+      &CHARGE
+        ATOM HT
+        CHARGE 0.0
+      &END CHARGE
+      &NONBONDED
+        &LENNARD-JONES
+          ATOMS OT OT
+          EPSILON 0.0
+          RCUT 8.0
+          SIGMA 3.166
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS OT HT
+          EPSILON 0.0
+          RCUT 8.0
+          SIGMA 3.6705
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS HT HT
+          EPSILON 0.0
+          RCUT 8.0
+          SIGMA 3.30523
+        &END LENNARD-JONES
+      &END NONBONDED
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        ALPHA 0.44
+        EWALD_TYPE SPME
+        GMAX 24
+        O_SPLINE 6
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+      ABC 8.0 8.0 8.0
+    &END CELL
+    &COORD
+      OT  3.0024173006  3.0061145185  2.9033933250 WAT
+      HT  3.0015113773  2.2476529266  3.4871245887 WAT
+      HT  3.0017525562  3.7616371430  3.4909306730 WAT
+    &END COORD
+    &KIND OT
+      ELEMENT O
+    &END KIND
+    &KIND HT
+      ELEMENT H
+    &END KIND
+    &TOPOLOGY
+      CONNECTIVITY GENERATE
+      &GENERATE
+        BONDPARM_FACTOR 1.2
+      &END GENERATE
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL

@@ -1,0 +1,56 @@
+! Quickstep/GPW water single-point calculation with DFT+U on oxygen 2p states.
+! Derived from CP2K Made Simple snippets 022, 023, 024, and 025.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-dft-plus-u
+  RUN_TYPE ENERGY
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME GTH_BASIS_SETS
+    PLUS_U_METHOD MULLIKEN_CHARGES
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      CUTOFF 200
+    &END MGRID
+    &QS
+      EPS_DEFAULT 1.0E-8
+      METHOD GPW
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-6
+      MAX_SCF 40
+      SCF_GUESS ATOMIC
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O  5.0000  5.0000  5.0000
+      H  5.7586  5.0000  5.5043
+      H  4.2414  5.0000  5.5043
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-PBE-q6
+      &DFT_PLUS_U
+        L 1
+        U_MINUS_J [eV] 2.0
+      &END DFT_PLUS_U
+    &END KIND
+    &KIND H
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

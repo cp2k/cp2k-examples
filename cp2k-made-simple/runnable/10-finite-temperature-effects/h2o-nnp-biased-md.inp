@@ -1,0 +1,90 @@
+! Single-water molecular dynamics with a biased committee neural-network potential.
+! Derived from CP2K Made Simple snippets 074, 075, 076, and 077.
+! Reference: The CP2K Program Package Made Simple, DOI: 10.1021/acs.jpcb.5c05851
+
+&GLOBAL
+  PROJECT h2o-nnp-biased-md
+  RUN_TYPE MD
+&END GLOBAL
+
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS 10
+    TEMPERATURE 300
+    TIMESTEP 0.5
+    &THERMOSTAT
+      REGION GLOBAL
+      TYPE CSVR
+      &CSVR
+        TIMECON 30.0
+      &END CSVR
+    &END THERMOSTAT
+  &END MD
+&END MOTION
+
+&FORCE_EVAL
+  METHOD NNP
+  &NNP
+    NNP_INPUT_FILE_NAME NNP/bulkH2O-jcp2020-cnnp/nnp-1/input.nn
+    SCALE_FILE_NAME NNP/bulkH2O-jcp2020-cnnp/nnp-1/scaling.data
+    &BIAS
+      SIGMA_0 [hartree] 0.0001
+      K_B 5000
+      &PRINT
+        &BIAS_ENERGY
+          &EACH
+            MD 1
+          &END EACH
+        &END BIAS_ENERGY
+      &END PRINT
+    &END BIAS
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-1/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-2/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-3/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-4/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-5/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-6/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-7/weights
+    &END MODEL
+    &MODEL
+      WEIGHTS NNP/bulkH2O-jcp2020-cnnp/nnp-8/weights
+    &END MODEL
+    &PRINT
+      &ENERGIES
+        &EACH
+          MD 1
+        &END EACH
+      &END ENERGIES
+      &FORCES_SIGMA
+        &EACH
+          MD 1
+        &END EACH
+      &END FORCES_SIGMA
+    &END PRINT
+  &END NNP
+  &SUBSYS
+    &CELL
+      ABC 12.42 12.42 12.42
+      PERIODIC NONE
+    &END CELL
+    &COORD
+      O  17.8547  14.8936   4.30373
+      H  18.8171  14.8191   4.30668
+      H  17.6046  14.0681   4.71635
+    &END COORD
+  &END SUBSYS
+&END FORCE_EVAL
